@@ -11,6 +11,6 @@ The test data I'm using is a copy of one of my live Wordpress sites, which has p
 The main tool I'm using to run the suite is IntelliJ. The IML file for IntelliJ is included in this repo, as well as the pom.xml, as this is set up as a Maven project. I use the Selenide Java framework to run the Selenium tests.
 
 # Reference links
-[Misc-configs repo](https://github.com/annathepiper/misc-configs) where I store my Docker Compose yml files
-[Selenide](https://selenide.org/), The Selenium framework I'm using
-[IntelliJ](https://www.jetbrains.com/idea/)
+* [Misc-configs repo](https://github.com/annathepiper/misc-configs) where I store my Docker Compose yml files
+* [Selenide](https://selenide.org/), The Selenium framework I'm using
+* [IntelliJ](https://www.jetbrains.com/idea/)
