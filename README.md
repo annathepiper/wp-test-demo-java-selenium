@@ -12,5 +12,5 @@ The main tool I'm using to run the suite is IntelliJ. The IML file for IntelliJ 
 
 # Reference links
 * [Misc-configs repo](https://github.com/annathepiper/misc-configs) where I store my Docker Compose yml files
-* [Selenide](https://selenide.org/), The Selenium framework I'm using
+* [Selenide](https://selenide.org/), the Selenium framework I'm using
 * [IntelliJ](https://www.jetbrains.com/idea/)
