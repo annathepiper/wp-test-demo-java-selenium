@@ -3,28 +3,28 @@ Project to demonstrate my automation testing skills in Java, as part of my 2019 
 
 This suite of test cases runs Selenium-based test cases against a test Wordpress site.
 
-# Prerequisites
+## Prerequisites
 To run this suite, I set up a test Wordpress site as well as a Selenium test hub using Docker Compose. You can see the wp-sel-docker-compose.yml file I use to set up the containers on my misc-configs repo.
 
 The test data I'm using is a copy of one of my live Wordpress sites, which has provided me the items to fill in for my properties file.
 
 The main tool I'm using to run the suite is IntelliJ. The IML file for IntelliJ is included in this repo, as well as the pom.xml, as this is set up as a Maven project. I use the Selenide Java framework to run the Selenium tests.
 
-## Maven dependencies
+### Maven dependencies
 
 Dependencies included in the POM are:
 
 * Selenide
 * TestNG
 
-# Skills and tech I'm demonstrating here
+## Skills and tech I'm demonstrating here
 * Use of a properties file to set test-specific strings like ID numbers, titles, and names
 * Using TestNG functionality to run the test suite, and to annotate test methods
 * Use of a POM file to set Maven dependencies and to run the test suite via Maven as well as TestNG
 * Testing against a site running as a Docker container
 * Using Selenium as a Docker container, and configuring Selenide to point to that
 
-# Running the code yourself
+## Running the code yourself
 If you'd like to try running this suite yourself, you will need to do the following:
 
 1. Install IntelliJ IDEA if you don't have it already.
@@ -37,7 +37,7 @@ If you'd like to try running this suite yourself, you will need to do the follow
 8. In IntelliJ, use the testng.xml file to create a configuration you can use to run the test cases. It's a suite file, so you'll want to choose "Suite" in the configuration settings. All other settings can remain as default.
 9. Open the wp-test-demo.properties file and edit it as appropriate to reflect what test data you're using.
 
-## Docker Compose YAML files
+### Docker Compose YAML files
 Which of my YAML files you want to use depends on whether you have your own local instance of Selenium already.
 
 * wp-docker-compose.yml sets up only a test Wordpress instance, the MySQL layer that powers it, and an instance of PHPMyAdmin if you want to get into the database.
@@ -45,12 +45,12 @@ Which of my YAML files you want to use depends on whether you have your own loca
 
 You only need one or the other of these. You can use Docker Compose to launch them by name with the -f flag.
 
-## Selenium dependencies
+### Selenium dependencies
 If you use my Docker Compose YAML file to set up a Selenium instance, it creates it by default at localhost with port 4444. The location for this grid is set in the properties file for the suite as "seleniumHost".
 
 If you have your own Selenium instance set up, you should change this value to point to wherever your Selenium lives.
 
-# Reference links
+## Reference links
 * [Misc-configs repo](https://github.com/annathepiper/misc-configs) where I store my Docker Compose yml files
 * [Selenide](https://selenide.org/), the Selenium framework I'm using
 * [IntelliJ](https://www.jetbrains.com/idea/)
