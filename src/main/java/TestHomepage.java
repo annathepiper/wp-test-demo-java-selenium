@@ -1,9 +1,9 @@
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byClassName;
-import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -11,16 +11,61 @@ import static com.codeborne.selenide.Selenide.open;
  * TestHomepage
  * @author Angela Korra'ti
  *
- * Last updated 1/29/2019
+ * Last updated 1/30/2019
  * This class conducts tests against the homepage of the test Wordpress site.
  */
 public class TestHomepage extends BaseTest {
 
+    /**
+     * Setup
+     * This method opens up the homepage of the test site so we can do tests on it.
+     */
+    @BeforeClass
+    public void setup() {
+        open(wpBaseUri);
+    }
+
+    /**
+     * TestHomepageTitle
+     * Verify that the homepage title is set to the expected value and is visible.
+     */
     @Test
     public void TestHomepageTitle() {
-        open(wpBaseUri);
-        $(byClassName("site-title"))
+        $(byClassName(siteTitleClass))
                 .shouldBe(visible)
-                .shouldHave(text("Anna's Dev Wordpress"));
+                .shouldHave(text(siteTitle));
+    }
+
+    /**
+     * TestHomepageDescription
+     * Verify that the homepage description is set to the expected value and is visible.
+     */
+    @Test
+    public void TestHomepageDescription() {
+        $(byClassName(siteDescriptionClass))
+                .shouldBe(visible)
+                .shouldHave(text(siteDescription));
+    }
+
+    /**
+     * TestPrimaryMenu
+     * Verify that the primary menu exists and is visible.
+     */
+    @Test
+    public void TestPrimaryMenu() {
+        $(byId(menuId))
+                .should(exist)
+                .shouldBe(visible);
+    }
+
+    /**
+     * TestContentArea
+     * Verify that the site content area of the page is present and visible.
+     */
+    @Test
+    public void TestContentArea() {
+        $(byId(contentId))
+                .should(exist)
+                .shouldBe(visible);
     }
 }
