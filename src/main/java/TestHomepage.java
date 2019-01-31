@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
  * TestHomepage
  * @author Angela Korra'ti
  *
- * Last updated 1/30/2019
+ * Last updated 1/31/2019
  * This class conducts tests against the homepage of the test Wordpress site.
  */
 public class TestHomepage extends BaseTest {
@@ -21,7 +21,8 @@ public class TestHomepage extends BaseTest {
      * This method opens up the homepage of the test site so we can do tests on it.
      */
     @BeforeClass
-    public void setup() {
+    public void classSetup() {
+        suiteSetup();
         open(wpBaseUri);
     }
 
