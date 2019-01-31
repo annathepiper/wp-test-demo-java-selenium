@@ -25,6 +25,12 @@ Dependencies included in the POM are:
 * Using Selenium as a Docker container, and configuring Selenide to point to that
 * Use of Selenide as a framework to run Selenium tests
 
+## Why Selenide?
+
+I'm using Selenide to do the Selenium work here as it does the heavy lifting necessary to interact with Selenium. For example, it takes care of launching the Selenium driver for me, and doing the low-level processing necessary to find and interact with items on a page. This frees me up to focus on writing the specific test cases I want.
+
+See the [Selenide](https://selenide.org/) site for more information on the syntax it uses for test case writing.
+
 ## Running the code yourself
 If you'd like to try running this suite yourself, you will need to do the following:
 
