@@ -60,6 +60,52 @@ public class TestMenu extends BaseTest {
     }
 
     /**
+     * TestHomeSubmenuNotVisible
+     * This method verifies that the submenu underneath Home isn't visible by default.
+     */
+    @Test
+    public void TestHomeSubmenuNotVisible() {
+        $(byXpath(submenuHomeXPath))
+                .should(exist)
+                .shouldNotBe(visible);
+    }
+
+    /**
+     * TestHomeSubmenuVisibleOnHover
+     * This method verifies that if you hover over the Home menu, the submenu should be visible.
+     */
+    @Test
+    public void TestHomeSubmenuVisibleOnHover() {
+        $(byXpath(menuHomeXPath)).hover();
+        $(byXpath(submenuHomeXPath))
+                .should(exist)
+                .shouldBe(visible);
+    }
+
+    /**
+     * TestHomeSubmenuLink
+     * This method verifies that the Home menu's submenu has the correct link. Does not require the submenu to be
+     * visible to check this.
+     */
+    @Test
+    public void TestHomeSubmenuLink() {
+        $(byXpath(submenuHomeXPath))
+                .shouldHave(attribute("href", submenuHomeLink));
+    }
+
+    /**
+     * TestHomeSubmenuLinkClick
+     * This test case hovers over the Home menu, and then clicks on the submenu link and verifies you land on the
+     * appropriate page (angelahighland.com).
+     */
+    @Test
+    public void TestHomeSubmenuLinkClick() {
+        $(byXpath(menuHomeXPath)).hover();
+        $(byXpath(submenuHomeXPath)).click();
+        url().matches(submenuHomeLink);
+    }
+
+    /**
      * TestAboutMenuPresent
      * This method verifies that the second visible item on the menu is About.
      */
