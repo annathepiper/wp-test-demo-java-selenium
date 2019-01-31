@@ -68,4 +68,51 @@ public class TestHomepage extends BaseTest {
                 .should(exist)
                 .shouldBe(visible);
     }
+
+    /**
+     * TestPrimaryContentArea
+     * Verify that the primary site content area of the page (where the posts go) is present and visible.
+     */
+    @Test
+    public void TestPrimaryContentArea() {
+        $(byId(primaryContentId))
+                .should(exist)
+                .shouldBe(visible);
+    }
+
+    /**
+     * TestSecondaryContentArea
+     * Verify that the secondary site content area of the page (where the sidebar goes) is present and visible.
+     */
+    @Test
+    public void TestSecondaryContentArea() {
+        $(byId(secondaryContentId))
+                .should(exist)
+                .shouldBe(visible);
+    }
+
+    /**
+     * TestFooter
+     * Verify that the footer area of the page is present and visible.
+     */
+    @Test
+    public void TestFooter() {
+        $(byId(footerId))
+                .should(exist)
+                .shouldBe(visible);
+    }
+
+    @Test
+    public void TestFooterSocialMenu() {
+        $(byId(footerSocialMenuId))
+                .should(exist)
+                .shouldBe(visible);
+    }
+
+    @Test
+    public void TestFooterSiteInfo() {
+        $(byClassName(footerSiteInfoClass))
+                .should(exist)
+                .shouldBe(visible);
+    }
 }
