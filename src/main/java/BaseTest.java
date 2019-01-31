@@ -22,13 +22,19 @@ public class BaseTest {
     public static String siteTitle;
     public static String siteDescriptionClass;
     public static String siteDescription;
-    public static String menuId;
+
+    // Content areas (including sidebar)
     public static String contentId;
     public static String primaryContentId;
     public static String secondaryContentId;
+
+    // Footer
     public static String footerId;
     public static String footerSocialMenuId;
     public static String footerSiteInfoClass;
+
+    // Primary menu items
+    public static String menuId;
     public static String menuHomeXPath;
     public static String menuHomeText;
     public static String menuHomeLink;
@@ -47,6 +53,11 @@ public class BaseTest {
     public static String menuStoreXPath;
     public static String menuStoreText;
     public static String menuStoreLink;
+
+    // Secondary menu items
+    public static String submenuHomeXPath;
+    public static String submenuHomeText;
+    public static String submenuHomeLink;
 
     // Resource bundle we're using to pull all the property strings out of
     private static ResourceBundle rb = ResourceBundle.getBundle("wp-test-demo-selenium");
@@ -90,6 +101,9 @@ public class BaseTest {
         menuStoreXPath = rb.getString("menuStoreXPath");
         menuStoreText = rb.getString("menuStoreText");
         menuStoreLink = rb.getString("menuStoreLink");
+        submenuHomeXPath = rb.getString("submenuHomeXPath");
+        submenuHomeText = rb.getString("submenuHomeText");
+        submenuHomeLink = rb.getString("submenuHomeLink");
 
         // Set our Selenium locale for Selenide to use.
         Configuration.remote=seleniumHost;
