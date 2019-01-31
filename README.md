@@ -23,6 +23,7 @@ Dependencies included in the POM are:
 * Use of a POM file to set Maven dependencies and to run the test suite via Maven as well as TestNG
 * Testing against a site running as a Docker container
 * Using Selenium as a Docker container, and configuring Selenide to point to that
+* Use of Selenide as a framework to run Selenium tests
 
 ## Running the code yourself
 If you'd like to try running this suite yourself, you will need to do the following:
