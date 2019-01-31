@@ -46,9 +46,9 @@ Which of my YAML files you want to use depends on whether you have your own loca
 You only need one or the other of these. You can use Docker Compose to launch them by name with the -f flag.
 
 ### Selenium dependencies
-If you use my Docker Compose YAML file to set up a Selenium instance, it creates it by default at localhost with port 4444. The location for this grid is set in the properties file for the suite as "seleniumHost".
+If you use my Docker Compose YAML file to set up a Selenium instance, it creates it by default at localhost with port 4444. If you don't want to use port 4444, edit the file to use a different port.
 
-If you have your own Selenium instance set up, you should change this value to point to wherever your Selenium lives.
+The location for this grid is set in the properties file for the suite as "seleniumHost". If you have your own Selenium instance set up, or if you change what port you're using in the YAML file, you should update the properties file to reflect your changes.
 
 ## Reference links
 * [Misc-configs repo](https://github.com/annathepiper/misc-configs) where I store my Docker Compose yml files
