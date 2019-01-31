@@ -4,6 +4,7 @@
     <test name="All Tests">
         <classes>
             <class name="TestHomepage" />
+            <class name="TestMenu" />
         </classes>
     </test>
 </suite>
