@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
  * BaseTest
  * @author Angela Korra'ti
  *
- * Last updated 1/31/2019
+ * Last updated 2/1/2019
  * This is the master class for the wptestdemoselenium suite. Does the necessary setup for all the other classes.
  */
 public class BaseTest {
@@ -59,12 +59,27 @@ public class BaseTest {
     public static String submenuHomeXPath;
     public static String submenuHomeText;
     public static String submenuHomeLink;
-    public static String submenuFBXPath;
-    public static String submenuFBText;
-    public static String submenuFBLink;
-    public static String submenuBWXPath;
-    public static String submenuBWText;
-    public static String submenuBWLink;
+    public static String submenuFaerieXPath;
+    public static String submenuFaerieText;
+    public static String submenuFaerieLink;
+    public static String submenuBoneXPath;
+    public static String submenuBoneText;
+    public static String submenuBoneLink;
+    public static String submenuValorXPath;
+    public static String submenuValorText;
+    public static String submenuValorLink;
+    public static String submenuVengeanceXPath;
+    public static String submenuVengeanceText;
+    public static String submenuVengeanceLink;
+    public static String submenuVictoryXPath;
+    public static String submenuVictoryText;
+    public static String submenuVictoryLink;
+    public static String submenuShortXPath;
+    public static String submenuShortText;
+    public static String submenuShortLink;
+    public static String submenuStoreXPath;
+    public static String submenuStoreText;
+    public static String submenuStoreLink;
 
     // Resource bundle we're using to pull all the property strings out of
     private static ResourceBundle rb = ResourceBundle.getBundle("wp-test-demo-selenium");
@@ -120,12 +135,27 @@ public class BaseTest {
         submenuHomeXPath = rb.getString("submenuHomeXPath");
         submenuHomeText = rb.getString("submenuHomeText");
         submenuHomeLink = rb.getString("submenuHomeLink");
-        submenuFBXPath = rb.getString("submenuFBXPath");
-        submenuFBText = rb.getString("submenuFBText");
-        submenuFBLink = rb.getString("submenuFBLink");
-        submenuBWXPath = rb.getString("submenuBWXPath");
-        submenuBWText = rb.getString("submenuBWText");
-        submenuBWLink = rb.getString("submenuBWLink");
+        submenuFaerieXPath = rb.getString("submenuFaerieXPath");
+        submenuFaerieText = rb.getString("submenuFaerieText");
+        submenuFaerieLink = rb.getString("submenuFaerieLink");
+        submenuBoneXPath = rb.getString("submenuBoneXPath");
+        submenuBoneText = rb.getString("submenuBoneText");
+        submenuBoneLink = rb.getString("submenuBoneLink");
+        submenuValorXPath = rb.getString("submenuValorXPath");
+        submenuValorText = rb.getString("submenuValorText");
+        submenuValorLink = rb.getString("submenuValorLink");
+        submenuVengeanceXPath = rb.getString("submenuVengeanceXPath");
+        submenuVengeanceText = rb.getString("submenuVengeanceText");
+        submenuVengeanceLink = rb.getString("submenuVengeanceLink");
+        submenuVictoryXPath = rb.getString("submenuVictoryXPath");
+        submenuVictoryText = rb.getString("submenuVictoryText");
+        submenuVictoryLink = rb.getString("submenuVictoryLink");
+        submenuShortXPath = rb.getString("submenuShortXPath");
+        submenuShortText = rb.getString("submenuShortText");
+        submenuShortLink = rb.getString("submenuShortLink");
+        submenuStoreXPath = rb.getString("submenuStoreXPath");
+        submenuStoreText = rb.getString("submenuStoreText");
+        submenuStoreLink = rb.getString("submenuStoreLink");
 
         // Set our Selenium locale for Selenide to use.
         Configuration.remote=seleniumHost;
