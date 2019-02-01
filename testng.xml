@@ -5,6 +5,7 @@
         <classes>
             <class name="TestHomepage" />
             <class name="TestMenu" />
+            <class name="TestSubmenus" />
         </classes>
     </test>
 </suite>
