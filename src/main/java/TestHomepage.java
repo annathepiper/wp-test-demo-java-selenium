@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
  * TestHomepage
  * @author Angela Korra'ti
  *
- * Last updated 1/31/2019
+ * Last updated 2/1/2019
  * This class conducts tests against the homepage of the test Wordpress site.
  */
 public class TestHomepage extends BaseTest {
@@ -103,6 +103,10 @@ public class TestHomepage extends BaseTest {
                 .shouldBe(visible);
     }
 
+    /**
+     * TestFooterSocialMenu
+     * Verify that the social menu is present and visible.
+     */
     @Test
     public void TestFooterSocialMenu() {
         $(byId(footerSocialMenuId))
@@ -110,6 +114,10 @@ public class TestHomepage extends BaseTest {
                 .shouldBe(visible);
     }
 
+    /**
+     * TestFooterSiteInfo
+     * Verify that the site info section of the footer is present and visible.
+     */
     @Test
     public void TestFooterSiteInfo() {
         $(byClassName(footerSiteInfoClass))
