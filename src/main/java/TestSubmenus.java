@@ -12,7 +12,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  * TestSubmenus
  * @author Angela Korra'ti
  *
- * Last updated 1/31/2019
+ * Last updated 2/1/2019
  * Test class for verifying the submenus on the test site's main menu.
  */
 public class TestSubmenus extends BaseTest {
@@ -97,48 +97,186 @@ public class TestSubmenus extends BaseTest {
     }
 
     /**
-     * TestFBSubmenuLink
+     * TestFaerieSubmenuLink
      * Tests that the first item under the Books menu is the link to the Faerie Blood page.
      */
     @Test
-    public void TestFBSubmenuLink() {
-        $(byXpath(submenuFBXPath))
+    public void TestFaerieSubmenuLink() {
+        $(byXpath(submenuFaerieXPath))
                 .should(exist)
-                .shouldHave(attribute("href", submenuFBLink));
+                .shouldHave(attribute("href", submenuFaerieLink));
     }
 
     /**
-     * TestFBSubmenuLinkClick
+     * TestFaerieSubmenuLinkClick
      * Tests that if you hover over the Books menu and then click on the Faerie Blood item, you'll be taken to the
      * correct page.
      */
     @Test
-    public void TestFBSubmenuLinkClick() {
+    public void TestFaerieSubmenuLinkClick() {
         $(byXpath(menuBooksXPath)).hover();
-        $(byXpath(submenuFBXPath)).click();
-        Assert.assertTrue(url().matches(submenuFBLink));
+        $(byXpath(submenuFaerieXPath)).click();
+        Assert.assertTrue(url().matches(submenuFaerieLink));
     }
 
     /**
-     * TestBWSubmenuLink
+     * TestBoneSubmenuLink
      * Tests that the second item under the Books menu is the link to the Bone Walker page.
      */
     @Test
-    public void TestBWSubmenuLink() {
-        $(byXpath(submenuBWXPath))
+    public void TestBoneSubmenuLink() {
+        $(byXpath(submenuBoneXPath))
                 .should(exist)
-                .shouldHave(attribute("href", submenuBWLink));
+                .shouldHave(attribute("href", submenuBoneLink));
     }
 
     /**
-     * TestBWSubmenuLinkClick
+     * TestBoneSubmenuLinkClick
      * Tests that if you hover over the Books menu and then click on the Bone Walker item, you'll be taken to the
      * correct page.
      */
     @Test
-    public void TestBWSubmenuLinkClick() {
+    public void TestBoneSubmenuLinkClick() {
         $(byXpath(menuBooksXPath)).hover();
-        $(byXpath(submenuBWXPath)).click();
-        Assert.assertTrue(url().matches(submenuBWLink));
+        $(byXpath(submenuBoneXPath)).click();
+        Assert.assertTrue(url().matches(submenuBoneLink));
+    }
+
+    /**
+     * TestValorSubmenuLink
+     * Tests that the third item under the Books menu is the link to the Valor of the Healer page.
+     */
+    @Test
+    public void TestValorSubmenuLink() {
+        $(byXpath(submenuValorXPath))
+                .should(exist)
+                .shouldHave(attribute("href", submenuValorLink));
+    }
+
+    /**
+     * TestValorSubmenuLinkClick
+     * Tests that if you hover over the Books menu and then click on the Valor of the Healer item, you'll be taken to
+     * the correct page.
+     */
+    @Test
+    public void TestValorSubmenuLinkClick() {
+        $(byXpath(menuBooksXPath)).hover();
+        $(byXpath(submenuValorXPath)).click();
+        Assert.assertTrue(url().matches(submenuValorLink));
+    }
+
+    /**
+     * TestVengeanceSubmenuLink
+     * Tests that the fourth item under the Books menu is the link to the Vengeance of the Hunter page.
+     */
+    @Test
+    public void TestVengeanceSubmenuLink() {
+        $(byXpath(submenuVengeanceXPath))
+                .should(exist)
+                .shouldHave(attribute("href", submenuVengeanceLink));
+    }
+
+    /**
+     * TestVengeanceSubmenuLinkClick
+     * Tests that if you hover over the Books menu and then click on the Vengeance of the Hunter item, you'll be
+     * taken to the correct page.
+     */
+    @Test
+    public void TestVengeanceSubmenuLinkClick() {
+        $(byXpath(menuBooksXPath)).hover();
+        $(byXpath(submenuVengeanceXPath)).click();
+        Assert.assertTrue(url().matches(submenuVengeanceLink));
+    }
+
+    /**
+     * TestVictorySubmenuLink
+     * Tests that the fifth item under the Books menu is the link to the Victory of the Hawk page.
+     */
+    @Test
+    public void TestVictorySubmenuLink() {
+        $(byXpath(submenuVictoryXPath))
+                .should(exist)
+                .shouldHave(attribute("href", submenuVictoryLink));
+    }
+
+    /**
+     * TestVictorySubmenuLinkClick
+     * Tests that if you hover over the Books menu and then click on the Victory of the Hawk item, you'll be taken to
+     * the correct page.
+     */
+    @Test
+    public void TestVictorySubmenuLinkClick() {
+        $(byXpath(menuBooksXPath)).hover();
+        $(byXpath(submenuVictoryXPath)).click();
+        Assert.assertTrue(url().matches(submenuVictoryLink));
+    }
+
+    /**
+     * TestShortSubmenuLink
+     * Tests that the sixth item under the Books menu is the link to the Short Stories page.
+     */
+    @Test
+    public void TestShortSubmenuLink() {
+        $(byXpath(submenuShortXPath))
+                .should(exist)
+                .shouldHave(attribute("href", submenuShortLink));
+    }
+
+    /**
+     * TestShortSubmenuLinkClick
+     * Tests that if you hover over the Books menu and then click on the Short Stories item, you'll be taken to the
+     * correct page.
+     */
+    @Test
+    public void TestShortSubmenuLinkClick() {
+        $(byXpath(menuBooksXPath)).hover();
+        $(byXpath(submenuShortXPath)).click();
+        Assert.assertTrue(url().matches(submenuShortLink));
+    }
+
+    /**
+     * TestStoreSubmenuNotVisible
+     * This method verifies that the submenu underneath Store isn't visible by default.
+     */
+    @Test
+    public void TestStoreSubmenuNotVisible() {
+        $(byXpath(submenuStoreXPath))
+                .should(exist)
+                .shouldNotBe(visible);
+    }
+
+    /**
+     * TestStoreSubmenuVisibleOnHover
+     * This method verifies that if you hover over the Store menu, the submenu should be visible.
+     */
+    @Test
+    public void TestStoreSubmenuVisibleOnHover() {
+        $(byXpath(menuStoreXPath)).hover();
+        $(byXpath(submenuStoreXPath))
+                .should(exist)
+                .shouldBe(visible);
+    }
+
+    /**
+     * TestStoreSubmenuLink
+     * This method verifies that the Store menu's submenu has the correct link. Does not require the submenu to be
+     * visible to check this.
+     */
+    @Test
+    public void TestStoreSubmenuLink() {
+        $(byXpath(submenuStoreXPath))
+                .shouldHave(attribute("href", submenuStoreLink));
+    }
+
+    /**
+     * TestStoreSubmenuLinkClick
+     * This test case hovers over the Store menu, and then clicks on the submenu link and verifies you land on the
+     * appropriate page (the link for the Bone Walker Soundtrack page).
+     */
+    @Test
+    public void TestStoreSubmenuLinkClick() {
+        $(byXpath(menuStoreXPath)).hover();
+        $(byXpath(submenuStoreXPath)).click();
+        Assert.assertTrue(url().matches(submenuStoreLink));
     }
 }
