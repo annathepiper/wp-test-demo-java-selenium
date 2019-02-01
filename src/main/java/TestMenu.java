@@ -1,3 +1,4 @@
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -55,54 +56,7 @@ public class TestMenu extends BaseTest {
     @Test
     public void TestHomeMenuClick() {
         $(byXpath(menuHomeXPath)).click();
-        url().matches(menuHomeLink);
-        url().matches(wpBaseUri);
-    }
-
-    /**
-     * TestHomeSubmenuNotVisible
-     * This method verifies that the submenu underneath Home isn't visible by default.
-     */
-    @Test
-    public void TestHomeSubmenuNotVisible() {
-        $(byXpath(submenuHomeXPath))
-                .should(exist)
-                .shouldNotBe(visible);
-    }
-
-    /**
-     * TestHomeSubmenuVisibleOnHover
-     * This method verifies that if you hover over the Home menu, the submenu should be visible.
-     */
-    @Test
-    public void TestHomeSubmenuVisibleOnHover() {
-        $(byXpath(menuHomeXPath)).hover();
-        $(byXpath(submenuHomeXPath))
-                .should(exist)
-                .shouldBe(visible);
-    }
-
-    /**
-     * TestHomeSubmenuLink
-     * This method verifies that the Home menu's submenu has the correct link. Does not require the submenu to be
-     * visible to check this.
-     */
-    @Test
-    public void TestHomeSubmenuLink() {
-        $(byXpath(submenuHomeXPath))
-                .shouldHave(attribute("href", submenuHomeLink));
-    }
-
-    /**
-     * TestHomeSubmenuLinkClick
-     * This test case hovers over the Home menu, and then clicks on the submenu link and verifies you land on the
-     * appropriate page (angelahighland.com).
-     */
-    @Test
-    public void TestHomeSubmenuLinkClick() {
-        $(byXpath(menuHomeXPath)).hover();
-        $(byXpath(submenuHomeXPath)).click();
-        url().matches(submenuHomeLink);
+        Assert.assertTrue(url().matches(menuHomeLink));
     }
 
     /**
@@ -134,7 +88,7 @@ public class TestMenu extends BaseTest {
     @Test
     public void TestAboutMenuClick() {
         $(byXpath(menuAboutXPath)).click();
-        url().matches(menuAboutLink);
+        Assert.assertTrue(url().matches(menuAboutLink));
     }
 
     /**
@@ -166,7 +120,7 @@ public class TestMenu extends BaseTest {
     @Test
     public void TestBooksMenuClick() {
         $(byXpath(menuBooksXPath)).click();
-        url().matches(menuBooksLink);
+        Assert.assertTrue(url().matches(menuBooksLink));
     }
 
     /**
@@ -198,7 +152,7 @@ public class TestMenu extends BaseTest {
     @Test
     public void TestBlogMenuClick() {
         $(byXpath(menuBlogXPath)).click();
-        url().matches(menuBlogLink);
+        Assert.assertTrue(url().matches(menuBlogLink));
     }
 
     /**
@@ -230,7 +184,7 @@ public class TestMenu extends BaseTest {
     @Test
     public void TestContactMenuClick() {
         $(byXpath(menuContactXPath)).click();
-        url().matches(menuContactLink);
+        Assert.assertTrue(url().matches(menuContactLink));
     }
 
     /**
@@ -262,6 +216,6 @@ public class TestMenu extends BaseTest {
     @Test
     public void TestStoreMenuClick() {
         $(byXpath(menuStoreXPath)).click();
-        url().matches(menuStoreLink);
+        Assert.assertTrue(url().matches(menuStoreLink));
     }
 }
