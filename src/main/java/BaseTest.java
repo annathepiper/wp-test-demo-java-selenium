@@ -55,9 +55,16 @@ public class BaseTest {
     public static String menuStoreLink;
 
     // Secondary menu items
+    public static String submenuBooksXPath;
     public static String submenuHomeXPath;
     public static String submenuHomeText;
     public static String submenuHomeLink;
+    public static String submenuFBXPath;
+    public static String submenuFBText;
+    public static String submenuFBLink;
+    public static String submenuBWXPath;
+    public static String submenuBWText;
+    public static String submenuBWLink;
 
     // Resource bundle we're using to pull all the property strings out of
     private static ResourceBundle rb = ResourceBundle.getBundle("wp-test-demo-selenium");
@@ -71,18 +78,24 @@ public class BaseTest {
         host = rb.getString("host");
         wpBaseUri = String.format("%s://%s", protocol, host);
 
-        // Assorted values we'll need for test cases
+        // Assorted values we'll need for main site info
         siteTitleClass = rb.getString("siteTitleClass");
         siteTitle = rb.getString("siteTitle");
         siteDescriptionClass = rb.getString("siteDescriptionClass");
         siteDescription = rb.getString("siteDescription");
-        menuId = rb.getString("menuId");
+
+        // Assorted items pertaining to content areas
         contentId = rb.getString("contentId");
         primaryContentId = rb.getString("primaryContentId");
         secondaryContentId = rb.getString("secondaryContentId");
+
+        // Items pertaining to the footer
         footerId = rb.getString("footerId");
         footerSocialMenuId = rb.getString("footerSocialMenuId");
         footerSiteInfoClass = rb.getString("footerSiteInfoClass");
+
+        // Items pertaining to the primary menu items
+        menuId = rb.getString("menuId");
         menuHomeXPath = rb.getString("menuHomeXPath");
         menuHomeText = rb.getString("menuHomeText");
         menuHomeLink = rb.getString("menuHomeLink");
@@ -101,9 +114,18 @@ public class BaseTest {
         menuStoreXPath = rb.getString("menuStoreXPath");
         menuStoreText = rb.getString("menuStoreText");
         menuStoreLink = rb.getString("menuStoreLink");
+
+        // Items pertaining to the submenus
+        submenuBooksXPath = rb.getString("submenuBooksXPath");
         submenuHomeXPath = rb.getString("submenuHomeXPath");
         submenuHomeText = rb.getString("submenuHomeText");
         submenuHomeLink = rb.getString("submenuHomeLink");
+        submenuFBXPath = rb.getString("submenuFBXPath");
+        submenuFBText = rb.getString("submenuFBText");
+        submenuFBLink = rb.getString("submenuFBLink");
+        submenuBWXPath = rb.getString("submenuBWXPath");
+        submenuBWText = rb.getString("submenuBWText");
+        submenuBWLink = rb.getString("submenuBWLink");
 
         // Set our Selenium locale for Selenide to use.
         Configuration.remote=seleniumHost;
