@@ -32,6 +32,22 @@ public class BaseTest {
     public static String footerId;
     public static String footerSocialMenuId;
     public static String footerSiteInfoClass;
+    public static String footerSiteTitleXPath;
+    public static String footerWPLinkXPath;
+    public static String footerWPLink;
+    public static String footerWPLinkText;
+    public static String footerSocialFacebookXPath;
+    public static String footerSocialFacebookLink;
+    public static String footerSocialFacebookText;
+    public static String footerSocialTwitterXPath;
+    public static String footerSocialTwitterLink;
+    public static String footerSocialTwitterText;
+    public static String footerSocialGithubXPath;
+    public static String footerSocialGithubLink;
+    public static String footerSocialGithubText;
+    public static String footerSocialLinkedInXPath;
+    public static String footerSocialLinkedInLink;
+    public static String footerSocialLinkedInText;
 
     // Primary menu items
     public static String menuId;
@@ -108,6 +124,22 @@ public class BaseTest {
         footerId = rb.getString("footerId");
         footerSocialMenuId = rb.getString("footerSocialMenuId");
         footerSiteInfoClass = rb.getString("footerSiteInfoClass");
+        footerSiteTitleXPath = rb.getString("footerSiteTitleXPath");
+        footerWPLinkXPath = rb.getString("footerWPLinkXPath");
+        footerWPLink = rb.getString("footerWPLink");
+        footerWPLinkText = rb.getString("footerWPLinkText");
+        footerSocialFacebookXPath = rb.getString("footerSocialFacebookXPath");
+        footerSocialFacebookLink = rb.getString("footerSocialFacebookLink");
+        footerSocialFacebookText = rb.getString("footerSocialFacebookText");
+        footerSocialTwitterXPath = rb.getString("footerSocialTwitterXPath");
+        footerSocialTwitterLink = rb.getString("footerSocialTwitterLink");
+        footerSocialTwitterText = rb.getString("footerSocialTwitterText");
+        footerSocialGithubXPath = rb.getString("footerSocialGithubXPath");
+        footerSocialGithubLink = rb.getString("footerSocialGithubLink");
+        footerSocialGithubText = rb.getString("footerSocialGithubText");
+        footerSocialLinkedInXPath = rb.getString("footerSocialLinkedInXPath");
+        footerSocialLinkedInLink = rb.getString("footerSocialLinkedInLink");
+        footerSocialLinkedInText = rb.getString("footerSocialLinkedInText");
 
         // Items pertaining to the primary menu items
         menuId = rb.getString("menuId");
