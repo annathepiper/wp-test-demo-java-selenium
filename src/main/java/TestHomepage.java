@@ -1,3 +1,5 @@
+import com.codeborne.selenide.SelenideElement;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -11,8 +13,13 @@ import static com.codeborne.selenide.Selenide.open;
  * TestHomepage
  * @author Angela Korra'ti
  *
- * Last updated 2/1/2019
+ * Last updated 2/7/2019
  * This class conducts tests against the homepage of the test Wordpress site.
+ *
+ * IMPORTANT NOTES:
+ * 1. Some of my test cases here aren't as concise as I'd like, as I discovered that the shouldHave(text()) calls
+ * apparently aren't case-sensitive. So I'm adjusting the structure of impacted cases as necessary to account for this.
+ * See the TestHomepageDescription for an example.
  */
 public class TestHomepage extends BaseTest {
 
@@ -43,9 +50,10 @@ public class TestHomepage extends BaseTest {
      */
     @Test
     public void TestHomepageDescription() {
-        $(byClassName(siteDescriptionClass))
-                .shouldBe(visible)
-                .shouldHave(text(siteDescription));
+        SelenideElement description = $(byClassName(siteDescriptionClass));
+        description.shouldBe(visible);
+        String descriptionText = description.text();
+        Assert.assertEquals(descriptionText, siteDescription, "Site description isn't set to the right string.");
     }
 
     /**
