@@ -12,7 +12,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  * TestSubmenus
  * @author Angela Korra'ti
  *
- * Last updated 2/1/2019
+ * Last updated 2/11/2019
  * Test class for verifying the submenus on the test site's main menu.
  */
 public class TestSubmenus extends BaseTest {
@@ -48,6 +48,18 @@ public class TestSubmenus extends BaseTest {
         $(byXpath(submenuHomeXPath))
                 .should(exist)
                 .shouldBe(visible);
+    }
+
+    /**
+     * TestHomeSubmenuText
+     * This method verifies that the Home menu's submenu has the correct text. Selenide wants me to hover over the
+     * Home menu in order to make that visible.
+     */
+    @Test
+    public void TestHomeSubmenuText() {
+        $(byXpath(menuHomeXPath)).hover();
+        $(byXpath(submenuHomeXPath))
+                .shouldHave(text(submenuHomeText));
     }
 
     /**
@@ -97,6 +109,17 @@ public class TestSubmenus extends BaseTest {
     }
 
     /**
+     * TestFaerieSubmenuText
+     * Tests that the first item under the Books menu has the correct text (Faerie Blood).
+     */
+    @Test
+    public void TestFaerieSubmenuText() {
+        $(byXpath(menuBooksXPath)).hover();
+        $(byXpath(submenuFaerieXPath))
+                .shouldHave(text(submenuFaerieText));
+    }
+
+    /**
      * TestFaerieSubmenuLink
      * Tests that the first item under the Books menu is the link to the Faerie Blood page.
      */
@@ -117,6 +140,17 @@ public class TestSubmenus extends BaseTest {
         $(byXpath(menuBooksXPath)).hover();
         $(byXpath(submenuFaerieXPath)).click();
         Assert.assertTrue(url().matches(submenuFaerieLink));
+    }
+
+    /**
+     * TestBoneSubmenuText
+     * Tests that the second item under the Books menu has the correct text (Bone Walker).
+     */
+    @Test
+    public void TestBoneSubmenuText() {
+        $(byXpath(menuBooksXPath)).hover();
+        $(byXpath(submenuBoneXPath))
+                .shouldHave(text(submenuBoneText));
     }
 
     /**
@@ -143,6 +177,17 @@ public class TestSubmenus extends BaseTest {
     }
 
     /**
+     * TestValorSubmenuText
+     * Tests that the third item under the Books menu has the correct text (Valor of the Healer).
+     */
+    @Test
+    public void TestValorSubmenuText() {
+        $(byXpath(menuBooksXPath)).hover();
+        $(byXpath(submenuValorXPath))
+                .shouldHave(text(submenuValorText));
+    }
+
+    /**
      * TestValorSubmenuLink
      * Tests that the third item under the Books menu is the link to the Valor of the Healer page.
      */
@@ -163,6 +208,17 @@ public class TestSubmenus extends BaseTest {
         $(byXpath(menuBooksXPath)).hover();
         $(byXpath(submenuValorXPath)).click();
         Assert.assertTrue(url().matches(submenuValorLink));
+    }
+
+    /**
+     * TestVengeanceSubmenuText
+     * Tests that the fourth item under the Books menu has the correct text (Vengeance of the Hunter).
+     */
+    @Test
+    public void TestVengeanceSubmenuText() {
+        $(byXpath(menuBooksXPath)).hover();
+        $(byXpath(submenuVengeanceXPath))
+                .shouldHave(text(submenuVengeanceText));
     }
 
     /**
@@ -189,6 +245,17 @@ public class TestSubmenus extends BaseTest {
     }
 
     /**
+     * TestVictorySubmenuText
+     * Tests that the fifth item under the Books menu has the correct text (Victory of the Hawk).
+     */
+    @Test
+    public void TestVictorySubmenuText() {
+        $(byXpath(menuBooksXPath)).hover();
+        $(byXpath(submenuVictoryXPath))
+                .shouldHave(text(submenuVictoryText));
+    }
+
+    /**
      * TestVictorySubmenuLink
      * Tests that the fifth item under the Books menu is the link to the Victory of the Hawk page.
      */
@@ -209,6 +276,17 @@ public class TestSubmenus extends BaseTest {
         $(byXpath(menuBooksXPath)).hover();
         $(byXpath(submenuVictoryXPath)).click();
         Assert.assertTrue(url().matches(submenuVictoryLink));
+    }
+
+    /**
+     * TestShortSubmenuText
+     * Tests that the sixth item under the Books menu has the correct text (Short Storise).
+     */
+    @Test
+    public void TestShortSubmenuText() {
+        $(byXpath(menuBooksXPath)).hover();
+        $(byXpath(submenuShortXPath))
+                .shouldHave(text(submenuShortText));
     }
 
     /**
@@ -255,6 +333,18 @@ public class TestSubmenus extends BaseTest {
         $(byXpath(submenuStoreXPath))
                 .should(exist)
                 .shouldBe(visible);
+    }
+
+    /**
+     * TestStoreSubmenuText
+     * This method verifies that the Store menu's submenu has the correct text. Selenide wants me to hover over the
+     * Store menu in order to make that visible.
+     */
+    @Test
+    public void TestStoreSubmenuText() {
+        $(byXpath(menuStoreXPath)).hover();
+        $(byXpath(submenuStoreXPath))
+                .shouldHave(text(submenuStoreText));
     }
 
     /**
