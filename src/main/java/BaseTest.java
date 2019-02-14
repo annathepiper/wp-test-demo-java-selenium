@@ -8,106 +8,102 @@ import java.util.ResourceBundle;
  * Last updated 2/14/2019
  * This is the master class for the wptestdemoselenium suite. Does the necessary setup for all the other classes.
  */
-public abstract class BaseTest {
-    // This is the location for the Selenium grid
-    private static String seleniumHost;
+abstract class BaseTest {
+    // Base URI for our testing
+    static String wpBaseUri;
 
-    // Use these to set up the base URI for our testing
-    protected static String protocol;
-    protected static String host;
-    protected static String wpBaseUri;
-
-    // Assorted strings we need for the test cases
-    protected static String siteTitleClass;
-    protected static String siteTitle;
-    protected static String siteDescriptionClass;
-    protected static String siteDescription;
+    // General site descriptor strings
+    static String siteTitleClass;
+    static String siteTitle;
+    static String siteDescriptionClass;
+    static String siteDescription;
 
     // Content areas (including sidebar)
-    protected static String contentId;
-    protected static String primaryContentId;
-    protected static String secondaryContentId;
+    static String contentId;
+    static String primaryContentId;
+    static String secondaryContentId;
 
     // Footer
-    protected static String footerId;
-    protected static String footerSocialMenuId;
-    protected static String footerSiteInfoClass;
-    protected static String footerSiteTitleXPath;
-    protected static String footerWPLinkXPath;
-    protected static String footerWPLink;
-    protected static String footerWPLinkText;
-    protected static String footerSocialFacebookXPath;
-    protected static String footerSocialFacebookLink;
-    protected static String footerSocialFacebookText;
-    protected static String footerSocialTwitterXPath;
-    protected static String footerSocialTwitterLink;
-    protected static String footerSocialTwitterText;
-    protected static String footerSocialGithubXPath;
-    protected static String footerSocialGithubLink;
-    protected static String footerSocialGithubText;
-    protected static String footerSocialLinkedInXPath;
-    protected static String footerSocialLinkedInLink;
-    protected static String footerSocialLinkedInText;
+    static String footerId;
+    static String footerSocialMenuId;
+    static String footerSiteInfoClass;
+    static String footerSiteTitleXPath;
+    static String footerWPLinkXPath;
+    static String footerWPLink;
+    static String footerWPLinkText;
+    static String footerSocialFacebookXPath;
+    static String footerSocialFacebookLink;
+    static String footerSocialFacebookText;
+    static String footerSocialTwitterXPath;
+    static String footerSocialTwitterLink;
+    static String footerSocialTwitterText;
+    static String footerSocialGithubXPath;
+    static String footerSocialGithubLink;
+    static String footerSocialGithubText;
+    static String footerSocialLinkedInXPath;
+    //NOTE: Commenting this string out because I can't actually use it in the footer test cases, due to hitting it
+    //triggering a LinkedIn auth wall. But keeping it here for reference in case that behavior changes and I can
+    //wake this string up again.
+    //static String footerSocialLinkedInLink;
+    static String footerSocialLinkedInText;
 
     // Primary menu items
-    protected static String menuId;
-    protected static String menuHomeXPath;
-    protected static String menuHomeText;
-    protected static String menuHomeLink;
-    protected static String menuAboutXPath;
-    protected static String menuAboutText;
-    protected static String menuAboutLink;
-    protected static String menuBooksXPath;
-    protected static String menuBooksText;
-    protected static String menuBooksLink;
-    protected static String menuBlogXPath;
-    protected static String menuBlogText;
-    protected static String menuBlogLink;
-    protected static String menuContactXPath;
-    protected static String menuContactText;
-    protected static String menuContactLink;
-    protected static String menuStoreXPath;
-    protected static String menuStoreText;
-    protected static String menuStoreLink;
+    static String menuId;
+    static String menuHomeXPath;
+    static String menuHomeText;
+    static String menuHomeLink;
+    static String menuAboutXPath;
+    static String menuAboutText;
+    static String menuAboutLink;
+    static String menuBooksXPath;
+    static String menuBooksText;
+    static String menuBooksLink;
+    static String menuBlogXPath;
+    static String menuBlogText;
+    static String menuBlogLink;
+    static String menuContactXPath;
+    static String menuContactText;
+    static String menuContactLink;
+    static String menuStoreXPath;
+    static String menuStoreText;
+    static String menuStoreLink;
 
     // Secondary menu items
-    protected static String submenuBooksXPath;
-    protected static String submenuHomeXPath;
-    protected static String submenuHomeText;
-    protected static String submenuHomeLink;
-    protected static String submenuFaerieXPath;
-    protected static String submenuFaerieText;
-    protected static String submenuFaerieLink;
-    protected static String submenuBoneXPath;
-    protected static String submenuBoneText;
-    protected static String submenuBoneLink;
-    protected static String submenuValorXPath;
-    protected static String submenuValorText;
-    protected static String submenuValorLink;
-    protected static String submenuVengeanceXPath;
-    protected static String submenuVengeanceText;
-    protected static String submenuVengeanceLink;
-    protected static String submenuVictoryXPath;
-    protected static String submenuVictoryText;
-    protected static String submenuVictoryLink;
-    protected static String submenuShortXPath;
-    protected static String submenuShortText;
-    protected static String submenuShortLink;
-    protected static String submenuStoreXPath;
-    protected static String submenuStoreText;
-    protected static String submenuStoreLink;
+    static String submenuBooksXPath;
+    static String submenuHomeXPath;
+    static String submenuHomeText;
+    static String submenuHomeLink;
+    static String submenuFaerieXPath;
+    static String submenuFaerieText;
+    static String submenuFaerieLink;
+    static String submenuBoneXPath;
+    static String submenuBoneText;
+    static String submenuBoneLink;
+    static String submenuValorXPath;
+    static String submenuValorText;
+    static String submenuValorLink;
+    static String submenuVengeanceXPath;
+    static String submenuVengeanceText;
+    static String submenuVengeanceLink;
+    static String submenuVictoryXPath;
+    static String submenuVictoryText;
+    static String submenuVictoryLink;
+    static String submenuShortXPath;
+    static String submenuShortText;
+    static String submenuShortLink;
+    static String submenuStoreXPath;
+    static String submenuStoreText;
+    static String submenuStoreLink;
 
     // Resource bundle we're using to pull all the property strings out of
     private static ResourceBundle rb = ResourceBundle.getBundle("wp-test-demo-selenium");
 
-    protected static void suiteSetup() {
-        // Get the location for the Selenium grid
-        seleniumHost = rb.getString("seleniumHost");
+    static void suiteSetup() {
+        // Set our Selenium locale for Selenide to use.
+        Configuration.remote = rb.getString("seleniumHost");
 
         // Get the needed properties out of the file to build some URIs to test
-        protocol = rb.getString("protocol");
-        host = rb.getString("host");
-        wpBaseUri = String.format("%s://%s", protocol, host);
+        wpBaseUri = String.format("%s://%s", rb.getString("protocol"), rb.getString("host"));
 
         // Assorted values we'll need for main site info
         siteTitleClass = rb.getString("siteTitleClass");
@@ -138,7 +134,9 @@ public abstract class BaseTest {
         footerSocialGithubLink = rb.getString("footerSocialGithubLink");
         footerSocialGithubText = rb.getString("footerSocialGithubText");
         footerSocialLinkedInXPath = rb.getString("footerSocialLinkedInXPath");
-        footerSocialLinkedInLink = rb.getString("footerSocialLinkedInLink");
+        // NOTE: Commenting this string out because for now I can't actually use it, due to hitting this link
+        // triggering a LinkedIn auth wall. Keeping it rather than deleting it in case the behavior changes.
+        // footerSocialLinkedInLink = rb.getString("footerSocialLinkedInLink");
         footerSocialLinkedInText = rb.getString("footerSocialLinkedInText");
 
         // Items pertaining to the primary menu items
@@ -188,8 +186,5 @@ public abstract class BaseTest {
         submenuStoreXPath = rb.getString("submenuStoreXPath");
         submenuStoreText = rb.getString("submenuStoreText");
         submenuStoreLink = rb.getString("submenuStoreLink");
-
-        // Set our Selenium locale for Selenide to use.
-        Configuration.remote=seleniumHost;
     }
 }
