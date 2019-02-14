@@ -1,3 +1,4 @@
+import com.codeborne.selenide.SelenideElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -58,10 +59,12 @@ public class TestFooter extends BaseTest {
      */
     @Test
     public void TestFooterWPLink() {
-        $(byXpath(footerWPLinkXPath))
-                .should(exist)
-                .shouldBe(visible)
-                .shouldHave(text(footerWPLinkText));
+        SelenideElement footerWPLink = $(byXpath(footerWPLinkXPath));
+        footerWPLink.should(exist)
+                .shouldBe(visible);
+        String actualFooterWPLinkText = footerWPLink.text();
+        Assert.assertEquals(actualFooterWPLinkText, footerWPLinkText,
+                "WordPress footer link doesn't have correct text.");
     }
 
     /**
