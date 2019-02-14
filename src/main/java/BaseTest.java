@@ -5,102 +5,102 @@ import java.util.ResourceBundle;
  * BaseTest
  * @author Angela Korra'ti
  *
- * Last updated 2/1/2019
+ * Last updated 2/14/2019
  * This is the master class for the wptestdemoselenium suite. Does the necessary setup for all the other classes.
  */
-public class BaseTest {
+public abstract class BaseTest {
     // This is the location for the Selenium grid
-    public static String seleniumHost;
+    private static String seleniumHost;
 
     // Use these to set up the base URI for our testing
-    public static String protocol;
-    public static String host;
-    public static String wpBaseUri;
+    protected static String protocol;
+    protected static String host;
+    protected static String wpBaseUri;
 
     // Assorted strings we need for the test cases
-    public static String siteTitleClass;
-    public static String siteTitle;
-    public static String siteDescriptionClass;
-    public static String siteDescription;
+    protected static String siteTitleClass;
+    protected static String siteTitle;
+    protected static String siteDescriptionClass;
+    protected static String siteDescription;
 
     // Content areas (including sidebar)
-    public static String contentId;
-    public static String primaryContentId;
-    public static String secondaryContentId;
+    protected static String contentId;
+    protected static String primaryContentId;
+    protected static String secondaryContentId;
 
     // Footer
-    public static String footerId;
-    public static String footerSocialMenuId;
-    public static String footerSiteInfoClass;
-    public static String footerSiteTitleXPath;
-    public static String footerWPLinkXPath;
-    public static String footerWPLink;
-    public static String footerWPLinkText;
-    public static String footerSocialFacebookXPath;
-    public static String footerSocialFacebookLink;
-    public static String footerSocialFacebookText;
-    public static String footerSocialTwitterXPath;
-    public static String footerSocialTwitterLink;
-    public static String footerSocialTwitterText;
-    public static String footerSocialGithubXPath;
-    public static String footerSocialGithubLink;
-    public static String footerSocialGithubText;
-    public static String footerSocialLinkedInXPath;
-    public static String footerSocialLinkedInLink;
-    public static String footerSocialLinkedInText;
+    protected static String footerId;
+    protected static String footerSocialMenuId;
+    protected static String footerSiteInfoClass;
+    protected static String footerSiteTitleXPath;
+    protected static String footerWPLinkXPath;
+    protected static String footerWPLink;
+    protected static String footerWPLinkText;
+    protected static String footerSocialFacebookXPath;
+    protected static String footerSocialFacebookLink;
+    protected static String footerSocialFacebookText;
+    protected static String footerSocialTwitterXPath;
+    protected static String footerSocialTwitterLink;
+    protected static String footerSocialTwitterText;
+    protected static String footerSocialGithubXPath;
+    protected static String footerSocialGithubLink;
+    protected static String footerSocialGithubText;
+    protected static String footerSocialLinkedInXPath;
+    protected static String footerSocialLinkedInLink;
+    protected static String footerSocialLinkedInText;
 
     // Primary menu items
-    public static String menuId;
-    public static String menuHomeXPath;
-    public static String menuHomeText;
-    public static String menuHomeLink;
-    public static String menuAboutXPath;
-    public static String menuAboutText;
-    public static String menuAboutLink;
-    public static String menuBooksXPath;
-    public static String menuBooksText;
-    public static String menuBooksLink;
-    public static String menuBlogXPath;
-    public static String menuBlogText;
-    public static String menuBlogLink;
-    public static String menuContactXPath;
-    public static String menuContactText;
-    public static String menuContactLink;
-    public static String menuStoreXPath;
-    public static String menuStoreText;
-    public static String menuStoreLink;
+    protected static String menuId;
+    protected static String menuHomeXPath;
+    protected static String menuHomeText;
+    protected static String menuHomeLink;
+    protected static String menuAboutXPath;
+    protected static String menuAboutText;
+    protected static String menuAboutLink;
+    protected static String menuBooksXPath;
+    protected static String menuBooksText;
+    protected static String menuBooksLink;
+    protected static String menuBlogXPath;
+    protected static String menuBlogText;
+    protected static String menuBlogLink;
+    protected static String menuContactXPath;
+    protected static String menuContactText;
+    protected static String menuContactLink;
+    protected static String menuStoreXPath;
+    protected static String menuStoreText;
+    protected static String menuStoreLink;
 
     // Secondary menu items
-    public static String submenuBooksXPath;
-    public static String submenuHomeXPath;
-    public static String submenuHomeText;
-    public static String submenuHomeLink;
-    public static String submenuFaerieXPath;
-    public static String submenuFaerieText;
-    public static String submenuFaerieLink;
-    public static String submenuBoneXPath;
-    public static String submenuBoneText;
-    public static String submenuBoneLink;
-    public static String submenuValorXPath;
-    public static String submenuValorText;
-    public static String submenuValorLink;
-    public static String submenuVengeanceXPath;
-    public static String submenuVengeanceText;
-    public static String submenuVengeanceLink;
-    public static String submenuVictoryXPath;
-    public static String submenuVictoryText;
-    public static String submenuVictoryLink;
-    public static String submenuShortXPath;
-    public static String submenuShortText;
-    public static String submenuShortLink;
-    public static String submenuStoreXPath;
-    public static String submenuStoreText;
-    public static String submenuStoreLink;
+    protected static String submenuBooksXPath;
+    protected static String submenuHomeXPath;
+    protected static String submenuHomeText;
+    protected static String submenuHomeLink;
+    protected static String submenuFaerieXPath;
+    protected static String submenuFaerieText;
+    protected static String submenuFaerieLink;
+    protected static String submenuBoneXPath;
+    protected static String submenuBoneText;
+    protected static String submenuBoneLink;
+    protected static String submenuValorXPath;
+    protected static String submenuValorText;
+    protected static String submenuValorLink;
+    protected static String submenuVengeanceXPath;
+    protected static String submenuVengeanceText;
+    protected static String submenuVengeanceLink;
+    protected static String submenuVictoryXPath;
+    protected static String submenuVictoryText;
+    protected static String submenuVictoryLink;
+    protected static String submenuShortXPath;
+    protected static String submenuShortText;
+    protected static String submenuShortLink;
+    protected static String submenuStoreXPath;
+    protected static String submenuStoreText;
+    protected static String submenuStoreLink;
 
     // Resource bundle we're using to pull all the property strings out of
     private static ResourceBundle rb = ResourceBundle.getBundle("wp-test-demo-selenium");
 
-    public static void suiteSetup() {
+    protected static void suiteSetup() {
         // Get the location for the Selenium grid
         seleniumHost = rb.getString("seleniumHost");
 
