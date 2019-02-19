@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
  * BaseTest
  * @author Angela Korra'ti
  *
- * Last updated 2/14/2019
+ * Last updated 2/19/2019
  * This is the master class for the wptestdemoselenium suite. Does the necessary setup for all the other classes.
  */
 abstract class BaseTest {
@@ -94,6 +94,32 @@ abstract class BaseTest {
     static String submenuStoreXPath;
     static String submenuStoreText;
     static String submenuStoreLink;
+
+    // Sidebar items
+    static String sidebarSearchId;
+    static String sidebarSearchInputXPath;
+    static String sidebarSearchInputText;
+    static String sidebarSearchButtonXPath;
+    static String sidebarRecentPostsId;
+    static String sidebarRecentPostsTitleXPath;
+    static String sidebarRecentPostsTitleText;
+    static String sidebarRecentPostsListXPath;
+    static String sidebarRecentCommentsId;
+    static String sidebarRecentCommentsTitleXPath;
+    static String sidebarRecentCommentsTitleText;
+    static String sidebarRecentCommentsListXPath;
+    static String sidebarArchivesId;
+    static String sidebarArchivesTitleXPath;
+    static String sidebarArchivesTitleText;
+    static String sidebarArchivesListXPath;
+    static String sidebarCategoriesId;
+    static String sidebarCategoriesTitleXPath;
+    static String sidebarCategoriesTitleText;
+    static String sidebarCategoriesListXPath;
+    static String sidebarMetaId;
+    static String sidebarMetaTitleXPath;
+    static String sidebarMetaTitleText;
+    static String sidebarMetaListXPath;
 
     // Resource bundle we're using to pull all the property strings out of
     private static ResourceBundle rb = ResourceBundle.getBundle("wp-test-demo-selenium");
@@ -186,5 +212,31 @@ abstract class BaseTest {
         submenuStoreXPath = rb.getString("submenuStoreXPath");
         submenuStoreText = rb.getString("submenuStoreText");
         submenuStoreLink = rb.getString("submenuStoreLink");
+
+        // Items pertaining to the sidebar
+        sidebarSearchId = rb.getString("sidebarSearchId");
+        sidebarSearchInputXPath = rb.getString("sidebarSearchInputXPath");
+        sidebarSearchInputText = rb.getString("sidebarSearchInputText");
+        sidebarSearchButtonXPath = rb.getString("sidebarSearchButtonXPath");
+        sidebarRecentPostsId = rb.getString("sidebarRecentPostsId");
+        sidebarRecentPostsTitleXPath = rb.getString("sidebarRecentPostsTitleXPath");
+        sidebarRecentPostsTitleText = rb.getString("sidebarRecentPostsTitleText");
+        sidebarRecentPostsListXPath = rb.getString("sidebarRecentPostsListXPath");
+        sidebarRecentCommentsId = rb.getString("sidebarRecentCommentsId");
+        sidebarRecentCommentsTitleXPath = rb.getString("sidebarRecentCommentsTitleXPath");
+        sidebarRecentCommentsTitleText = rb.getString("sidebarRecentCommentsTitleText");
+        sidebarRecentCommentsListXPath = rb.getString("sidebarRecentCommentsListXPath");
+        sidebarArchivesId = rb.getString("sidebarArchivesId");
+        sidebarArchivesTitleXPath = rb.getString("sidebarArchivesTitleXPath");
+        sidebarArchivesTitleText = rb.getString("sidebarArchivesTitleText");
+        sidebarArchivesListXPath = rb.getString("sidebarArchivesListXPath");
+        sidebarCategoriesId = rb.getString("sidebarCategoriesId");
+        sidebarCategoriesTitleXPath = rb.getString("sidebarCategoriesTitleXPath");
+        sidebarCategoriesTitleText = rb.getString("sidebarCategoriesTitleText");
+        sidebarCategoriesListXPath = rb.getString("sidebarCategoriesListXPath");
+        sidebarMetaId = rb.getString("sidebarMetaId");
+        sidebarMetaTitleXPath = rb.getString("sidebarMetaTitleXPath");
+        sidebarMetaTitleText = rb.getString("sidebarMetaTitleText");
+        sidebarMetaListXPath = rb.getString("sidebarMetaListXPath");
     }
 }
