@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
  * BaseTest
  * @author Angela Korra'ti
  *
- * Last updated 2/20/2019
+ * Last updated 2/21/2019
  * This is the master class for the wptestdemoselenium suite. Does the necessary setup for all the other classes.
  */
 abstract class BaseTest {
@@ -17,6 +17,8 @@ abstract class BaseTest {
     static String siteTitle;
     static String siteDescriptionClass;
     static String siteDescription;
+    static String pageTitleClass;
+    static String entryTitleClass;
 
     // Content areas (including sidebar)
     static String contentId;
@@ -124,8 +126,28 @@ abstract class BaseTest {
     // Search items
     static String searchString;
     static String searchUri;
-    static String searchPageTitleClass;
     static String searchResultsString;
+
+    // Recent posts items
+    static String recentPostsUri;
+    static String recentPostsTitle;
+
+    // Recent comments items
+    static String recentCommentsUri;
+    static String recentCommentsTitle;
+
+    // Archives items
+    static String archivesUri;
+    static String archivesString;
+    static String archivesTitle;
+
+    // Categories items
+    static String categoriesUri;
+    static String categoriesString;
+    static String categoriesTitle;
+
+    // Meta items
+    static String metaLoginUri;
 
     // Resource bundle we're using to pull all the property strings out of
     private static ResourceBundle rb = ResourceBundle.getBundle("wp-test-demo-selenium");
@@ -142,6 +164,8 @@ abstract class BaseTest {
         siteTitle = rb.getString("siteTitle");
         siteDescriptionClass = rb.getString("siteDescriptionClass");
         siteDescription = rb.getString("siteDescription");
+        pageTitleClass = rb.getString("pageTitleClass");
+        entryTitleClass = rb.getString("entryTitleClass");
 
         // Assorted items pertaining to content areas
         contentId = rb.getString("contentId");
@@ -248,7 +272,27 @@ abstract class BaseTest {
         // Items pertaining to search
         searchString = rb.getString("searchString");
         searchUri = rb.getString("searchUri");
-        searchPageTitleClass = rb.getString("searchPageTitleClass");
         searchResultsString = rb.getString("searchResultsString");
+
+        // Items pertaining to Recent Posts
+        recentPostsUri = rb.getString("recentPostsUri");
+        recentPostsTitle = rb.getString("recentPostsTitle");
+
+        // Items pertaining to Recent Comments
+        recentCommentsUri = rb.getString("recentCommentsUri");
+        recentCommentsTitle = rb.getString("recentCommentsTitle");
+
+        // Items pertaining to Archives
+        archivesUri = rb.getString("archivesUri");
+        archivesString = rb.getString("archivesString");
+        archivesTitle = rb.getString("archivesTitle");
+
+        // Items pertaining to Categories
+        categoriesUri = rb.getString("categoriesUri");
+        categoriesString = rb.getString("categoriesString");
+        categoriesTitle = rb.getString("categoriesTitle");
+
+        // Items pertaining to Meta
+        metaLoginUri = rb.getString("metaLoginUri");
     }
 }
