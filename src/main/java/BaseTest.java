@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
  * BaseTest
  * @author Angela Korra'ti
  *
- * Last updated 2/19/2019
+ * Last updated 2/20/2019
  * This is the master class for the wptestdemoselenium suite. Does the necessary setup for all the other classes.
  */
 abstract class BaseTest {
@@ -120,6 +120,12 @@ abstract class BaseTest {
     static String sidebarMetaTitleXPath;
     static String sidebarMetaTitleText;
     static String sidebarMetaListXPath;
+
+    // Search items
+    static String searchString;
+    static String searchUri;
+    static String searchPageTitleClass;
+    static String searchResultsString;
 
     // Resource bundle we're using to pull all the property strings out of
     private static ResourceBundle rb = ResourceBundle.getBundle("wp-test-demo-selenium");
@@ -238,5 +244,11 @@ abstract class BaseTest {
         sidebarMetaTitleXPath = rb.getString("sidebarMetaTitleXPath");
         sidebarMetaTitleText = rb.getString("sidebarMetaTitleText");
         sidebarMetaListXPath = rb.getString("sidebarMetaListXPath");
+
+        // Items pertaining to search
+        searchString = rb.getString("searchString");
+        searchUri = rb.getString("searchUri");
+        searchPageTitleClass = rb.getString("searchPageTitleClass");
+        searchResultsString = rb.getString("searchResultsString");
     }
 }
