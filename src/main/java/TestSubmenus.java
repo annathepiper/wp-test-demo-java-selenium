@@ -12,7 +12,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  * TestSubmenus
  * @author Angela Korra'ti
  *
- * Last updated 2/11/2019
+ * Last updated 2/20/2019
  * Test class for verifying the submenus on the test site's main menu.
  */
 public class TestSubmenus extends BaseTest {
@@ -82,7 +82,7 @@ public class TestSubmenus extends BaseTest {
     public void TestHomeSubmenuLinkClick() {
         $(byXpath(menuHomeXPath)).hover();
         $(byXpath(submenuHomeXPath)).click();
-        Assert.assertTrue(url().matches(submenuHomeLink));
+        Assert.assertTrue(url().equals(submenuHomeLink));
     }
 
     /**
@@ -139,7 +139,7 @@ public class TestSubmenus extends BaseTest {
     public void TestFaerieSubmenuLinkClick() {
         $(byXpath(menuBooksXPath)).hover();
         $(byXpath(submenuFaerieXPath)).click();
-        Assert.assertTrue(url().matches(submenuFaerieLink));
+        Assert.assertTrue(url().equals(submenuFaerieLink));
     }
 
     /**
@@ -173,7 +173,7 @@ public class TestSubmenus extends BaseTest {
     public void TestBoneSubmenuLinkClick() {
         $(byXpath(menuBooksXPath)).hover();
         $(byXpath(submenuBoneXPath)).click();
-        Assert.assertTrue(url().matches(submenuBoneLink));
+        Assert.assertTrue(url().equals(submenuBoneLink));
     }
 
     /**
@@ -207,7 +207,7 @@ public class TestSubmenus extends BaseTest {
     public void TestValorSubmenuLinkClick() {
         $(byXpath(menuBooksXPath)).hover();
         $(byXpath(submenuValorXPath)).click();
-        Assert.assertTrue(url().matches(submenuValorLink));
+        Assert.assertTrue(url().equals(submenuValorLink));
     }
 
     /**
@@ -241,7 +241,7 @@ public class TestSubmenus extends BaseTest {
     public void TestVengeanceSubmenuLinkClick() {
         $(byXpath(menuBooksXPath)).hover();
         $(byXpath(submenuVengeanceXPath)).click();
-        Assert.assertTrue(url().matches(submenuVengeanceLink));
+        Assert.assertTrue(url().equals(submenuVengeanceLink));
     }
 
     /**
@@ -275,7 +275,7 @@ public class TestSubmenus extends BaseTest {
     public void TestVictorySubmenuLinkClick() {
         $(byXpath(menuBooksXPath)).hover();
         $(byXpath(submenuVictoryXPath)).click();
-        Assert.assertTrue(url().matches(submenuVictoryLink));
+        Assert.assertTrue(url().equals(submenuVictoryLink));
     }
 
     /**
@@ -309,7 +309,7 @@ public class TestSubmenus extends BaseTest {
     public void TestShortSubmenuLinkClick() {
         $(byXpath(menuBooksXPath)).hover();
         $(byXpath(submenuShortXPath)).click();
-        Assert.assertTrue(url().matches(submenuShortLink));
+        Assert.assertTrue(url().equals(submenuShortLink));
     }
 
     /**
@@ -367,6 +367,6 @@ public class TestSubmenus extends BaseTest {
     public void TestStoreSubmenuLinkClick() {
         $(byXpath(menuStoreXPath)).hover();
         $(byXpath(submenuStoreXPath)).click();
-        Assert.assertTrue(url().matches(submenuStoreLink));
+        Assert.assertTrue(url().equals(submenuStoreLink));
     }
 }

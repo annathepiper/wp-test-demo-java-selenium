@@ -13,7 +13,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  * TestFooter
  * @author Angela Korra'ti
  *
- * Last updated 2/1/2019
+ * Last updated 2/20/2019
  * This test class tests that the expected items appear in the footer, and that they link to the expected places.
  */
 public class TestFooter extends BaseTest {
@@ -50,7 +50,7 @@ public class TestFooter extends BaseTest {
         // Scrolling to the link is required, otherwise Selenide complains it's not clickable
         $(byXpath(footerSiteTitleXPath)).scrollTo();
         $(byXpath(footerSiteTitleXPath)).click();
-        Assert.assertTrue(url().matches(menuHomeLink));
+        Assert.assertTrue(url().equals(menuHomeLink));
     }
 
     /**
@@ -76,7 +76,7 @@ public class TestFooter extends BaseTest {
         // Scrolling to the link is required, otherwise Selenide complains it's not clickable
         $(byXpath(footerWPLinkXPath)).scrollTo();
         $(byXpath(footerWPLinkXPath)).click();
-        Assert.assertTrue(url().matches(footerWPLink));
+        Assert.assertTrue(url().equals(footerWPLink));
     }
 
     /**
@@ -98,7 +98,7 @@ public class TestFooter extends BaseTest {
     @Test
     public void TestFooterSocialFacebookLinkClick() {
         $(byXpath(footerSocialFacebookXPath)).click();
-        Assert.assertTrue(url().matches(footerSocialFacebookLink));
+        Assert.assertTrue(url().equals(footerSocialFacebookLink));
     }
 
     /**
@@ -122,7 +122,7 @@ public class TestFooter extends BaseTest {
         // Scrolling to the link is required, otherwise Selenide complains it's not clickable
         $(byXpath(footerSocialTwitterXPath)).scrollTo();
         $(byXpath(footerSocialTwitterXPath)).click();
-        Assert.assertTrue(url().matches(footerSocialTwitterLink));
+        Assert.assertTrue(url().equals(footerSocialTwitterLink));
     }
 
     /**
@@ -146,7 +146,7 @@ public class TestFooter extends BaseTest {
         // Scrolling to the link is required, otherwise Selenide complains it's not clickable
         $(byXpath(footerSocialGithubXPath)).scrollTo();
         $(byXpath(footerSocialGithubXPath)).click();
-        Assert.assertTrue(url().matches(footerSocialGithubLink));
+        Assert.assertTrue(url().equals(footerSocialGithubLink));
     }
 
     /**
