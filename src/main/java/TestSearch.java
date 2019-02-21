@@ -43,7 +43,7 @@ public class TestSearch extends BaseTest {
 
         // Make sure the URL we land on has the search arguments included
         String targetUri = wpBaseUri + searchUri;
-        Assert.assertTrue(url().equals(targetUri));
+        Assert.assertEquals(url(), targetUri);
 
         // Make sure the title for the page includes the search string
         SelenideElement pageTitle = $(byClassName(searchPageTitleClass));
@@ -64,7 +64,7 @@ public class TestSearch extends BaseTest {
 
         // Make sure the URL we land on has the search arguments included
         String targetUri = wpBaseUri + searchUri;
-        Assert.assertTrue(url().equals(targetUri));
+        Assert.assertEquals(url(), targetUri);
 
         // Make sure the title for the page includes the search string
         SelenideElement pageTitle = $(byClassName(searchPageTitleClass));
