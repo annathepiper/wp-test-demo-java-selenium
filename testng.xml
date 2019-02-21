@@ -8,6 +8,8 @@
             <class name="TestSubmenus" />
             <class name="TestFooter" />
             <class name="TestSidebar" />
+            <class name="TestSearch" />
+            <class name="TestSidebarLinks" />
         </classes>
     </test>
 </suite>
