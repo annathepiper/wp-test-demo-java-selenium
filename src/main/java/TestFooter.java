@@ -13,7 +13,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  * TestFooter
  * @author Angela Korra'ti
  *
- * Last updated 2/20/2019
+ * Last updated 2/21/2019
  * This test class tests that the expected items appear in the footer, and that they link to the expected places.
  */
 public class TestFooter extends BaseTest {
@@ -48,8 +48,7 @@ public class TestFooter extends BaseTest {
     @Test
     public void TestFooterSiteTitleLinkClick() {
         // Scrolling to the link is required, otherwise Selenide complains it's not clickable
-        $(byXpath(footerSiteTitleXPath)).scrollTo();
-        $(byXpath(footerSiteTitleXPath)).click();
+        $(byXpath(footerSiteTitleXPath)).scrollTo().click();
         Assert.assertTrue(url().equals(menuHomeLink));
     }
 
@@ -60,8 +59,7 @@ public class TestFooter extends BaseTest {
     @Test
     public void TestFooterWPLink() {
         SelenideElement footerWPLink = $(byXpath(footerWPLinkXPath));
-        footerWPLink.should(exist)
-                .shouldBe(visible);
+        footerWPLink.should(exist).shouldBe(visible);
         String actualFooterWPLinkText = footerWPLink.text();
         Assert.assertEquals(actualFooterWPLinkText, footerWPLinkText,
                 "WordPress footer link doesn't have correct text.");
@@ -74,8 +72,7 @@ public class TestFooter extends BaseTest {
     @Test
     public void TestFooterWPLinkClick() {
         // Scrolling to the link is required, otherwise Selenide complains it's not clickable
-        $(byXpath(footerWPLinkXPath)).scrollTo();
-        $(byXpath(footerWPLinkXPath)).click();
+        $(byXpath(footerWPLinkXPath)).scrollTo().click();
         Assert.assertTrue(url().equals(footerWPLink));
     }
 
@@ -144,8 +141,7 @@ public class TestFooter extends BaseTest {
     @Test
     public void TestFooterSocialGithubLinkClick() {
         // Scrolling to the link is required, otherwise Selenide complains it's not clickable
-        $(byXpath(footerSocialGithubXPath)).scrollTo();
-        $(byXpath(footerSocialGithubXPath)).click();
+        $(byXpath(footerSocialGithubXPath)).scrollTo().click();
         Assert.assertTrue(url().equals(footerSocialGithubLink));
     }
 
@@ -168,8 +164,7 @@ public class TestFooter extends BaseTest {
     @Test
     public void TestFooterSocialLinkedInLinkClick() {
         // Scrolling to the link is required, otherwise Selenide complains it's not clickable
-        $(byXpath(footerSocialLinkedInXPath)).scrollTo();
-        $(byXpath(footerSocialLinkedInXPath)).click();
+        $(byXpath(footerSocialLinkedInXPath)).scrollTo().click();
         // Can't doublecheck against my LinkedIn account because apparently Selenium triggers an auth wall?
         Assert.assertTrue(url().startsWith("https://www.linkedin.com"));
     }
