@@ -18,7 +18,6 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  * site. (Basic "does this element exist" tests are included in the TestSidebar class.)
  *
  */
-
 public class TestSearch extends BaseTest {
 
     /**
@@ -46,7 +45,7 @@ public class TestSearch extends BaseTest {
         Assert.assertEquals(url(), targetUri);
 
         // Make sure the title for the page includes the search string
-        SelenideElement pageTitle = $(byClassName(searchPageTitleClass));
+        SelenideElement pageTitle = $(byClassName(pageTitleClass));
         pageTitle.should(exist).shouldBe(visible);
         Assert.assertEquals(pageTitle.text(), searchResultsString + searchString);
     }
@@ -67,7 +66,7 @@ public class TestSearch extends BaseTest {
         Assert.assertEquals(url(), targetUri);
 
         // Make sure the title for the page includes the search string
-        SelenideElement pageTitle = $(byClassName(searchPageTitleClass));
+        SelenideElement pageTitle = $(byClassName(pageTitleClass));
         pageTitle.should(exist).shouldBe(visible);
         Assert.assertEquals(pageTitle.text(), searchResultsString + searchString);
     }
