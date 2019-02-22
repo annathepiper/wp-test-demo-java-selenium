@@ -13,7 +13,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  * TestSearch
  * @author Angela Korra'ti
  *
- * Last updated 2/20/2019
+ * Last updated 2/22/2019
  * This class conducts functionality tests against the sidebar search widget on the homepage of the test WordPress
  * site. (Basic "does this element exist" tests are included in the TestSidebar class.)
  *
@@ -69,5 +69,46 @@ public class TestSearch extends BaseTest {
         SelenideElement pageTitle = $(byClassName(pageTitleClass));
         pageTitle.should(exist).shouldBe(visible);
         Assert.assertEquals(pageTitle.text(), searchResultsString + searchString);
+    }
+
+    /**
+     * TestSearchForWalkTheWardsPressEnter
+     * This method puts the search string "Walk the Wards" into the search box and verifies that the search reports
+     * no results found. The search is activated by a Press Enter event.
+     */
+    @Test
+    public void TestSearchForWalkTheWardsPressEnter() {
+        // Do the search
+        $(byXpath(sidebarSearchInputXPath)).setValue(searchNoResultsString).pressEnter();
+
+        // Make sure the URL we land on has the search arguments included
+        String targetUri = wpBaseUri + searchNoResultsUri;
+        Assert.assertEquals(url(), targetUri);
+
+        // Make sure the title for the page includes the no results search message
+        SelenideElement pageTitle = $(byClassName(pageTitleClass));
+        pageTitle.should(exist).shouldBe(visible);
+        Assert.assertEquals(pageTitle.text(), searchNoResultsMessage);
+    }
+
+    /**
+     * TestSearchForWalkTheWardsClick
+     * This method puts the search string "Walk the Wards" into the search box and verifies that the search reports
+     * no results found. The search is activated by a Click event.
+     */
+    @Test
+    public void TestSearchForWalkTheWardsClick() {
+        // Do the search
+        $(byXpath(sidebarSearchInputXPath)).setValue(searchNoResultsString);
+        $(byXpath(sidebarSearchButtonXPath)).click();
+
+        // Make sure the URL we land on has the search arguments included
+        String targetUri = wpBaseUri + searchNoResultsUri;
+        Assert.assertEquals(url(), targetUri);
+
+        // Make sure the title for the page includes the no results search message
+        SelenideElement pageTitle = $(byClassName(pageTitleClass));
+        pageTitle.should(exist).shouldBe(visible);
+        Assert.assertEquals(pageTitle.text(), searchNoResultsMessage);
     }
 }
