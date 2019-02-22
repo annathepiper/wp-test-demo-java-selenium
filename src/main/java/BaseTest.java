@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
  * BaseTest
  * @author Angela Korra'ti
  *
- * Last updated 2/21/2019
+ * Last updated 2/22/2019
  * This is the master class for the wptestdemoselenium suite. Does the necessary setup for all the other classes.
  */
 abstract class BaseTest {
@@ -127,6 +127,9 @@ abstract class BaseTest {
     static String searchString;
     static String searchUri;
     static String searchResultsString;
+    static String searchNoResultsString;
+    static String searchNoResultsUri;
+    static String searchNoResultsMessage;
 
     // Recent posts items
     static String recentPostsUri;
@@ -273,6 +276,9 @@ abstract class BaseTest {
         searchString = rb.getString("searchString");
         searchUri = rb.getString("searchUri");
         searchResultsString = rb.getString("searchResultsString");
+        searchNoResultsString = rb.getString("searchNoResultsString");
+        searchNoResultsUri = rb.getString("searchNoResultsUri");
+        searchNoResultsMessage = rb.getString("searchNoResultsMessage");
 
         // Items pertaining to Recent Posts
         recentPostsUri = rb.getString("recentPostsUri");
