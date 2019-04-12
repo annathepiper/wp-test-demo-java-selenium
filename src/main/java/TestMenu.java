@@ -12,7 +12,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  * TestMenu
  * @author Angela Korra'ti
  *
- * Last updated 2/20/2019
+ * Last updated 4/12/2019
  * This test class tests the menu functionality on my test Wordpress site.
  */
 public class TestMenu extends BaseTest {
@@ -56,7 +56,7 @@ public class TestMenu extends BaseTest {
     @Test
     public void TestHomeMenuClick() {
         $(byXpath(menuHomeXPath)).click();
-        Assert.assertTrue(url().equals(menuHomeLink));
+        Assert.assertEquals(url(),menuHomeLink);
     }
 
     /**
@@ -88,7 +88,7 @@ public class TestMenu extends BaseTest {
     @Test
     public void TestAboutMenuClick() {
         $(byXpath(menuAboutXPath)).click();
-        Assert.assertTrue(url().equals(menuAboutLink));
+        Assert.assertEquals(url(),menuAboutLink);
     }
 
     /**
@@ -120,7 +120,7 @@ public class TestMenu extends BaseTest {
     @Test
     public void TestBooksMenuClick() {
         $(byXpath(menuBooksXPath)).click();
-        Assert.assertTrue(url().equals(menuBooksLink));
+        Assert.assertEquals(url(),menuBooksLink);
     }
 
     /**
@@ -152,7 +152,7 @@ public class TestMenu extends BaseTest {
     @Test
     public void TestBlogMenuClick() {
         $(byXpath(menuBlogXPath)).click();
-        Assert.assertTrue(url().equals(menuBlogLink));
+        Assert.assertEquals(url(),menuBlogLink);
     }
 
     /**
@@ -184,7 +184,7 @@ public class TestMenu extends BaseTest {
     @Test
     public void TestContactMenuClick() {
         $(byXpath(menuContactXPath)).click();
-        Assert.assertTrue(url().equals(menuContactLink));
+        Assert.assertEquals(url(),menuContactLink);
     }
 
     /**
@@ -216,6 +216,6 @@ public class TestMenu extends BaseTest {
     @Test
     public void TestStoreMenuClick() {
         $(byXpath(menuStoreXPath)).click();
-        Assert.assertTrue(url().equals(menuStoreLink));
+        Assert.assertEquals(url(),menuStoreLink);
     }
 }
