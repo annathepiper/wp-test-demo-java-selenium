@@ -13,7 +13,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  * TestFooter
  * @author Angela Korra'ti
  *
- * Last updated 2/21/2019
+ * Last updated 4/12/2019
  * This test class tests that the expected items appear in the footer, and that they link to the expected places.
  */
 public class TestFooter extends BaseTest {
@@ -49,7 +49,7 @@ public class TestFooter extends BaseTest {
     public void TestFooterSiteTitleLinkClick() {
         // Scrolling to the link is required, otherwise Selenide complains it's not clickable
         $(byXpath(footerSiteTitleXPath)).scrollTo().click();
-        Assert.assertTrue(url().equals(menuHomeLink));
+        Assert.assertEquals(url(),menuHomeLink);
     }
 
     /**
@@ -73,7 +73,7 @@ public class TestFooter extends BaseTest {
     public void TestFooterWPLinkClick() {
         // Scrolling to the link is required, otherwise Selenide complains it's not clickable
         $(byXpath(footerWPLinkXPath)).scrollTo().click();
-        Assert.assertTrue(url().equals(footerWPLink));
+        Assert.assertEquals(url(),footerWPLink);
     }
 
     /**
@@ -94,8 +94,9 @@ public class TestFooter extends BaseTest {
      */
     @Test
     public void TestFooterSocialFacebookLinkClick() {
-        $(byXpath(footerSocialFacebookXPath)).click();
-        Assert.assertTrue(url().equals(footerSocialFacebookLink));
+        // Scrolling to the link is required, otherwise Selenide complains it's not clickable
+        $(byXpath(footerSocialFacebookXPath)).scrollTo().click();
+        Assert.assertEquals(url(),footerSocialFacebookLink);
     }
 
     /**
@@ -117,9 +118,8 @@ public class TestFooter extends BaseTest {
     @Test
     public void TestFooterSocialTwitterLinkClick() {
         // Scrolling to the link is required, otherwise Selenide complains it's not clickable
-        $(byXpath(footerSocialTwitterXPath)).scrollTo();
-        $(byXpath(footerSocialTwitterXPath)).click();
-        Assert.assertTrue(url().equals(footerSocialTwitterLink));
+        $(byXpath(footerSocialTwitterXPath)).scrollTo().click();
+        Assert.assertEquals(url(),footerSocialTwitterLink);
     }
 
     /**
@@ -142,7 +142,7 @@ public class TestFooter extends BaseTest {
     public void TestFooterSocialGithubLinkClick() {
         // Scrolling to the link is required, otherwise Selenide complains it's not clickable
         $(byXpath(footerSocialGithubXPath)).scrollTo().click();
-        Assert.assertTrue(url().equals(footerSocialGithubLink));
+        Assert.assertEquals(url(),footerSocialGithubLink);
     }
 
     /**
