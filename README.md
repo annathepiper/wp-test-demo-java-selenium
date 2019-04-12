@@ -24,6 +24,7 @@ Dependencies included in the POM are:
 * Testing against a site running as a Docker container
 * Using Selenium as a Docker container, and configuring Selenide to point to that
 * Use of Selenide as a framework to run Selenium tests
+* Using inheritance to not only do setup in a BaseTest class and pass it down to all the children, but also to pass specific tests from a parent test class to a child so that I can do the same tests against different parts of the site
 
 ## Why Selenide?
 
