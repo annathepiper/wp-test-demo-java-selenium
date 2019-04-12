@@ -9,8 +9,9 @@ import java.util.ResourceBundle;
  * This is the master class for the wptestdemoselenium suite. Does the necessary setup for all the other classes.
  */
 abstract class BaseTest {
-    // Base URI for our testing
+    // Uris for our testing
     static String wpBaseUri;
+    static String wpPostUri;
 
     // General site descriptor strings
     static String siteTitleClass;
@@ -161,6 +162,7 @@ abstract class BaseTest {
 
         // Get the needed properties out of the file to build some URIs to test
         wpBaseUri = String.format("%s://%s", rb.getString("protocol"), rb.getString("host"));
+        wpPostUri = wpBaseUri + rb.getString("wpPostUri");
 
         // Assorted values we'll need for main site info
         siteTitleClass = rb.getString("siteTitleClass");
