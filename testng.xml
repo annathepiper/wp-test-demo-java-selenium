@@ -7,12 +7,14 @@
             <class name="TestMenu" />
             <class name="TestPostMenu" />
             <class name="TestSubmenus" />
+            <class name="TestPostSubmenus" />
             <class name="TestFooter" />
             <class name="TestPostFooter" />
             <class name="TestSidebar" />
             <class name="TestPostSidebar" />
             <class name="TestSearch" />
             <class name="TestSidebarLinks" />
+            <class name="TestPostSidebarLinks" />
         </classes>
     </test>
 </suite>
