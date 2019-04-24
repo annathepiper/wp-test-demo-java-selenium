@@ -4,11 +4,11 @@
     <test name="All Tests">
         <classes>
             <class name="TestHomepage" />
+            <class name="TestHomepageFooter" />
             <class name="TestMenu" />
             <class name="TestPostMenu" />
             <class name="TestSubmenus" />
             <class name="TestPostSubmenus" />
-            <class name="TestFooter" />
             <class name="TestPostFooter" />
             <class name="TestSidebar" />
             <class name="TestPostSidebar" />
