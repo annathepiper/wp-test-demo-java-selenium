@@ -18,6 +18,6 @@ public class TestPostMenu extends TestMenu {
     @BeforeMethod
     public void methodSetup() {
         suiteSetup();
-        open(wpBaseUri);
+        open(wpPostUri);
     }
 }
