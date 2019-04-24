@@ -1,27 +1,24 @@
-import com.codeborne.selenide.SelenideElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byClassName;
-import static com.codeborne.selenide.Selectors.byId;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 /**
  * TestHomepage
  * @author Angela Korra'ti
  *
- * Last updated 2/7/2019
+ * Last updated 4/23/2019
  * This class conducts tests against the homepage of the test Wordpress site.
  *
  * IMPORTANT NOTES:
  * 1. Some of my test cases here aren't as concise as I'd like, as I discovered that the shouldHave(text()) calls
  * apparently aren't case-sensitive. So I'm adjusting the structure of impacted cases as necessary to account for this.
- * See the TestHomepageDescription for an example.
+ * See the TestHomepageDescription test case for an example.
  */
 public class TestHomepage extends BaseTest {
+    private WPHomepage wpHomepage;
 
     /**
      * Setup
@@ -31,6 +28,7 @@ public class TestHomepage extends BaseTest {
     public void classSetup() {
         suiteSetup();
         open(wpBaseUri);
+        wpHomepage = new WPHomepage();
     }
 
     /**
@@ -39,9 +37,7 @@ public class TestHomepage extends BaseTest {
      */
     @Test
     public void TestHomepageTitle() {
-        $(byClassName(siteTitleClass))
-                .shouldBe(visible)
-                .shouldHave(text(siteTitle));
+        wpHomepage.siteTitleElement().shouldBe(visible).shouldHave(text(wpHomepage.siteTitle()));
     }
 
     /**
@@ -50,9 +46,8 @@ public class TestHomepage extends BaseTest {
      */
     @Test
     public void TestHomepageDescription() {
-        SelenideElement description = $(byClassName(siteDescriptionClass));
-        description.shouldBe(visible);
-        String descriptionText = description.text();
+        wpHomepage.siteDescriptionElement().shouldBe(visible);
+        String descriptionText = wpHomepage.siteDescription();
         Assert.assertEquals(descriptionText, siteDescription, "Site description isn't set to the right string.");
     }
 
@@ -62,9 +57,7 @@ public class TestHomepage extends BaseTest {
      */
     @Test
     public void TestPrimaryMenu() {
-        $(byId(menuId))
-                .should(exist)
-                .shouldBe(visible);
+        wpHomepage.primaryMenuElement().should(exist).shouldBe(visible);
     }
 
     /**
@@ -73,9 +66,7 @@ public class TestHomepage extends BaseTest {
      */
     @Test
     public void TestContentArea() {
-        $(byId(contentId))
-                .should(exist)
-                .shouldBe(visible);
+        wpHomepage.contentAreaElement().should(exist).shouldBe(visible);
     }
 
     /**
@@ -84,9 +75,7 @@ public class TestHomepage extends BaseTest {
      */
     @Test
     public void TestPrimaryContentArea() {
-        $(byId(primaryContentId))
-                .should(exist)
-                .shouldBe(visible);
+        wpHomepage.primaryContentAreaElement().should(exist).shouldBe(visible);
     }
 
     /**
@@ -95,9 +84,7 @@ public class TestHomepage extends BaseTest {
      */
     @Test
     public void TestSecondaryContentArea() {
-        $(byId(secondaryContentId))
-                .should(exist)
-                .shouldBe(visible);
+        wpHomepage.secondaryContentAreaElement().should(exist).shouldBe(visible);
     }
 
     /**
@@ -106,9 +93,7 @@ public class TestHomepage extends BaseTest {
      */
     @Test
     public void TestFooter() {
-        $(byId(footerId))
-                .should(exist)
-                .shouldBe(visible);
+        wpHomepage.wpFooter.footerElement().should(exist).shouldBe(visible);
     }
 
     /**
@@ -117,9 +102,7 @@ public class TestHomepage extends BaseTest {
      */
     @Test
     public void TestFooterSocialMenu() {
-        $(byId(footerSocialMenuId))
-                .should(exist)
-                .shouldBe(visible);
+        wpHomepage.wpFooter.socialMenuElement().should(exist).shouldBe(visible);
     }
 
     /**
@@ -128,8 +111,6 @@ public class TestHomepage extends BaseTest {
      */
     @Test
     public void TestFooterSiteInfo() {
-        $(byClassName(footerSiteInfoClass))
-                .should(exist)
-                .shouldBe(visible);
+        wpHomepage.wpFooter.siteInfoElement().should(exist).shouldBe(visible);
     }
 }
