@@ -1,221 +1,208 @@
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 /**
  * TestMenu
  * @author Angela Korra'ti
  *
- * Last updated 4/12/2019
- * This test class tests the menu functionality on my test Wordpress site.
+ * Last updated 4/25/2019
+ * This test class is the abstract parent class for testing the menu. Child classes will implement the test cases to
+ * test against specific pages.
  */
-public class TestMenu extends BaseTest {
-
-    /**
-     * Setup
-     * This method opens up the homepage of the test site so we can do tests on it.
-     */
-    @BeforeMethod
-    public void methodSetup() {
-        suiteSetup();
-        open(wpBaseUri);
-    }
+abstract class TestMenu extends BaseTest {
+    abstract void methodSetup();
 
     /**
      * TestHomeMenuPresent
      * This method verifies that the first visible item on the menu is Home.
      */
-    @Test
-    public void TestHomeMenuPresent() {
-        $(byXpath(menuHomeXPath))
-                .should(exist)
-                .shouldBe(visible)
-                .shouldHave(text(menuHomeText));
-    }
+    abstract void TestHomeMenuPresent();
 
     /**
      * TestHomeMenuLink
      * This method verifies that the first visible item on the menu has the correct link.
      */
-    @Test
-    public void TestHomeMenuLink() {
-        $(byXpath(menuHomeXPath))
-                .shouldHave(attribute("href", menuHomeLink));
-    }
+    abstract void TestHomeMenuLink();
 
     /**
      * TestHomeMenuClick
      * This method clicks on the first visible item on the menu and verifies you land on the homepage.
      */
-    @Test
-    public void TestHomeMenuClick() {
-        $(byXpath(menuHomeXPath)).click();
-        Assert.assertEquals(url(),menuHomeLink);
-    }
+    abstract void TestHomeMenuClick();
 
     /**
      * TestAboutMenuPresent
      * This method verifies that the second visible item on the menu is About.
      */
-    @Test
-    public void TestAboutMenuPresent() {
-        $(byXpath(menuAboutXPath))
-                .should(exist)
-                .shouldBe(visible)
-                .shouldHave(text(menuAboutText));
-    }
+    abstract void TestAboutMenuPresent();
 
     /**
      * TestAboutMenuLink
      * This method verifies that the second visible item on the menu has the correct link.
      */
-    @Test
-    public void TestAboutMenuLink() {
-        $(byXpath(menuAboutXPath))
-                .shouldHave(attribute("href", menuAboutLink));
-    }
+    abstract void TestAboutMenuLink();
 
     /**
      * TestAboutMenuClick
      * This method clicks on the second visible item on the menu and verifies you land on the About page.
      */
-    @Test
-    public void TestAboutMenuClick() {
-        $(byXpath(menuAboutXPath)).click();
-        Assert.assertEquals(url(),menuAboutLink);
-    }
+    abstract void TestAboutMenuClick();
 
     /**
      * TestBooksMenuPresent
      * This method verifies that the third visible item on the menu is Books.
      */
-    @Test
-    public void TestBooksMenuPresent() {
-        $(byXpath(menuBooksXPath))
-                .should(exist)
-                .shouldBe(visible)
-                .shouldHave(text(menuBooksText));
-    }
+    abstract void TestBooksMenuPresent();
 
     /**
      * TestBooksMenuLink
      * This method verifies that the third visible item on the menu has the correct link.
      */
-    @Test
-    public void TestBooksMenuLink() {
-        $(byXpath(menuBooksXPath))
-                .shouldHave(attribute("href", menuBooksLink));
-    }
+    abstract void TestBooksMenuLink();
 
     /**
      * TestBooksMenuClick
      * This method clicks on the third visible item on the menu and verifies you land on the Books page.
      */
-    @Test
-    public void TestBooksMenuClick() {
-        $(byXpath(menuBooksXPath)).click();
-        Assert.assertEquals(url(),menuBooksLink);
-    }
+    abstract void TestBooksMenuClick();
 
     /**
      * TestBlogMenuPresent
      * This method verifies that the fourth visible item on the menu is Blog.
      */
-    @Test
-    public void TestBlogMenuPresent() {
-        $(byXpath(menuBlogXPath))
-                .should(exist)
-                .shouldBe(visible)
-                .shouldHave(text(menuBlogText));
-    }
+    abstract void TestBlogMenuPresent();
 
     /**
      * TestBlogMenuLink
      * This method verifies that the fourth visible item on the menu has the correct link.
      */
-    @Test
-    public void TestBlogMenuLink() {
-        $(byXpath(menuBlogXPath))
-                .shouldHave(attribute("href", menuBlogLink));
-    }
+    abstract void TestBlogMenuLink();
 
     /**
      * TestBlogMenuClick
      * This method clicks on the fourth visible item on the menu and verifies you land on the Blog page.
      */
-    @Test
-    public void TestBlogMenuClick() {
-        $(byXpath(menuBlogXPath)).click();
-        Assert.assertEquals(url(),menuBlogLink);
-    }
+    abstract void TestBlogMenuClick();
 
     /**
      * TestContactMenuPresent
      * This method verifies that the fifth visible item on the menu is Contact.
      */
-    @Test
-    public void TestContactMenuPresent() {
-        $(byXpath(menuContactXPath))
-                .should(exist)
-                .shouldBe(visible)
-                .shouldHave(text(menuContactText));
-    }
+    abstract void TestContactMenuPresent();
 
     /**
      * TestContactMenuLink
      * This method verifies that the fifth visible item on the menu has the correct link.
      */
-    @Test
-    public void TestContactMenuLink() {
-        $(byXpath(menuContactXPath))
-                .shouldHave(attribute("href", menuContactLink));
-    }
+    abstract void TestContactMenuLink();
 
     /**
      * TestContactMenuClick
      * This method clicks on the fifth visible item on the menu and verifies you land on the Contact page.
      */
-    @Test
-    public void TestContactMenuClick() {
-        $(byXpath(menuContactXPath)).click();
-        Assert.assertEquals(url(),menuContactLink);
-    }
+    abstract void TestContactMenuClick();
 
     /**
      * TestStoreMenuPresent
      * This method verifies that the sixth visible item on the menu is Store.
      */
-    @Test
-    public void TestStoreMenuPresent() {
-        $(byXpath(menuStoreXPath))
-                .should(exist)
-                .shouldBe(visible)
-                .shouldHave(text(menuStoreText));
-    }
+    abstract void TestStoreMenuPresent();
 
     /**
      * TestStoreMenuLink
      * This method verifies that the sixth visible item on the menu has the correct link.
      */
-    @Test
-    public void TestStoreMenuLink() {
-        $(byXpath(menuStoreXPath))
-                .shouldHave(attribute("href", menuStoreLink));
-    }
+    abstract void TestStoreMenuLink();
 
     /**
      * TestStoreMenuClick
      * This method clicks on the sixth visible item on the menu and verifies you land on the Store page.
      */
-    @Test
-    public void TestStoreMenuClick() {
-        $(byXpath(menuStoreXPath)).click();
+    abstract void TestStoreMenuClick();
+
+    // HELPER METHODS BEGIN HERE
+    void verifyHomeMenuPresent(WPMenu wpMenu) {
+        wpMenu.homeMenuElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpMenu.homeMenuText(),menuHomeText,"Home menu does not have correct text.");
+    }
+
+    void verifyHomeMenuLink(WPMenu wpMenu) {
+        Assert.assertEquals(wpMenu.homeMenuLink(),menuHomeLink,"Home menu does not have correct link.");
+    }
+
+    void verifyHomeMenuClick(WPMenu wpMenu) {
+        wpMenu.homeMenuElement().click();
+        Assert.assertEquals(url(),menuHomeLink,"Clicking on Home does not go to correct destination.");
+    }
+
+    void verifyAboutMenuPresent(WPMenu wpMenu) {
+        wpMenu.aboutMenuElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpMenu.aboutMenuText(),menuAboutText,"About menu does not have correct text.");
+    }
+
+    void verifyAboutMenuLink(WPMenu wpMenu) {
+        Assert.assertEquals(wpMenu.aboutMenuLink(),menuAboutLink,"About menu does not have correct link.");
+    }
+
+    void verifyAboutMenuClick(WPMenu wpMenu) {
+        wpMenu.aboutMenuElement().click();
+        Assert.assertEquals(url(),menuAboutLink,"Clicking on About does not go to correct destination.");
+    }
+
+    void verifyBooksMenuPresent(WPMenu wpMenu) {
+        wpMenu.booksMenuElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpMenu.booksMenuText(),menuBooksText,"Books menu does not have correct text.");
+    }
+
+    void verifyBooksMenuLink(WPMenu wpMenu) {
+        Assert.assertEquals(wpMenu.booksMenuLink(),menuBooksLink,"Books menu does not have correct link.");
+    }
+
+    void verifyBooksMenuClick(WPMenu wpMenu) {
+        wpMenu.booksMenuElement().click();
+        Assert.assertEquals(url(),menuBooksLink);
+    }
+
+    void verifyBlogMenuPresent(WPMenu wpMenu) {
+        wpMenu.blogMenuElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpMenu.blogMenuText(),menuBlogText,"Blog menu does not have correct text.");
+    }
+
+    void verifyBlogMenuLink(WPMenu wpMenu) {
+        Assert.assertEquals(wpMenu.blogMenuLink(),menuBlogLink,"Blog menu does not have correct link.");
+    }
+
+    void verifyBlogMenuClick(WPMenu wpMenu) {
+        wpMenu.blogMenuElement().click();
+        Assert.assertEquals(url(),menuBlogLink);
+    }
+
+    void verifyContactMenuPresent(WPMenu wpMenu) {
+        wpMenu.contactMenuElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpMenu.contactMenuText(),menuContactText,"Contact menu does not have correct text.");
+    }
+
+    void verifyContactMenuLink(WPMenu wpMenu) {
+        Assert.assertEquals(wpMenu.contactMenuLink(),menuContactLink,"Contact menu does not have correct link.");
+    }
+
+    void verifyContactMenuClick(WPMenu wpMenu) {
+        wpMenu.contactMenuElement().click();
+        Assert.assertEquals(url(),menuContactLink);
+    }
+
+    void verifyStoreMenuPresent(WPMenu wpMenu) {
+        wpMenu.storeMenuElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpMenu.storeMenuText(),menuStoreText,"Store menu does not have correct text.");
+    }
+
+    void verifyStoreMenuLink(WPMenu wpMenu) {
+        Assert.assertEquals(wpMenu.storeMenuLink(),menuStoreLink,"Store menu does not have correct link.");
+    }
+
+    void verifyStoreMenuClick(WPMenu wpMenu) {
+        wpMenu.storeMenuElement().click();
         Assert.assertEquals(url(),menuStoreLink);
     }
 }
