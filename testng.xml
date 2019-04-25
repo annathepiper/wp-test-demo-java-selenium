@@ -5,16 +5,16 @@
         <classes>
             <class name="TestHomepage" />
             <class name="TestHomepageFooter" />
-            <class name="TestMenu" />
-            <class name="TestPostMenu" />
-            <class name="TestSubmenus" />
-            <class name="TestPostSubmenus" />
+            <class name="TestHomepageMenu" />
             <class name="TestPostFooter" />
-            <class name="TestSidebar" />
+            <class name="TestPostMenu" />
             <class name="TestPostSidebar" />
+            <class name="TestPostSidebarLinks" />
+            <class name="TestPostSubmenus" />
+            <class name="TestSubmenus" />
+            <class name="TestSidebar" />
             <class name="TestSearch" />
             <class name="TestSidebarLinks" />
-            <class name="TestPostSidebarLinks" />
         </classes>
     </test>
 </suite>
