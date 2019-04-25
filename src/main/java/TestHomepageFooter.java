@@ -4,11 +4,11 @@ import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selenide.open;
 
 /**
- * TestFooter
+ * TestHomepageFooter
  * @author Angela Korra'ti
  *
- * Last updated 4/24/2019
- * This test class tests that the expected items appear in the footer, and that they link to the expected places.
+ * Last updated 4/25/2019
+ * This test class extends the TestFooter class, and conducts footer tests against the homepage.
  */
 public class TestHomepageFooter extends TestFooter {
     private WPFooter wpFooter;
