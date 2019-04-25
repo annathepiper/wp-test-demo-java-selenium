@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.open;
  * TestHomepage
  * @author Angela Korra'ti
  *
- * Last updated 4/23/2019
+ * Last updated 4/25/2019
  * This class conducts tests against the homepage of the test Wordpress site.
  *
  * IMPORTANT NOTES:
@@ -57,7 +57,7 @@ public class TestHomepage extends BaseTest {
      */
     @Test
     public void TestPrimaryMenu() {
-        wpHomepage.primaryMenuElement().should(exist).shouldBe(visible);
+        wpHomepage.wpMenu.menuElement().should(exist).shouldBe(visible);
     }
 
     /**
