@@ -13,7 +13,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  * TestSearch
  * @author Angela Korra'ti
  *
- * Last updated 2/22/2019
+ * Last updated 4/25/2019
  * This class conducts functionality tests against the sidebar search widget on the homepage of the test WordPress
  * site. (Basic "does this element exist" tests are included in the TestSidebar class.)
  *
@@ -26,7 +26,6 @@ public class TestSearch extends BaseTest {
      */
     @BeforeClass
     public void classSetup() {
-        suiteSetup();
         open(wpBaseUri);
     }
 

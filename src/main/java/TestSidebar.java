@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.*;
  * TestSidebar
  * @author Angela Korra'ti
  *
- * Last updated 2/19/2019
+ * Last updated 4/25/2019
  * This class conducts tests against the sidebar on the homepage of the test WordPress site.
  *
  */
@@ -23,7 +23,6 @@ public class TestSidebar extends BaseTest {
      */
     @BeforeClass
     public void classSetup() {
-        suiteSetup();
         open(wpBaseUri);
     }
 

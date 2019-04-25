@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.open;
  * TestPostFooter
  * @author Angela Korra'ti
  *
- * Last updated 4/24/2019
+ * Last updated 4/25/2019
  * This test class extends the TestFooter class, and conducts footer tests against an example post.
  */
 
@@ -20,7 +20,6 @@ public class TestPostFooter extends TestFooter {
      */
     @BeforeMethod
     public void methodSetup() {
-        suiteSetup();
         open(wpPostUri);
         WPPost wpPost = new WPPost();
         wpFooter = wpPost.wpFooter;

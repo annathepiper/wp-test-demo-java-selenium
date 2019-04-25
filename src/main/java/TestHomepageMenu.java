@@ -18,7 +18,6 @@ public class TestHomepageMenu extends TestMenu {
      */
     @BeforeMethod
     public void methodSetup() {
-        suiteSetup();
         open(wpBaseUri);
         WPHomepage wpHomepage = new WPHomepage();
         wpMenu = wpHomepage.wpMenu;

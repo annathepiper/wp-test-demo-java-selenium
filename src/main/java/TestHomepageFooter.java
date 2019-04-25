@@ -19,7 +19,6 @@ public class TestHomepageFooter extends TestFooter {
      */
     @BeforeMethod
     public void methodSetup() {
-        suiteSetup();
         open(wpBaseUri);
         WPHomepage wpHomepage = new WPHomepage();
         wpFooter = wpHomepage.wpFooter;

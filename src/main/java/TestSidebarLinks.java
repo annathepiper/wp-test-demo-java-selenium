@@ -13,7 +13,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  * TestSidebarLinks
  * @author Angela Korra'ti
  *
- * Last updated 2/21/2019
+ * Last updated 4/25/2019
  * This class conducts tests against links on the sidebar on the homepage of the test WordPress site.
  *
  */
@@ -25,7 +25,6 @@ public class TestSidebarLinks extends BaseTest {
      */
     @BeforeClass
     public void classSetup() {
-        suiteSetup();
         open(wpBaseUri);
     }
 

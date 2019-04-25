@@ -19,7 +19,6 @@ public class TestPostMenu extends TestMenu {
      */
     @BeforeMethod
     public void methodSetup() {
-        suiteSetup();
         open(wpPostUri);
         WPPost wpPost = new WPPost();
         wpMenu = wpPost.wpMenu;

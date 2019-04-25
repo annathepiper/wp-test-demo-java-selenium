@@ -12,7 +12,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  * TestSubmenus
  * @author Angela Korra'ti
  *
- * Last updated 2/20/2019
+ * Last updated 4/25/2019
  * Test class for verifying the submenus on the test site's main menu.
  */
 public class TestSubmenus extends BaseTest {
@@ -23,7 +23,6 @@ public class TestSubmenus extends BaseTest {
      */
     @BeforeMethod
     public void methodSetup() {
-        suiteSetup();
         open(wpBaseUri);
     }
 
