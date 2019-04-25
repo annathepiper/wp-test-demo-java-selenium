@@ -8,8 +8,7 @@ import static com.codeborne.selenide.Selenide.open;
  * @author Angela Korra'ti
  *
  * Last updated 4/24/2019
- * This test class extends the TestFooter class, which tests against the homepage, and conducts the same tests
- * against an example post.
+ * This test class extends the TestFooter class, and conducts footer tests against an example post.
  */
 
 public class TestPostFooter extends TestFooter {
