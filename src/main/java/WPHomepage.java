@@ -7,16 +7,18 @@ import static com.codeborne.selenide.Selenide.$;
  * WPHomepage
  * @author Angela Korra'ti
  *
- * Last updated 4/23/2019
+ * Last updated 4/25/2019
  * This is the WPHomepage helper class that defines the structure of the homepage page object.
  */
 class WPHomepage extends BaseTest {
+    WPMenu wpMenu;
     WPFooter wpFooter;
 
     /**
      * Constructor for the class.
      */
     WPHomepage() {
+        wpMenu = new WPMenu();
         wpFooter = new WPFooter();
     }
 
@@ -50,14 +52,6 @@ class WPHomepage extends BaseTest {
      */
     String siteDescription() {
         return siteDescriptionElement().text();
-    }
-
-    /**
-     * primaryMenuElement
-     * @return Selenide element that refers to the primary menu
-     */
-    SelenideElement primaryMenuElement() {
-        return $(byId(menuId));
     }
 
     /**
