@@ -1,11 +1,12 @@
 import com.codeborne.selenide.Configuration;
+import org.testng.annotations.BeforeSuite;
 import java.util.ResourceBundle;
 
 /**
  * BaseTest
  * @author Angela Korra'ti
  *
- * Last updated 2/22/2019
+ * Last updated 4/25/2019
  * This is the master class for the wptestdemoselenium suite. Does the necessary setup for all the other classes.
  */
 abstract class BaseTest {
@@ -156,6 +157,7 @@ abstract class BaseTest {
     // Resource bundle we're using to pull all the property strings out of
     private static ResourceBundle rb = ResourceBundle.getBundle("wp-test-demo-selenium");
 
+    @BeforeSuite
     static void suiteSetup() {
         // Set our Selenium locale for Selenide to use.
         Configuration.remote = rb.getString("seleniumHost");
