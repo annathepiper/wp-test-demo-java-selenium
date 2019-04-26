@@ -1,10 +1,7 @@
-import com.codeborne.selenide.ElementsCollection;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byId;
-import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
 /**
@@ -12,18 +9,24 @@ import static com.codeborne.selenide.Selenide.*;
  * @author Angela Korra'ti
  *
  * Last updated 4/25/2019
- * This class conducts tests against the sidebar on the homepage of the test WordPress site.
+ * This test class is the parent class for testing the sidebar, and it tests against the sidebar on the homepage. Child
+ * classes will do appropriate setup to test against other specific pages.
  *
  */
 public class TestSidebar extends BaseTest {
+    WPSidebar wpSidebar;
+    String targetUri;
 
     /**
      * Setup
      * This method opens up the homepage of the test site so we can do tests on it.
      */
-    @BeforeClass
-    public void classSetup() {
+    @BeforeMethod
+    public void methodSetup() {
         open(wpBaseUri);
+        targetUri = wpBaseUri;
+        WPHomepage wpHomepage = new WPHomepage();
+        wpSidebar = wpHomepage.wpSidebar;
     }
 
     /**
@@ -32,30 +35,19 @@ public class TestSidebar extends BaseTest {
      */
     @Test
     public void TestSidebarSearchWidgetExists() {
-        $(byId(sidebarSearchId))
-                .should(exist)
-                .shouldBe(visible);
+        wpLogger.info(String.format("Verifying sidebar search element on: %s",targetUri));
+        wpSidebar.searchElement().should(exist).shouldBe(visible);
     }
 
     /**
-     * TestSidebarSearchInputExists
-     * Verify that the sidebar search input box exists and is visible.
+     * TestSidebarSearchInput
+     * Verify that the sidebar search input box exists, is visible, and has the correct text.
      */
     @Test
     public void TestSidebarSearchInputExists() {
-        $(byXpath(sidebarSearchInputXPath))
-                .should(exist)
-                .shouldBe(visible);
-    }
-
-    /**
-     * TestSidebarSearchInputText
-     * Verify that the sidebar search input box has the expected text.
-     */
-    @Test
-    public void TestSidebarSearchInputText() {
-        String searchInputText = $(byXpath(sidebarSearchInputXPath)).getAttribute("placeholder");
-        Assert.assertEquals(searchInputText, sidebarSearchInputText,
+        wpLogger.info(String.format("Verifying sidebar search input box on: %s",targetUri));
+        wpSidebar.searchInputElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpSidebar.searchInputText(), sidebarSearchInputText,
                 "Sidebar search input box does not have expected text.");
     }
 
@@ -65,274 +57,90 @@ public class TestSidebar extends BaseTest {
      */
     @Test
     public void TestSidebarSearchButtonExists() {
-        $(byXpath(sidebarSearchButtonXPath))
-                .should(exist)
-                .shouldBe(visible);
+        wpLogger.info(String.format("Verifying sidebar search button on: %s",targetUri));
+        wpSidebar.searchButtonElement().should(exist).shouldBe(visible);
     }
 
     /**
-     * TestSidebarRecentPostsWidgetExists
-     * Verify that the recent posts widget is present and visible.
+     * TestSidebarRecentPosts
+     * Verify that the recent posts widget is present and visible, has the correct title, and has five posts.
      */
     @Test
-    public void TestSidebarRecentPostsWidgetExists() {
-        $(byId(sidebarRecentPostsId))
-                .should(exist)
-                .shouldBe(visible);
-    }
-
-    /**
-     * TestSidebarRecentPostsTitleExists
-     * Verify that the recent posts widget has a title.
-     */
-    @Test
-    public void TestSidebarRecentPostsTitleExists() {
-        $(byXpath(sidebarRecentPostsTitleXPath))
-                .should(exist)
-                .shouldBe(visible);
-    }
-
-    /**
-     * TestSidebarRecentPostsTitleText
-     * Verify that the recent posts widget has the correct title text.
-     */
-    @Test
-    public void TestSidebarRecentPostsTitleText() {
-        Assert.assertEquals($(byXpath(sidebarRecentPostsTitleXPath)).text(), sidebarRecentPostsTitleText,
+    public void TestSidebarRecentPosts() {
+        wpLogger.info(String.format("Verifying sidebar Recent Posts widget on: %s",targetUri));
+        wpSidebar.recentPostsElement().should(exist).shouldBe(visible);
+        wpSidebar.recentPostsTitleElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpSidebar.recentPostsTitleText(), sidebarRecentPostsTitleText,
                 "Sidebar Recent Posts widget does not have correct title text.");
+        wpSidebar.recentPostsListElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpSidebar.recentPostsListElements().size(),5,
+                "Recent Posts widget does not have correct count of posts.");
     }
 
     /**
-     * TestSidebarRecentPostsListExists
-     * Verify that the recent posts widget includes a list of recent posts.
+     * TestSidebarRecentComments
+     * Verify that the recent comments widget is present and visible, has the correct title, and has the correct
+     * count of comments.
      */
     @Test
-    public void TestSidebarRecentPostsListExists() {
-        $(byXpath(sidebarRecentPostsListXPath))
-                .should(exist)
-                .shouldBe(visible);
-    }
-
-    /**
-     * TestSidebarRecentPostsListItemsCount
-     * Verify that the recent posts widget contains five recent posts.
-     */
-    @Test
-    public void TestSidebarRecentPostsListItemsCount() {
-        ElementsCollection listItems = $$(byXpath(sidebarRecentPostsListXPath + "/li"));
-        Assert.assertEquals(listItems.size(),5, "Recent Posts widget does not have correct count of posts.");
-    }
-
-    /**
-     * TestSidebarRecentCommentsWidgetExists
-     * Verify that the recent comments widget is present and visible.
-     */
-    @Test
-    public void TestSidebarRecentCommentsWidgetExists() {
-        $(byId(sidebarRecentCommentsId))
-                .should(exist)
-                .shouldBe(visible);
-    }
-
-    /**
-     * TestSidebarRecentCommentsTitleExists
-     * Verify that the recent comments widget has a title.
-     */
-    @Test
-    public void TestSidebarRecentCommentsTitleExists() {
-        $(byXpath(sidebarRecentCommentsTitleXPath))
-                .should(exist)
-                .shouldBe(visible);
-    }
-
-    /**
-     * TestSidebarRecentCommentsTitleText
-     * Verify that the recent comments widget has the correct title text.
-     */
-    @Test
-    public void TestSidebarRecentCommentsTitleText() {
-        Assert.assertEquals($(byXpath(sidebarRecentCommentsTitleXPath)).text(), sidebarRecentCommentsTitleText,
+    public void TestSidebarRecentComments() {
+        wpLogger.info(String.format("Verifying sidebar Recent Comments widget on: %s",targetUri));
+        wpSidebar.recentCommentsElement().should(exist).shouldBe(visible);
+        wpSidebar.recentCommentsTitleElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpSidebar.recentCommentsTitleText(), sidebarRecentCommentsTitleText,
                 "Sidebar Recent Comments widget does not have correct title text.");
+        wpSidebar.recentCommentsListElement().should(exist).shouldBe(visible);
+        Assert.assertTrue(wpSidebar.recentCommentsListElements().size() >= 1,
+                "Recent Comments widget does not have correct count of comments.");
     }
 
     /**
-     * TestSidebarRecentCommentsListExists
-     * Verify that the recent comments widget includes a list of recent comments.
+     * TestSidebarArchives
+     * Verify that the archives widget is present and visible, has the correct title, and has the correct count of
+     * archive links.
      */
     @Test
-    public void TestSidebarRecentCommentsListExists() {
-        $(byXpath(sidebarRecentCommentsListXPath))
-                .should(exist)
-                .shouldBe(visible);
-    }
-
-    /**
-     * TestSidebarRecentCommentsListItemsCount
-     * Verify that the recent comments widget contains five recent comments.
-     */
-    @Test
-    public void TestSidebarRecentCommentsListItemsCount() {
-        ElementsCollection listItems = $$(byXpath(sidebarRecentCommentsListXPath + "/li"));
-        Assert.assertTrue(listItems.size() >= 1, "Recent Comments widget does not have correct count of comments.");
-    }
-
-    /**
-     * TestSidebarArchivesWidgetExists
-     * Verify that the archives widget is present and visible.
-     */
-    @Test
-    public void TestSidebarArchivesWidgetExists() {
-        $(byId(sidebarArchivesId))
-                .should(exist)
-                .shouldBe(visible);
-    }
-
-    /**
-     * TestSidebarArchivesTitleExists
-     * Verify that the archives widget has a title.
-     */
-    @Test
-    public void TestSidebarArchivesTitleExists() {
-        $(byXpath(sidebarArchivesTitleXPath))
-                .should(exist)
-                .shouldBe(visible);
-    }
-
-    /**
-     * TestSidebarArchivesTitleText
-     * Verify that the archives widget has the correct title text.
-     */
-    @Test
-    public void TestSidebarArchivesTitleText() {
-        Assert.assertEquals($(byXpath(sidebarArchivesTitleXPath)).text(), sidebarArchivesTitleText,
+    public void TestSidebarArchives() {
+        wpLogger.info(String.format("Verifying sidebar Archives widget on: %s",targetUri));
+        wpSidebar.archivesElement().should(exist).shouldBe(visible);
+        wpSidebar.archivesTitleElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpSidebar.archivesTitleText(), sidebarArchivesTitleText,
                 "Sidebar Archives widget does not have correct title text.");
+        wpSidebar.archivesListElement().should(exist).shouldBe(visible);
+        Assert.assertTrue(wpSidebar.archivesListElements().size() >= 1,
+                "Archives widget does not have correct count of links.");
     }
 
     /**
-     * TestSidebarArchivesListExists
-     * Verify that the archives widget includes a list of months and years for posts.
-     */
-    @Test
-    public void TestSidebarArchivesListExists() {
-        $(byXpath(sidebarArchivesListXPath))
-                .should(exist)
-                .shouldBe(visible);
-    }
-
-    /**
-     * TestSidebarArchivesListItemsCount
-     * Verify that the archives widget contains at least one month and year link for posts.
-     */
-    @Test
-    public void TestSidebarArchivesListItemsCount() {
-        ElementsCollection listItems = $$(byXpath(sidebarArchivesListXPath + "/li"));
-        Assert.assertTrue(listItems.size() >= 1, "Archives widget does not have correct count of links.");
-    }
-
-    /**
-     * TestSidebarCategoriesWidgetExists
-     * Verify that the categories widget is present and visible.
+     * TestSidebarCategories
+     * Verify that the categories widget is present and visible, has the correct title, and has the correct count of
+     * archive links.
      */
     @Test
     public void TestSidebarCategoriesWidgetExists() {
-        $(byId(sidebarCategoriesId))
-                .should(exist)
-                .shouldBe(visible);
-    }
-
-    /**
-     * TestSidebarCategoriesTitleExists
-     * Verify that the categories widget has a title.
-     */
-    @Test
-    public void TestSidebarCategoriesTitleExists() {
-        $(byXpath(sidebarCategoriesTitleXPath))
-                .should(exist)
-                .shouldBe(visible);
-    }
-
-    /**
-     * TestSidebarCategoriesTitleText
-     * Verify that the categories widget has the correct title text.
-     */
-    @Test
-    public void TestSidebarCategoriesTitleText() {
-        Assert.assertEquals($(byXpath(sidebarCategoriesTitleXPath)).text(), sidebarCategoriesTitleText,
+        wpLogger.info(String.format("Verifying sidebar Categories widget on: %s",targetUri));
+        wpSidebar.categoriesElement().should(exist).shouldBe(visible);
+        wpSidebar.categoriesTitleElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpSidebar.categoriesTitleText(), sidebarCategoriesTitleText,
                 "Sidebar Categories widget does not have correct title text.");
+        wpSidebar.categoriesListElement().should(exist).shouldBe(visible);
+        Assert.assertTrue(wpSidebar.categoriesListElements().size() >= 1,
+                "Categories widget does not have correct count of categories.");
     }
 
     /**
-     * TestSidebarCategoriesListExists
-     * Verify that the categories widget includes a list of post categories.
-     */
-    @Test
-    public void TestSidebarCategoriesListExists() {
-        $(byXpath(sidebarCategoriesListXPath))
-                .should(exist)
-                .shouldBe(visible);
-    }
-
-    /**
-     * TestSidebarCategoriesListItemsCount
-     * Verify that the categories widget contains at least one post category.
-     */
-    @Test
-    public void TestSidebarCategoriesListItemsCount() {
-        ElementsCollection listItems = $$(byXpath(sidebarCategoriesListXPath + "/li"));
-        Assert.assertTrue(listItems.size() >= 1, "Categories widget does not have correct count of categories.");
-    }
-
-    /**
-     * TestSidebarMetaWidgetExists
+     * TestSidebarMeta
      * Verify that the meta widget is present and visible.
      */
     @Test
     public void TestSidebarMetaWidgetExists() {
-        $(byId(sidebarMetaId))
-                .should(exist)
-                .shouldBe(visible);
-    }
-
-    /**
-     * TestSidebarMetaTitleExists
-     * Verify that the meta widget has a title.
-     */
-    @Test
-    public void TestSidebarMetaTitleExists() {
-        $(byXpath(sidebarMetaTitleXPath))
-                .should(exist)
-                .shouldBe(visible);
-    }
-
-    /**
-     * TestSidebarMetaTitleText
-     * Verify that the meta widget has the correct title text.
-     */
-    @Test
-    public void TestSidebarMetaTitleText() {
-        Assert.assertEquals($(byXpath(sidebarMetaTitleXPath)).text(), sidebarMetaTitleText,
+        wpLogger.info(String.format("Verifying sidebar Meta widget on: %s",targetUri));
+        wpSidebar.metaElement().should(exist).shouldBe(visible);
+        wpSidebar.metaTitleElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpSidebar.metaTitleText(), sidebarMetaTitleText,
                 "Sidebar Meta widget does not have correct title text.");
-    }
-
-    /**
-     * TestSidebarMetaListExists
-     * Verify that the meta widget includes a list of meta links.
-     */
-    @Test
-    public void TestSidebarMetaListExists() {
-        $(byXpath(sidebarMetaListXPath))
-                .should(exist)
-                .shouldBe(visible);
-    }
-
-    /**
-     * TestSidebarMetaListItemsCount
-     * Verify that the meta widget contains the correct number of links.
-     * NOTE: Link count should be 4 when a user is not logged in.
-     */
-    @Test
-    public void TestSidebarMetaListItemsCount() {
-        ElementsCollection listItems = $$(byXpath(sidebarMetaListXPath + "/li"));
-        Assert.assertEquals(listItems.size(), 4, "Meta widget does not have correct count of links.");
+        wpSidebar.metaListElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpSidebar.metaListElements().size(), 4,
+                "Meta widget does not have correct count of links.");
     }
 }
