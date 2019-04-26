@@ -1,5 +1,9 @@
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 /**
@@ -7,201 +11,106 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  * @author Angela Korra'ti
  *
  * Last updated 4/25/2019
- * This test class is the abstract parent class for testing the menu. Child classes will implement the test cases to
- * test against specific pages.
+ * This test class is the parent class for testing the menu, and it tests against the menu on the homepage. Child
+ * classes will do appropriate setup to test against other specific pages.
  */
-abstract class TestMenu extends BaseTest {
-    abstract void methodSetup();
+public class TestMenu extends BaseTest {
+    WPMenu wpMenu;
+    String targetUri;
 
     /**
-     * TestHomeMenuPresent
-     * This method verifies that the first visible item on the menu is Home.
+     * Setup
+     * This method opens up the homepage of the test site so we can do tests on it.
      */
-    abstract void TestHomeMenuPresent();
+    @BeforeMethod
+    public void methodSetup() {
+        open(wpBaseUri);
+        targetUri = wpBaseUri;
+        WPHomepage wpHomepage = new WPHomepage();
+        wpMenu = wpHomepage.wpMenu;
+    }
 
     /**
-     * TestHomeMenuLink
-     * This method verifies that the first visible item on the menu has the correct link.
+     * TestHomeMenu
+     * This method verifies the Home menu is present, visible, and has the correct text and destination.
      */
-    abstract void TestHomeMenuLink();
-
-    /**
-     * TestHomeMenuClick
-     * This method clicks on the first visible item on the menu and verifies you land on the homepage.
-     */
-    abstract void TestHomeMenuClick();
-
-    /**
-     * TestAboutMenuPresent
-     * This method verifies that the second visible item on the menu is About.
-     */
-    abstract void TestAboutMenuPresent();
-
-    /**
-     * TestAboutMenuLink
-     * This method verifies that the second visible item on the menu has the correct link.
-     */
-    abstract void TestAboutMenuLink();
-
-    /**
-     * TestAboutMenuClick
-     * This method clicks on the second visible item on the menu and verifies you land on the About page.
-     */
-    abstract void TestAboutMenuClick();
-
-    /**
-     * TestBooksMenuPresent
-     * This method verifies that the third visible item on the menu is Books.
-     */
-    abstract void TestBooksMenuPresent();
-
-    /**
-     * TestBooksMenuLink
-     * This method verifies that the third visible item on the menu has the correct link.
-     */
-    abstract void TestBooksMenuLink();
-
-    /**
-     * TestBooksMenuClick
-     * This method clicks on the third visible item on the menu and verifies you land on the Books page.
-     */
-    abstract void TestBooksMenuClick();
-
-    /**
-     * TestBlogMenuPresent
-     * This method verifies that the fourth visible item on the menu is Blog.
-     */
-    abstract void TestBlogMenuPresent();
-
-    /**
-     * TestBlogMenuLink
-     * This method verifies that the fourth visible item on the menu has the correct link.
-     */
-    abstract void TestBlogMenuLink();
-
-    /**
-     * TestBlogMenuClick
-     * This method clicks on the fourth visible item on the menu and verifies you land on the Blog page.
-     */
-    abstract void TestBlogMenuClick();
-
-    /**
-     * TestContactMenuPresent
-     * This method verifies that the fifth visible item on the menu is Contact.
-     */
-    abstract void TestContactMenuPresent();
-
-    /**
-     * TestContactMenuLink
-     * This method verifies that the fifth visible item on the menu has the correct link.
-     */
-    abstract void TestContactMenuLink();
-
-    /**
-     * TestContactMenuClick
-     * This method clicks on the fifth visible item on the menu and verifies you land on the Contact page.
-     */
-    abstract void TestContactMenuClick();
-
-    /**
-     * TestStoreMenuPresent
-     * This method verifies that the sixth visible item on the menu is Store.
-     */
-    abstract void TestStoreMenuPresent();
-
-    /**
-     * TestStoreMenuLink
-     * This method verifies that the sixth visible item on the menu has the correct link.
-     */
-    abstract void TestStoreMenuLink();
-
-    /**
-     * TestStoreMenuClick
-     * This method clicks on the sixth visible item on the menu and verifies you land on the Store page.
-     */
-    abstract void TestStoreMenuClick();
-
-    // HELPER METHODS BEGIN HERE
-    void verifyHomeMenuPresent(WPMenu wpMenu) {
+    @Test
+    public void TestHomeMenu() {
+        wpLogger.info(String.format("Testing Home menu on: %s",targetUri));
         wpMenu.homeMenuElement().should(exist).shouldBe(visible);
         Assert.assertEquals(wpMenu.homeMenuText(),menuHomeText,"Home menu does not have correct text.");
-    }
-
-    void verifyHomeMenuLink(WPMenu wpMenu) {
         Assert.assertEquals(wpMenu.homeMenuLink(),menuHomeLink,"Home menu does not have correct link.");
-    }
-
-    void verifyHomeMenuClick(WPMenu wpMenu) {
         wpMenu.homeMenuElement().click();
         Assert.assertEquals(url(),menuHomeLink,"Clicking on Home does not go to correct destination.");
     }
 
-    void verifyAboutMenuPresent(WPMenu wpMenu) {
+    /**
+     * TestAboutMenu
+     * This method verifies the About menu is present, visible, and has the correct text and destination.
+     */
+    @Test
+    public void TestAboutMenu() {
+        wpLogger.info(String.format("Testing About menu on: %s",targetUri));
         wpMenu.aboutMenuElement().should(exist).shouldBe(visible);
         Assert.assertEquals(wpMenu.aboutMenuText(),menuAboutText,"About menu does not have correct text.");
-    }
-
-    void verifyAboutMenuLink(WPMenu wpMenu) {
         Assert.assertEquals(wpMenu.aboutMenuLink(),menuAboutLink,"About menu does not have correct link.");
-    }
-
-    void verifyAboutMenuClick(WPMenu wpMenu) {
         wpMenu.aboutMenuElement().click();
         Assert.assertEquals(url(),menuAboutLink,"Clicking on About does not go to correct destination.");
+
     }
 
-    void verifyBooksMenuPresent(WPMenu wpMenu) {
+    /**
+     * TestBooksMenu
+     * This method verifies the Books menu is present, visible, and has the correct text and destination.
+     */
+    @Test
+    public void TestBooksMenu() {
+        wpLogger.info(String.format("Testing Books menu on: %s",targetUri));
         wpMenu.booksMenuElement().should(exist).shouldBe(visible);
         Assert.assertEquals(wpMenu.booksMenuText(),menuBooksText,"Books menu does not have correct text.");
-    }
-
-    void verifyBooksMenuLink(WPMenu wpMenu) {
         Assert.assertEquals(wpMenu.booksMenuLink(),menuBooksLink,"Books menu does not have correct link.");
-    }
-
-    void verifyBooksMenuClick(WPMenu wpMenu) {
         wpMenu.booksMenuElement().click();
         Assert.assertEquals(url(),menuBooksLink);
     }
 
-    void verifyBlogMenuPresent(WPMenu wpMenu) {
+    /**
+     * TestBlogMenu
+     * This method verifies the Blog menu is present, visible, and has the correct text and destination.
+     */
+    @Test
+    public void TestBlogMenu() {
+        wpLogger.info(String.format("Testing Blog menu on: %s",targetUri));
         wpMenu.blogMenuElement().should(exist).shouldBe(visible);
         Assert.assertEquals(wpMenu.blogMenuText(),menuBlogText,"Blog menu does not have correct text.");
-    }
-
-    void verifyBlogMenuLink(WPMenu wpMenu) {
         Assert.assertEquals(wpMenu.blogMenuLink(),menuBlogLink,"Blog menu does not have correct link.");
-    }
-
-    void verifyBlogMenuClick(WPMenu wpMenu) {
         wpMenu.blogMenuElement().click();
         Assert.assertEquals(url(),menuBlogLink);
     }
 
-    void verifyContactMenuPresent(WPMenu wpMenu) {
+    /**
+     * TestContactMenu
+     * This method verifies the Contact menu is present, visible, and has the correct text and destination.
+     */
+    @Test
+    public void TestContactMenu() {
+        wpLogger.info(String.format("Testing Contact menu on: %s",targetUri));
         wpMenu.contactMenuElement().should(exist).shouldBe(visible);
         Assert.assertEquals(wpMenu.contactMenuText(),menuContactText,"Contact menu does not have correct text.");
-    }
-
-    void verifyContactMenuLink(WPMenu wpMenu) {
         Assert.assertEquals(wpMenu.contactMenuLink(),menuContactLink,"Contact menu does not have correct link.");
-    }
-
-    void verifyContactMenuClick(WPMenu wpMenu) {
         wpMenu.contactMenuElement().click();
         Assert.assertEquals(url(),menuContactLink);
     }
 
-    void verifyStoreMenuPresent(WPMenu wpMenu) {
+    /**
+     * TestStoreMenu
+     * This method verifies the Store menu is present, visible, and has the correct text and destination.
+     */
+    @Test
+    public void TestStoreMenu() {
+        wpLogger.info(String.format("Testing Store menu on: %s",targetUri));
         wpMenu.storeMenuElement().should(exist).shouldBe(visible);
         Assert.assertEquals(wpMenu.storeMenuText(),menuStoreText,"Store menu does not have correct text.");
-    }
-
-    void verifyStoreMenuLink(WPMenu wpMenu) {
         Assert.assertEquals(wpMenu.storeMenuLink(),menuStoreLink,"Store menu does not have correct link.");
-    }
-
-    void verifyStoreMenuClick(WPMenu wpMenu) {
         wpMenu.storeMenuElement().click();
         Assert.assertEquals(url(),menuStoreLink);
     }
