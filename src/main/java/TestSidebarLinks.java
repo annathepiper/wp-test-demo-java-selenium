@@ -1,4 +1,3 @@
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
