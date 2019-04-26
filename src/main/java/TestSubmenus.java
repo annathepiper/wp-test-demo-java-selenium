@@ -1,10 +1,7 @@
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -13,9 +10,12 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  * @author Angela Korra'ti
  *
  * Last updated 4/25/2019
- * Test class for verifying the submenus on the test site's main menu.
+ * This test class is the parent class for testing the submenus, and it tests against the menu on the homepage. Child
+ * classes will do appropriate setup to test against other specific pages.
  */
 public class TestSubmenus extends BaseTest {
+    WPMenu wpMenu;
+    String targetUri;
 
     /**
      * Setup
@@ -24,348 +24,169 @@ public class TestSubmenus extends BaseTest {
     @BeforeMethod
     public void methodSetup() {
         open(wpBaseUri);
+        targetUri = wpBaseUri;
+        WPHomepage wpHomepage = new WPHomepage();
+        wpMenu = wpHomepage.wpMenu;
     }
 
     /**
-     * TestHomeSubmenuNotVisible
-     * This method verifies that the submenu underneath Home isn't visible by default.
+     * TestHomeSubmenu
+     * This method verifies the submenu underneath Home.
      */
     @Test
-    public void TestHomeSubmenuNotVisible() {
-        $(byXpath(submenuHomeXPath))
-                .should(exist)
-                .shouldNotBe(visible);
+    public void TestHomeSubmenu() {
+        wpLogger.info(String.format("Testing the Home submenu on: %s",targetUri));
+        // Test the things that are testable when the menu isn't visible.
+        wpMenu.homeSubmenuElement().should(exist).shouldNotBe(visible);
+        Assert.assertEquals(wpMenu.homeSubmenuLink(),submenuHomeLink,"Home submenu does not have correct link.");
+
+        // Now do a hover and check the things for when the menu is visible.
+        wpMenu.homeMenuElement().hover();
+        wpMenu.homeSubmenuElement().shouldBe(visible);
+        Assert.assertEquals(wpMenu.homeSubmenuText(),submenuHomeText,"Home submenu does not have correct text.");
+        wpMenu.homeSubmenuElement().click();
+        Assert.assertEquals(url(),submenuHomeLink,"Clicking on Home submenu does not go to correct destination.");
     }
 
     /**
-     * TestHomeSubmenuVisibleOnHover
-     * This method verifies that if you hover over the Home menu, the submenu should be visible.
+     * TestBooksSubmenu
+     * This method verifies the submenu underneath Books.
      */
     @Test
-    public void TestHomeSubmenuVisibleOnHover() {
-        $(byXpath(menuHomeXPath)).hover();
-        $(byXpath(submenuHomeXPath))
-                .should(exist)
-                .shouldBe(visible);
+    public void TestBooksSubmenu() {
+        wpLogger.info(String.format("Testing the Books submenu on: %s",targetUri));
+        // Test the things that are testable when the menu isn't visible.
+        wpMenu.booksSubmenuElement().should(exist).shouldNotBe(visible);
+
+        // Now verify the menu is visible when you hover.
+        wpMenu.booksMenuElement().hover();
+        wpMenu.booksSubmenuElement().shouldBe(visible);
     }
 
     /**
-     * TestHomeSubmenuText
-     * This method verifies that the Home menu's submenu has the correct text. Selenide wants me to hover over the
-     * Home menu in order to make that visible.
+     * TestFaerieSubmenu
+     * This method verifies the Faerie Blood item on the Books submenu.
      */
     @Test
-    public void TestHomeSubmenuText() {
-        $(byXpath(menuHomeXPath)).hover();
-        $(byXpath(submenuHomeXPath))
-                .shouldHave(text(submenuHomeText));
+    public void TestFaerieSubmenu() {
+        wpLogger.info(String.format("Testing the Faerie Blood item under Books on: %s",targetUri));
+        wpMenu.booksMenuElement().hover();
+        wpMenu.faerieSubmenuElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpMenu.faerieSubmenuText(),submenuFaerieText,
+                "Faerie Blood menu item doesn't have correct text.");
+        Assert.assertEquals(wpMenu.faerieSubmenuLink(),submenuFaerieLink,
+                "Faerie Blood menu item doesn't have correct link.");
+        wpMenu.faerieSubmenuElement().click();
+        Assert.assertEquals(url(),submenuFaerieLink,
+                "Clicking on Faerie Blood menu item doesn't go to correct destination.");
     }
 
     /**
-     * TestHomeSubmenuLink
-     * This method verifies that the Home menu's submenu has the correct link. Does not require the submenu to be
-     * visible to check this.
+     * TestBoneSubmenu
+     * This method verifies the Bone Walker item on the Books submenu.
      */
     @Test
-    public void TestHomeSubmenuLink() {
-        $(byXpath(submenuHomeXPath))
-                .shouldHave(attribute("href", submenuHomeLink));
+    public void TestBoneSubmenu() {
+        wpLogger.info(String.format("Testing the Bone Walker item under Books on: %s",targetUri));
+        wpMenu.booksMenuElement().hover();
+        wpMenu.boneSubmenuElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpMenu.boneSubmenuText(),submenuBoneText,
+                "Bone Walker menu item doesn't have correct text.");
+        Assert.assertEquals(wpMenu.boneSubmenuLink(),submenuBoneLink,
+                "Bone Walker menu item doesn't have correct link.");
+        wpMenu.boneSubmenuElement().click();
+        Assert.assertEquals(url(),submenuBoneLink,
+                "Clicking on Bone Walker menu item doesn't go to correct destination.");
     }
 
     /**
-     * TestHomeSubmenuLinkClick
-     * This test case hovers over the Home menu, and then clicks on the submenu link and verifies you land on the
-     * appropriate page (angelahighland.com).
+     * TestValorSubmenu
+     * This method verifies the Valor of the Healer item on the Books submenu.
      */
     @Test
-    public void TestHomeSubmenuLinkClick() {
-        $(byXpath(menuHomeXPath)).hover();
-        $(byXpath(submenuHomeXPath)).click();
-        Assert.assertTrue(url().equals(submenuHomeLink));
+    public void TestValorSubmenu() {
+        wpLogger.info(String.format("Testing the Valor of the Healer item under Books on: %s",targetUri));
+        wpMenu.booksMenuElement().hover();
+        wpMenu.valorSubmenuElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpMenu.valorSubmenuText(),submenuValorText,
+                "Valor of the Healer menu item doesn't have correct text.");
+        Assert.assertEquals(wpMenu.valorSubmenuLink(),submenuValorLink,
+                "Valor of the Healer menu item doesn't have correct link.");
+        wpMenu.valorSubmenuElement().click();
+        Assert.assertEquals(url(),submenuValorLink,
+                "Clicking on Valor of the Healer menu item doesn't go to correct destination.");
     }
 
     /**
-     * TestBooksSubmenuNotVisible
-     * This method verifies that the submenu underneath Books isn't visible by default.
+     * TestVengeanceSubmenu
+     * This method verifies the Vengeance of the Hunter item on the Books submenu.
      */
     @Test
-    public void TestBooksSubmenuNotVisible() {
-        $(byXpath(submenuBooksXPath))
-                .should(exist)
-                .shouldNotBe(visible);
+    public void TestVengeanceSubmenu() {
+        wpLogger.info(String.format("Testing the Vengeance of the Hunter item under Books on: %s",targetUri));
+        wpMenu.booksMenuElement().hover();
+        wpMenu.vengeanceSubmenuElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpMenu.vengeanceSubmenuText(),submenuVengeanceText,
+                "Vengeance of the Hunter menu item doesn't have correct text.");
+        Assert.assertEquals(wpMenu.vengeanceSubmenuLink(),submenuVengeanceLink,
+                "Vengeance of the Hunter menu item doesn't have correct link.");
+        wpMenu.vengeanceSubmenuElement().click();
+        Assert.assertEquals(url(),submenuVengeanceLink,
+                "Clicking on Vengeance of the Hunter menu item doesn't go to correct destination.");
     }
 
     /**
-     * TestBooksSubmenuVisibleOnHover
-     * This method verifies that if you hover over the Books menu, the submenu should be visible.
+     * TestVictorySubmenu
+     * This method verifies the Victory of the Hawk item on the Books submenu.
      */
     @Test
-    public void TestBooksSubmenuVisibleOnHover() {
-        $(byXpath(menuBooksXPath)).hover();
-        $(byXpath(submenuBooksXPath))
-                .should(exist)
-                .shouldBe(visible);
+    public void TestVictorySubmenu() {
+        wpLogger.info(String.format("Testing the Victory of the Hawk item under Books on: %s",targetUri));
+        wpMenu.booksMenuElement().hover();
+        wpMenu.victorySubmenuElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpMenu.victorySubmenuText(),submenuVictoryText,
+                "Victory of the Hawk menu item doesn't have correct text.");
+        Assert.assertEquals(wpMenu.victorySubmenuLink(),submenuVictoryLink,
+                "Victory of the Hawk menu item doesn't have correct link.");
+        wpMenu.victorySubmenuElement().click();
+        Assert.assertEquals(url(),submenuVictoryLink,
+                "Clicking on Victory of the Hawk menu item doesn't go to correct destination.");
     }
 
     /**
-     * TestFaerieSubmenuText
-     * Tests that the first item under the Books menu has the correct text (Faerie Blood).
+     * TestShortSubmenu
+     * This method verifies the Short Stories item on the Books submenu.
      */
     @Test
-    public void TestFaerieSubmenuText() {
-        $(byXpath(menuBooksXPath)).hover();
-        $(byXpath(submenuFaerieXPath))
-                .shouldHave(text(submenuFaerieText));
+    public void TestShortSubmenu() {
+        wpLogger.info(String.format("Testing the Short Stories item under Books on: %s",targetUri));
+        wpMenu.booksMenuElement().hover();
+        wpMenu.shortSubmenuElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpMenu.shortSubmenuText(),submenuShortText,
+                "Short Stories menu item doesn't have correct text.");
+        Assert.assertEquals(wpMenu.shortSubmenuLink(),submenuShortLink,
+                "Short Stories menu item doesn't have correct link.");
+        wpMenu.shortSubmenuElement().click();
+        Assert.assertEquals(url(),submenuShortLink,
+                "Clicking on Short Stories menu item doesn't go to correct destination.");
     }
 
     /**
-     * TestFaerieSubmenuLink
-     * Tests that the first item under the Books menu is the link to the Faerie Blood page.
+     * TestStoreSubmenu
+     * This method verifies the submenu underneath Store.
      */
     @Test
-    public void TestFaerieSubmenuLink() {
-        $(byXpath(submenuFaerieXPath))
-                .should(exist)
-                .shouldHave(attribute("href", submenuFaerieLink));
-    }
+    public void TestStoreSubmenu() {
+        wpLogger.info(String.format("Testing the Store submenu on: %s",targetUri));
+        // Test the things that are testable when the menu isn't visible.
+        wpMenu.storeSubmenuElement().should(exist).shouldNotBe(visible);
+        Assert.assertEquals(wpMenu.storeSubmenuLink(),submenuStoreLink,"Store submenu does not have correct link.");
 
-    /**
-     * TestFaerieSubmenuLinkClick
-     * Tests that if you hover over the Books menu and then click on the Faerie Blood item, you'll be taken to the
-     * correct page.
-     */
-    @Test
-    public void TestFaerieSubmenuLinkClick() {
-        $(byXpath(menuBooksXPath)).hover();
-        $(byXpath(submenuFaerieXPath)).click();
-        Assert.assertTrue(url().equals(submenuFaerieLink));
-    }
-
-    /**
-     * TestBoneSubmenuText
-     * Tests that the second item under the Books menu has the correct text (Bone Walker).
-     */
-    @Test
-    public void TestBoneSubmenuText() {
-        $(byXpath(menuBooksXPath)).hover();
-        $(byXpath(submenuBoneXPath))
-                .shouldHave(text(submenuBoneText));
-    }
-
-    /**
-     * TestBoneSubmenuLink
-     * Tests that the second item under the Books menu is the link to the Bone Walker page.
-     */
-    @Test
-    public void TestBoneSubmenuLink() {
-        $(byXpath(submenuBoneXPath))
-                .should(exist)
-                .shouldHave(attribute("href", submenuBoneLink));
-    }
-
-    /**
-     * TestBoneSubmenuLinkClick
-     * Tests that if you hover over the Books menu and then click on the Bone Walker item, you'll be taken to the
-     * correct page.
-     */
-    @Test
-    public void TestBoneSubmenuLinkClick() {
-        $(byXpath(menuBooksXPath)).hover();
-        $(byXpath(submenuBoneXPath)).click();
-        Assert.assertTrue(url().equals(submenuBoneLink));
-    }
-
-    /**
-     * TestValorSubmenuText
-     * Tests that the third item under the Books menu has the correct text (Valor of the Healer).
-     */
-    @Test
-    public void TestValorSubmenuText() {
-        $(byXpath(menuBooksXPath)).hover();
-        $(byXpath(submenuValorXPath))
-                .shouldHave(text(submenuValorText));
-    }
-
-    /**
-     * TestValorSubmenuLink
-     * Tests that the third item under the Books menu is the link to the Valor of the Healer page.
-     */
-    @Test
-    public void TestValorSubmenuLink() {
-        $(byXpath(submenuValorXPath))
-                .should(exist)
-                .shouldHave(attribute("href", submenuValorLink));
-    }
-
-    /**
-     * TestValorSubmenuLinkClick
-     * Tests that if you hover over the Books menu and then click on the Valor of the Healer item, you'll be taken to
-     * the correct page.
-     */
-    @Test
-    public void TestValorSubmenuLinkClick() {
-        $(byXpath(menuBooksXPath)).hover();
-        $(byXpath(submenuValorXPath)).click();
-        Assert.assertTrue(url().equals(submenuValorLink));
-    }
-
-    /**
-     * TestVengeanceSubmenuText
-     * Tests that the fourth item under the Books menu has the correct text (Vengeance of the Hunter).
-     */
-    @Test
-    public void TestVengeanceSubmenuText() {
-        $(byXpath(menuBooksXPath)).hover();
-        $(byXpath(submenuVengeanceXPath))
-                .shouldHave(text(submenuVengeanceText));
-    }
-
-    /**
-     * TestVengeanceSubmenuLink
-     * Tests that the fourth item under the Books menu is the link to the Vengeance of the Hunter page.
-     */
-    @Test
-    public void TestVengeanceSubmenuLink() {
-        $(byXpath(submenuVengeanceXPath))
-                .should(exist)
-                .shouldHave(attribute("href", submenuVengeanceLink));
-    }
-
-    /**
-     * TestVengeanceSubmenuLinkClick
-     * Tests that if you hover over the Books menu and then click on the Vengeance of the Hunter item, you'll be
-     * taken to the correct page.
-     */
-    @Test
-    public void TestVengeanceSubmenuLinkClick() {
-        $(byXpath(menuBooksXPath)).hover();
-        $(byXpath(submenuVengeanceXPath)).click();
-        Assert.assertTrue(url().equals(submenuVengeanceLink));
-    }
-
-    /**
-     * TestVictorySubmenuText
-     * Tests that the fifth item under the Books menu has the correct text (Victory of the Hawk).
-     */
-    @Test
-    public void TestVictorySubmenuText() {
-        $(byXpath(menuBooksXPath)).hover();
-        $(byXpath(submenuVictoryXPath))
-                .shouldHave(text(submenuVictoryText));
-    }
-
-    /**
-     * TestVictorySubmenuLink
-     * Tests that the fifth item under the Books menu is the link to the Victory of the Hawk page.
-     */
-    @Test
-    public void TestVictorySubmenuLink() {
-        $(byXpath(submenuVictoryXPath))
-                .should(exist)
-                .shouldHave(attribute("href", submenuVictoryLink));
-    }
-
-    /**
-     * TestVictorySubmenuLinkClick
-     * Tests that if you hover over the Books menu and then click on the Victory of the Hawk item, you'll be taken to
-     * the correct page.
-     */
-    @Test
-    public void TestVictorySubmenuLinkClick() {
-        $(byXpath(menuBooksXPath)).hover();
-        $(byXpath(submenuVictoryXPath)).click();
-        Assert.assertTrue(url().equals(submenuVictoryLink));
-    }
-
-    /**
-     * TestShortSubmenuText
-     * Tests that the sixth item under the Books menu has the correct text (Short Storise).
-     */
-    @Test
-    public void TestShortSubmenuText() {
-        $(byXpath(menuBooksXPath)).hover();
-        $(byXpath(submenuShortXPath))
-                .shouldHave(text(submenuShortText));
-    }
-
-    /**
-     * TestShortSubmenuLink
-     * Tests that the sixth item under the Books menu is the link to the Short Stories page.
-     */
-    @Test
-    public void TestShortSubmenuLink() {
-        $(byXpath(submenuShortXPath))
-                .should(exist)
-                .shouldHave(attribute("href", submenuShortLink));
-    }
-
-    /**
-     * TestShortSubmenuLinkClick
-     * Tests that if you hover over the Books menu and then click on the Short Stories item, you'll be taken to the
-     * correct page.
-     */
-    @Test
-    public void TestShortSubmenuLinkClick() {
-        $(byXpath(menuBooksXPath)).hover();
-        $(byXpath(submenuShortXPath)).click();
-        Assert.assertTrue(url().equals(submenuShortLink));
-    }
-
-    /**
-     * TestStoreSubmenuNotVisible
-     * This method verifies that the submenu underneath Store isn't visible by default.
-     */
-    @Test
-    public void TestStoreSubmenuNotVisible() {
-        $(byXpath(submenuStoreXPath))
-                .should(exist)
-                .shouldNotBe(visible);
-    }
-
-    /**
-     * TestStoreSubmenuVisibleOnHover
-     * This method verifies that if you hover over the Store menu, the submenu should be visible.
-     */
-    @Test
-    public void TestStoreSubmenuVisibleOnHover() {
-        $(byXpath(menuStoreXPath)).hover();
-        $(byXpath(submenuStoreXPath))
-                .should(exist)
-                .shouldBe(visible);
-    }
-
-    /**
-     * TestStoreSubmenuText
-     * This method verifies that the Store menu's submenu has the correct text. Selenide wants me to hover over the
-     * Store menu in order to make that visible.
-     */
-    @Test
-    public void TestStoreSubmenuText() {
-        $(byXpath(menuStoreXPath)).hover();
-        $(byXpath(submenuStoreXPath))
-                .shouldHave(text(submenuStoreText));
-    }
-
-    /**
-     * TestStoreSubmenuLink
-     * This method verifies that the Store menu's submenu has the correct link. Does not require the submenu to be
-     * visible to check this.
-     */
-    @Test
-    public void TestStoreSubmenuLink() {
-        $(byXpath(submenuStoreXPath))
-                .shouldHave(attribute("href", submenuStoreLink));
-    }
-
-    /**
-     * TestStoreSubmenuLinkClick
-     * This test case hovers over the Store menu, and then clicks on the submenu link and verifies you land on the
-     * appropriate page (the link for the Bone Walker Soundtrack page).
-     */
-    @Test
-    public void TestStoreSubmenuLinkClick() {
-        $(byXpath(menuStoreXPath)).hover();
-        $(byXpath(submenuStoreXPath)).click();
-        Assert.assertTrue(url().equals(submenuStoreLink));
+        // Now do a hover and check the things for when the menu is visible.
+        wpMenu.storeMenuElement().hover();
+        wpMenu.storeSubmenuElement().shouldBe(visible);
+        Assert.assertEquals(wpMenu.storeSubmenuText(),submenuStoreText,"Store submenu does not have correct text.");
+        wpMenu.storeSubmenuElement().click();
+        Assert.assertEquals(url(),submenuStoreLink,"Clicking on Store submenu does not go to correct destination.");
     }
 }
