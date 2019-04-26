@@ -5,7 +5,7 @@
         <classes>
             <class name="TestFooter" />
             <class name="TestHomepage" />
-            <class name="TestHomepageMenu" />
+            <class name="TestMenu" />
             <class name="TestPostFooter" />
             <class name="TestPostMenu" />
             <class name="TestPostSidebar" />
