@@ -3,8 +3,8 @@
 <suite name="Wordpress Selenium Test" verbose="1">
     <test name="All Tests">
         <classes>
+            <class name="TestFooter" />
             <class name="TestHomepage" />
-            <class name="TestHomepageFooter" />
             <class name="TestHomepageMenu" />
             <class name="TestPostFooter" />
             <class name="TestPostMenu" />
