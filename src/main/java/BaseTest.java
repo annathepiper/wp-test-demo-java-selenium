@@ -1,6 +1,8 @@
 import com.codeborne.selenide.Configuration;
 import org.testng.annotations.BeforeSuite;
 import java.util.ResourceBundle;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * BaseTest
@@ -153,6 +155,9 @@ abstract class BaseTest {
 
     // Meta items
     static String metaLoginUri;
+
+    // For logging purposes
+    protected final Logger wpLogger = LogManager.getLogger(this.getClass().getName());
 
     // Resource bundle we're using to pull all the property strings out of
     private static ResourceBundle rb = ResourceBundle.getBundle("wp-test-demo-selenium");
