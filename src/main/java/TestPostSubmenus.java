@@ -1,5 +1,4 @@
-import org.testng.annotations.BeforeClass;
-
+import org.testng.annotations.BeforeMethod;
 import static com.codeborne.selenide.Selenide.open;
 
 /**
@@ -11,13 +10,15 @@ import static com.codeborne.selenide.Selenide.open;
  * TestSubmenus class.
  */
 public class TestPostSubmenus extends TestSubmenus {
-
     /**
      * Setup
-     * This method opens up a post of the test site so we can do tests on it.
+     * This method opens up an example post of the test site so we can do tests on it.
      */
-    @BeforeClass
-    public void classSetup() {
+    @BeforeMethod
+    public void methodSetup() {
         open(wpPostUri);
+        super.targetUri = wpPostUri;
+        WPPost wpPost = new WPPost();
+        super.wpMenu = wpPost.wpMenu;
     }
 }
