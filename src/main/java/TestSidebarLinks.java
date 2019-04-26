@@ -1,7 +1,7 @@
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
@@ -14,18 +14,24 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  * @author Angela Korra'ti
  *
  * Last updated 4/25/2019
- * This class conducts tests against links on the sidebar on the homepage of the test WordPress site.
+ * This test class is the parent class for testing the sidebar links, and it tests against the sidebar on the homepage.
+ * Child classes will do appropriate setup to test against other specific pages.
  *
  */
 public class TestSidebarLinks extends BaseTest {
+    WPSidebar wpSidebar;
+    String targetUri;
 
     /**
      * Setup
      * This method opens up the homepage of the test site so we can do tests on it.
      */
-    @BeforeClass
-    public void classSetup() {
+    @BeforeMethod
+    public void methodSetup() {
         open(wpBaseUri);
+        targetUri = wpBaseUri;
+        WPHomepage wpHomepage = new WPHomepage();
+        wpSidebar = wpHomepage.wpSidebar;
     }
 
     /**
@@ -34,15 +40,16 @@ public class TestSidebarLinks extends BaseTest {
      */
     @Test
     public void TestRecentPostsLinkClick() {
+        wpLogger.info(String.format("Testing clicking the first recent post on %s",targetUri));
         // Need to scroll up to the search control to get the posts into view
-        $(byId(sidebarSearchId)).scrollTo();
+        wpSidebar.searchElement().scrollTo();
 
         // Now click on the actual post
-        $(byXpath(sidebarRecentPostsListXPath + "/li/a")).click();
+        wpSidebar.recentPostsListElements().get(0).click();
         Assert.assertEquals(url(), wpBaseUri + recentPostsUri);
-        SelenideElement pageTitle = $(byClassName(entryTitleClass));
-        pageTitle.should(exist).shouldBe(visible);
-        Assert.assertEquals(pageTitle.text(), recentPostsTitle);
+        WPPost wpPost = new WPPost();
+        wpPost.postTitleElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpPost.postTitleText(), recentPostsTitle);
     }
 
     /**
@@ -51,16 +58,16 @@ public class TestSidebarLinks extends BaseTest {
      */
     @Test
     public void TestRecentCommentsLinkClick() {
+        wpLogger.info(String.format("Testing clicking the first recent comment on %s",targetUri));
         // Have to scroll to the last item in the Recent Posts lists for the comments to be visible
-        ElementsCollection listItems = $$(byXpath(sidebarRecentPostsListXPath + "/li"));
-        listItems.get(4).scrollTo();
+        wpSidebar.recentPostsListElements().get(4).scrollTo();
 
         // Now click on the actual comment link
-        $(byXpath(sidebarRecentCommentsListXPath + "/li/a")).click();
+        wpSidebar.recentCommentsListElements().get(0).click();
         Assert.assertEquals(url(), wpBaseUri + recentCommentsUri);
-        SelenideElement pageTitle = $(byClassName(entryTitleClass));
-        pageTitle.should(exist).shouldBe(visible);
-        Assert.assertEquals(pageTitle.text(), recentCommentsTitle);
+        WPPost wpPost = new WPPost();
+        wpPost.postTitleElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpPost.postTitleText(), recentCommentsTitle);
     }
 
     /**
@@ -69,17 +76,16 @@ public class TestSidebarLinks extends BaseTest {
      */
     @Test
     public void TestArchivesLinkClick() {
+        wpLogger.info(String.format("Testing clicking the first archive link on %s",targetUri));
         // Have to scroll to the last item in the Recent Posts lists for the archives to be visible
-        ElementsCollection listItems = $$(byXpath(sidebarRecentPostsListXPath + "/li"));
-        listItems.get(4).scrollTo();
+        wpSidebar.recentPostsListElements().get(4).scrollTo();
 
         // Now click on the actual archives link
-        $(byXpath(sidebarArchivesListXPath + "/li/a")).click();
+        wpSidebar.archivesListElements().get(0).click();
         Assert.assertEquals(url(), wpBaseUri + archivesUri);
         SelenideElement pageTitle = $(byClassName(pageTitleClass));
         pageTitle.should(exist).shouldBe(visible);
-        Assert.assertEquals(pageTitle.text(), archivesString + archivesTitle);
-    }
+        Assert.assertEquals(pageTitle.text(), archivesString + archivesTitle);    }
 
     /**
      * TestCategoriesLinkClick
@@ -87,12 +93,12 @@ public class TestSidebarLinks extends BaseTest {
      */
     @Test
     public void TestCategoriesLinkClick() {
+        wpLogger.info(String.format("Testing clicking the first category link on %s",targetUri));
         // Have to scroll to the last item in the Recent Posts lists for the archives to be visible
-        ElementsCollection listItems = $$(byXpath(sidebarRecentPostsListXPath + "/li"));
-        listItems.get(4).scrollTo();
+        wpSidebar.recentPostsListElements().get(4).scrollTo();
 
         // Now click on the actual category link
-        $(byXpath(sidebarCategoriesListXPath + "/li/a")).click();
+        wpSidebar.categoriesListElements().get(0).click();
         Assert.assertEquals(url(), wpBaseUri + categoriesUri);
         SelenideElement pageTitle = $(byClassName(pageTitleClass));
         pageTitle.should(exist).shouldBe(visible);
@@ -105,15 +111,15 @@ public class TestSidebarLinks extends BaseTest {
      */
     @Test
     public void TestMetaLoginLinkClick() {
+        wpLogger.info(String.format("Testing clicking the first meta link on %s",targetUri));
         // Have to scroll to the last item in the Recent Comments lists for the meta links to be visible
-        ElementsCollection listItems = $$(byXpath(sidebarRecentCommentsListXPath + "/li"));
-        listItems.get(0).scrollTo();
+        wpSidebar.recentCommentsListElements().get(0).scrollTo();
 
         // Now click on the actual log in link
-        $(byXpath(sidebarMetaListXPath + "/li/a")).click();
+        wpSidebar.metaListElements().get(0).click();
         Assert.assertEquals(url(), wpBaseUri + metaLoginUri);
 
-        // Hit back to go back to the homepage for further testing
+        // Hit back to go back to the previous page for further testing
         back();
     }
 }
