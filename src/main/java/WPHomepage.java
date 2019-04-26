@@ -7,11 +7,12 @@ import static com.codeborne.selenide.Selenide.$;
  * WPHomepage
  * @author Angela Korra'ti
  *
- * Last updated 4/25/2019
+ * Last updated 4/26/2019
  * This is the WPHomepage helper class that defines the structure of the homepage page object.
  */
 class WPHomepage extends BaseTest {
     WPMenu wpMenu;
+    WPSidebar wpSidebar;
     WPFooter wpFooter;
 
     /**
@@ -19,6 +20,7 @@ class WPHomepage extends BaseTest {
      */
     WPHomepage() {
         wpMenu = new WPMenu();
+        wpSidebar = new WPSidebar();
         wpFooter = new WPFooter();
     }
 
