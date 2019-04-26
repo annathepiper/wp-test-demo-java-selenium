@@ -46,6 +46,30 @@ public class WPMenu extends BaseTest {
     }
 
     /**
+     * homeSubmenuElement
+     * @return Selenide element that refers to the submenu under Home
+     */
+    SelenideElement homeSubmenuElement() {
+        return $(byXpath(submenuHomeXPath));
+    }
+
+    /**
+     * homeSubmenuText
+     * @return String containing the text of the submenu under Home
+     */
+    String homeSubmenuText() {
+        return homeSubmenuElement().text();
+    }
+
+    /**
+     * homeSubmenuLink
+     * @return String containing the link of the submenu under Home
+     */
+    String homeSubmenuLink() {
+        return homeSubmenuElement().getAttribute("href");
+    }
+
+    /**
      * aboutMenuElement
      * @return Selenide element that refers to the About item on the menu
      */
@@ -91,6 +115,158 @@ public class WPMenu extends BaseTest {
      */
     String booksMenuLink() {
         return booksMenuElement().getAttribute("href");
+    }
+
+    /**
+     * booksSubmenuElement
+     * @return Selenide element that refers to the submenu under Books
+     */
+    SelenideElement booksSubmenuElement() {
+        return $(byXpath(submenuBooksXPath));
+    }
+
+    /**
+     * faerieSubmenuElement
+     * @return Selenide element that refers to the Faerie Blood item under Books
+     */
+    SelenideElement faerieSubmenuElement() {
+        return $(byXpath(submenuFaerieXPath));
+    }
+
+    /**
+     * faerieSubmenuText
+     * @return Text of the Faerie Blood item under Books
+     */
+    String faerieSubmenuText() {
+        return faerieSubmenuElement().text();
+    }
+
+    /**
+     * faerieSubmenuLink
+     * @return Link of the Faerie Blood item under Books
+     */
+    String faerieSubmenuLink() {
+        return faerieSubmenuElement().getAttribute("href");
+    }
+
+    /**
+     * boneSubmenuElement
+     * @return Selenide element that refers to the Bone Walker item under Books
+     */
+    SelenideElement boneSubmenuElement() {
+        return $(byXpath(submenuBoneXPath));
+    }
+
+    /**
+     * boneSubmenuText
+     * @return Text of the Bone Walker item under Books
+     */
+    String boneSubmenuText() {
+        return boneSubmenuElement().text();
+    }
+
+    /**
+     * boneSubmenuLink
+     * @return Link of the Bone Walker item under Books
+     */
+    String boneSubmenuLink() {
+        return boneSubmenuElement().getAttribute("href");
+    }
+
+    /**
+     * valorSubmenuElement
+     * @return Selenide element that refers to the Valor of the Healer item under Books
+     */
+    SelenideElement valorSubmenuElement() {
+        return $(byXpath(submenuValorXPath));
+    }
+
+    /**
+     * valorSubmenuText
+     * @return Text of the Valor of the Healer item under Books
+     */
+    String valorSubmenuText() {
+        return valorSubmenuElement().text();
+    }
+
+    /**
+     * valorSubmenuLink
+     * @return Link of the Valor of the Healer item under Books
+     */
+    String valorSubmenuLink() {
+        return valorSubmenuElement().getAttribute("href");
+    }
+
+    /**
+     * vengeanceSubmenuElement
+     * @return Selenide element that refers to the Vengeance of the Hunter item under Books
+     */
+    SelenideElement vengeanceSubmenuElement() {
+        return $(byXpath(submenuVengeanceXPath));
+    }
+
+    /**
+     * vengeanceSubmenuText
+     * @return Text of the Vengeance of the Hunter item under Books
+     */
+    String vengeanceSubmenuText() {
+        return vengeanceSubmenuElement().text();
+    }
+
+    /**
+     * vengeanceSubmenuLink
+     * @return Link of the Vengeance of the Hunter item under Books
+     */
+    String vengeanceSubmenuLink() {
+        return vengeanceSubmenuElement().getAttribute("href");
+    }
+
+    /**
+     * victorySubmenuElement
+     * @return Selenide element that refers to the Victory of the Hawk item under Books
+     */
+    SelenideElement victorySubmenuElement() {
+        return $(byXpath(submenuVictoryXPath));
+    }
+
+    /**
+     * victorySubmenuText
+     * @return Text of the Victory of the Hawk item under Books
+     */
+    String victorySubmenuText() {
+        return victorySubmenuElement().text();
+    }
+
+    /**
+     * victorySubmenuLink
+     * @return Link of the Victory of the Hawk item under Books
+     */
+    String victorySubmenuLink() {
+        return victorySubmenuElement().getAttribute("href");
+    }
+
+    /**
+     * shortSubmenuElement
+     * @return Selenide element that refers to the Short Stories item under Books
+     */
+    SelenideElement shortSubmenuElement() {
+        return $(byXpath(submenuShortXPath));
+    }
+
+    /**
+     * shortSubmenuText
+     * @return Text of the Short Stories item under Books
+     */
+    String shortSubmenuText() {
+        return shortSubmenuElement().text();
+    }
+
+    /**
+     * shortSubmenuLink
+     * @return Link of the Short Stories item under Books
+     */
+    String shortSubmenuLink() {
+        return shortSubmenuElement().getAttribute("href");
     }
 
     /**
@@ -163,5 +339,29 @@ public class WPMenu extends BaseTest {
      */
     String storeMenuLink() {
         return storeMenuElement().getAttribute("href");
+    }
+
+    /**
+     * storeSubmenuElement
+     * @return Selenide element that refers to the submenu under Store
+     */
+    SelenideElement storeSubmenuElement() {
+        return $(byXpath(submenuStoreXPath));
+    }
+
+    /**
+     * storeSubmenuText
+     * @return String containing the text of the submenu under Store
+     */
+    String storeSubmenuText() {
+        return storeSubmenuElement().text();
+    }
+
+    /**
+     * storeSubmenuLink
+     * @return String containing the link of the submenu under Store
+     */
+    String storeSubmenuLink() {
+        return storeSubmenuElement().getAttribute("href");
     }
 }
