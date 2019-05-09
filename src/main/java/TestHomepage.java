@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.open;
  * TestHomepage
  * @author Angela Korra'ti
  *
- * Last updated 4/25/2019
+ * Last updated 5/9/2019
  * This class conducts tests against the homepage of the test Wordpress site.
  *
  * IMPORTANT NOTES:
@@ -37,7 +37,7 @@ public class TestHomepage extends BaseTest {
      */
     @Test
     public void TestHomepageTitle() {
-        wpHomepage.siteTitleElement().shouldBe(visible).shouldHave(text(wpHomepage.siteTitle()));
+        wpHomepage.siteTitleElement().shouldBe(visible).shouldHave(text(siteTitle));
     }
 
     /**
