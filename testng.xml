@@ -1,20 +1,26 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Wordpress Selenium Test" verbose="1">
-    <test name="All Tests">
+    <test name="Homepage Tests">
         <classes>
             <class name="TestFooter" />
             <class name="TestHomepage" />
             <class name="TestMenu" />
-            <class name="TestPostFooter" />
-            <class name="TestPostMenu" />
-            <class name="TestPostSidebar" />
-            <class name="TestPostSidebarLinks" />
-            <class name="TestPostSubmenus" />
             <class name="TestSubmenus" />
             <class name="TestSidebar" />
             <class name="TestSearch" />
             <class name="TestSidebarLinks" />
+        </classes>
+    </test>
+    <test name="Post Tests">
+        <classes>
+            <class name="TestPost" />
+            <class name="TestPostFooter" />
+            <class name="TestPostMenu" />
+            <class name="TestPostSubmenus" />
+            <class name="TestPostSidebar" />
+            <class name="TestPostSearch" />
+            <class name="TestPostSidebarLinks" />
         </classes>
     </test>
 </suite>
