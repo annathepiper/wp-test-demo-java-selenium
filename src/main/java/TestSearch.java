@@ -19,6 +19,8 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  *
  */
 public class TestSearch extends BaseTest {
+    WPSidebar wpSidebar;
+    String targetUri;
 
     /**
      * Setup
@@ -27,6 +29,9 @@ public class TestSearch extends BaseTest {
     @BeforeClass
     public void classSetup() {
         open(wpBaseUri);
+        targetUri = wpBaseUri;
+        WPHomepage wpHomepage = new WPHomepage();
+        wpSidebar = wpHomepage.wpSidebar;
     }
 
     /**
