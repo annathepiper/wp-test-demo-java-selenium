@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
  * BaseTest
  * @author Angela Korra'ti
  *
- * Last updated 4/25/2019
+ * Last updated 5/9/2019
  * This is the master class for the wptestdemoselenium suite. Does the necessary setup for all the other classes.
  */
 abstract class BaseTest {
@@ -23,6 +23,9 @@ abstract class BaseTest {
     static String siteDescription;
     static String pageTitleClass;
     static String entryTitleClass;
+
+    // General post descriptor strings
+    static String postTitle;
 
     // Content areas (including sidebar)
     static String contentId;
@@ -178,6 +181,9 @@ abstract class BaseTest {
         siteDescription = rb.getString("siteDescription");
         pageTitleClass = rb.getString("pageTitleClass");
         entryTitleClass = rb.getString("entryTitleClass");
+
+        // General post values
+        postTitle = rb.getString("postTitle");
 
         // Assorted items pertaining to content areas
         contentId = rb.getString("contentId");
