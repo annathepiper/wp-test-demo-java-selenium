@@ -70,7 +70,7 @@ public class TestMenu extends BaseTest {
         Assert.assertEquals(wpMenu.booksMenuText(),menuBooksText,"Books menu does not have correct text.");
         Assert.assertEquals(wpMenu.booksMenuLink(),menuBooksLink,"Books menu does not have correct link.");
         wpMenu.booksMenuElement().click();
-        Assert.assertEquals(url(),menuBooksLink);
+        Assert.assertEquals(url(),menuBooksLink,"Clicking on Books does not go to correct destination.");
     }
 
     /**
@@ -84,7 +84,7 @@ public class TestMenu extends BaseTest {
         Assert.assertEquals(wpMenu.blogMenuText(),menuBlogText,"Blog menu does not have correct text.");
         Assert.assertEquals(wpMenu.blogMenuLink(),menuBlogLink,"Blog menu does not have correct link.");
         wpMenu.blogMenuElement().click();
-        Assert.assertEquals(url(),menuBlogLink);
+        Assert.assertEquals(url(),menuBlogLink,"Clicking on Blog does not go to correct destination.");
     }
 
     /**
@@ -98,7 +98,7 @@ public class TestMenu extends BaseTest {
         Assert.assertEquals(wpMenu.contactMenuText(),menuContactText,"Contact menu does not have correct text.");
         Assert.assertEquals(wpMenu.contactMenuLink(),menuContactLink,"Contact menu does not have correct link.");
         wpMenu.contactMenuElement().click();
-        Assert.assertEquals(url(),menuContactLink);
+        Assert.assertEquals(url(),menuContactLink,"Clicking on Contact does not go to correct destination.");
     }
 
     /**
@@ -112,6 +112,6 @@ public class TestMenu extends BaseTest {
         Assert.assertEquals(wpMenu.storeMenuText(),menuStoreText,"Store menu does not have correct text.");
         Assert.assertEquals(wpMenu.storeMenuLink(),menuStoreLink,"Store menu does not have correct link.");
         wpMenu.storeMenuElement().click();
-        Assert.assertEquals(url(),menuStoreLink);
+        Assert.assertEquals(url(),menuStoreLink,"Clicking on Store does not go to correct destination.");
     }
 }
