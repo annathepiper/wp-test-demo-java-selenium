@@ -44,7 +44,7 @@ public class TestSidebar extends BaseTest {
      * Verify that the sidebar search input box exists, is visible, and has the correct text.
      */
     @Test
-    public void TestSidebarSearchInputExists() {
+    public void TestSidebarSearchInput() {
         wpLogger.info(String.format("Verifying sidebar search input box on: %s",targetUri));
         wpSidebar.searchInputElement().should(exist).shouldBe(visible);
         Assert.assertEquals(wpSidebar.searchInputText(), sidebarSearchInputText,
