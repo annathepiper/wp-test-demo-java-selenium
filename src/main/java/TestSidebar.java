@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.*;
  * TestSidebar
  * @author Angela Korra'ti
  *
- * Last updated 4/25/2019
+ * Last updated 5/10/2019
  * This test class is the parent class for testing the sidebar, and it tests against the sidebar on the homepage. Child
  * classes will do appropriate setup to test against other specific pages.
  *
@@ -117,7 +117,7 @@ public class TestSidebar extends BaseTest {
      * archive links.
      */
     @Test
-    public void TestSidebarCategoriesWidgetExists() {
+    public void TestSidebarCategories() {
         wpLogger.info(String.format("Verifying sidebar Categories widget on: %s",targetUri));
         wpSidebar.categoriesElement().should(exist).shouldBe(visible);
         wpSidebar.categoriesTitleElement().should(exist).shouldBe(visible);
@@ -133,7 +133,7 @@ public class TestSidebar extends BaseTest {
      * Verify that the meta widget is present and visible.
      */
     @Test
-    public void TestSidebarMetaWidgetExists() {
+    public void TestSidebarMeta() {
         wpLogger.info(String.format("Verifying sidebar Meta widget on: %s",targetUri));
         wpSidebar.metaElement().should(exist).shouldBe(visible);
         wpSidebar.metaTitleElement().should(exist).shouldBe(visible);
