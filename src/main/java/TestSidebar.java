@@ -114,7 +114,7 @@ public class TestSidebar extends BaseTest {
     /**
      * TestSidebarCategories
      * Verify that the categories widget is present and visible, has the correct title, and has the correct count of
-     * archive links.
+     * category links.
      */
     @Test
     public void TestSidebarCategories() {
@@ -130,7 +130,7 @@ public class TestSidebar extends BaseTest {
 
     /**
      * TestSidebarMeta
-     * Verify that the meta widget is present and visible.
+     * Verify that the meta widget is present and visible, has the correct title, and has the correct count of links.
      */
     @Test
     public void TestSidebarMeta() {
