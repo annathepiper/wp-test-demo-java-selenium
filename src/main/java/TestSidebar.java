@@ -30,21 +30,21 @@ public class TestSidebar extends BaseTest {
     }
 
     /**
-     * TestSidebarSearchWidgetExists
+     * TestSearchWidget
      * Verify that the search widget is present and visible in the sidebar.
      */
     @Test
-    public void TestSidebarSearchWidgetExists() {
+    public void TestSearchWidget() {
         wpLogger.info(String.format("Verifying sidebar search element on: %s",targetUri));
         wpSidebar.searchElement().should(exist).shouldBe(visible);
     }
 
     /**
-     * TestSidebarSearchInput
+     * TestSearchInput
      * Verify that the sidebar search input box exists, is visible, and has the correct text.
      */
     @Test
-    public void TestSidebarSearchInput() {
+    public void TestSearchInput() {
         wpLogger.info(String.format("Verifying sidebar search input box on: %s",targetUri));
         wpSidebar.searchInputElement().should(exist).shouldBe(visible);
         Assert.assertEquals(wpSidebar.searchInputText(), sidebarSearchInputText,
@@ -52,21 +52,21 @@ public class TestSidebar extends BaseTest {
     }
 
     /**
-     * TestSidebarSearchButtonExists
+     * TestSearchButton
      * Verify that the sidebar search button exists and is visible.
      */
     @Test
-    public void TestSidebarSearchButtonExists() {
+    public void TestSearchButton() {
         wpLogger.info(String.format("Verifying sidebar search button on: %s",targetUri));
         wpSidebar.searchButtonElement().should(exist).shouldBe(visible);
     }
 
     /**
-     * TestSidebarRecentPosts
+     * TestRecentPosts
      * Verify that the recent posts widget is present and visible, has the correct title, and has five posts.
      */
     @Test
-    public void TestSidebarRecentPosts() {
+    public void TestRecentPosts() {
         wpLogger.info(String.format("Verifying sidebar Recent Posts widget on: %s",targetUri));
         wpSidebar.recentPostsElement().should(exist).shouldBe(visible);
         wpSidebar.recentPostsTitleElement().should(exist).shouldBe(visible);
@@ -78,12 +78,12 @@ public class TestSidebar extends BaseTest {
     }
 
     /**
-     * TestSidebarRecentComments
+     * TestRecentComments
      * Verify that the recent comments widget is present and visible, has the correct title, and has the correct
      * count of comments.
      */
     @Test
-    public void TestSidebarRecentComments() {
+    public void TestRecentComments() {
         wpLogger.info(String.format("Verifying sidebar Recent Comments widget on: %s",targetUri));
         wpSidebar.recentCommentsElement().should(exist).shouldBe(visible);
         wpSidebar.recentCommentsTitleElement().should(exist).shouldBe(visible);
@@ -95,12 +95,12 @@ public class TestSidebar extends BaseTest {
     }
 
     /**
-     * TestSidebarArchives
+     * TestArchives
      * Verify that the archives widget is present and visible, has the correct title, and has the correct count of
      * archive links.
      */
     @Test
-    public void TestSidebarArchives() {
+    public void TestArchives() {
         wpLogger.info(String.format("Verifying sidebar Archives widget on: %s",targetUri));
         wpSidebar.archivesElement().should(exist).shouldBe(visible);
         wpSidebar.archivesTitleElement().should(exist).shouldBe(visible);
@@ -112,12 +112,12 @@ public class TestSidebar extends BaseTest {
     }
 
     /**
-     * TestSidebarCategories
+     * TestCategories
      * Verify that the categories widget is present and visible, has the correct title, and has the correct count of
      * category links.
      */
     @Test
-    public void TestSidebarCategories() {
+    public void TestCategories() {
         wpLogger.info(String.format("Verifying sidebar Categories widget on: %s",targetUri));
         wpSidebar.categoriesElement().should(exist).shouldBe(visible);
         wpSidebar.categoriesTitleElement().should(exist).shouldBe(visible);
@@ -129,11 +129,11 @@ public class TestSidebar extends BaseTest {
     }
 
     /**
-     * TestSidebarMeta
+     * TestMeta
      * Verify that the meta widget is present and visible, has the correct title, and has the correct count of links.
      */
     @Test
-    public void TestSidebarMeta() {
+    public void TestMeta() {
         wpLogger.info(String.format("Verifying sidebar Meta widget on: %s",targetUri));
         wpSidebar.metaElement().should(exist).shouldBe(visible);
         wpSidebar.metaTitleElement().should(exist).shouldBe(visible);
