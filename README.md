@@ -16,6 +16,10 @@ Dependencies included in the POM are:
 
 * Selenide
 * TestNG
+* Surefire (with exclusion on log4j to force using version 2)
+* Log4j (version 2)
+
+Dependencies were last updated in the POM as of 7/3/2020.
 
 ## Skills and tech I'm demonstrating here
 * Use of a properties file to set test-specific strings like ID numbers, titles, and names
@@ -57,6 +61,10 @@ You only need one or the other of these. You can use Docker Compose to launch th
 If you use my Docker Compose YAML file to set up a Selenium instance, it creates it by default at localhost with port 4444. If you don't want to use port 4444, edit the file to use a different port.
 
 The location for this grid is set in the properties file for the suite as "seleniumHost". If you have your own Selenium instance set up, or if you change what port you're using in the YAML file, you should update the properties file to reflect your changes.
+
+### Running the code on a Linux environment
+
+This code has been successfully most recently run against IntelliJ Community Edition 2020.1.2, on an Ubuntu Linux install (Ubuntu 20.04 LTS) with OpenJDK version 1.8 installed.
 
 ## Reference links
 * [Misc-configs repo](https://github.com/annathepiper/misc-configs) where I store my Docker Compose yml files
