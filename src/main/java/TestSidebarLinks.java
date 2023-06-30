@@ -11,7 +11,6 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 /**
  * TestSidebarLinks
  * @author Angela Korra'ti
- *
  * Last updated 4/25/2019
  * This test class is the parent class for testing the sidebar links, and it tests against the sidebar on the homepage.
  * Child classes will do appropriate setup to test against other specific pages.

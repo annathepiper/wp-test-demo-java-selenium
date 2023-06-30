@@ -8,7 +8,6 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 /**
  * TestFooter
  * @author Angela Korra'ti
- *
  * Last updated 4/25/2019
  * This test class tests that the expected items appear in the footer, and that they link to the expected places.
  * This parent class hits the homepage for its testing. It also serves as the parent class for test classes that hit
@@ -84,16 +83,16 @@ public class TestFooter extends BaseTest {
      * Verify that the Twitter link is present, visible, and has the correct text.
      */
     @Test
-    public void TestFooterSocialTwitterLink() {
+    public void TestFooterSocialMastodonLink() {
         wpLogger.info(String.format("Testing the footer Twitter link on: %s",targetUri));
-        wpFooter.socialTwitterElement().should(exist).shouldBe(visible);
-        Assert.assertEquals(wpFooter.socialTwitterText(), footerSocialTwitterText,
-                "Twitter link doesn't have correct text.");
+        wpFooter.socialMastodonElement().should(exist).shouldBe(visible);
+        Assert.assertEquals(wpFooter.socialMastodonText(), footerSocialMastodonText,
+                "Mastodon link doesn't have correct text.");
 
         // Scrolling to the link is required, otherwise Selenide complains it's not clickable
-        wpFooter.socialTwitterElement().scrollTo().click();
-        Assert.assertEquals(url(), footerSocialTwitterLink,
-                "Clicking on Twitter link doesn't go to correct destination.");
+        wpFooter.socialMastodonElement().scrollTo().click();
+        Assert.assertEquals(url(), footerSocialMastodonLink,
+                "Clicking on Mastodon link doesn't go to correct destination.");
     }
 
     /**

@@ -5,7 +5,6 @@ import static com.codeborne.selenide.Selenide.open;
 /**
  * TestPostSearch
  * @author Angela Korra'ti
- *
  * Last updated 5/9/2019
  * This test class extends the TestSearch class, and conducts search tests against an example post.
  */

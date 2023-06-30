@@ -1,13 +1,12 @@
-import com.codeborne.selenide.Configuration;
 import org.testng.annotations.BeforeSuite;
 import java.util.ResourceBundle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import static com.codeborne.selenide.Configuration.*;
 
 /**
  * BaseTest
  * @author Angela Korra'ti
- *
  * Last updated 5/9/2019
  * This is the master class for the wptestdemoselenium suite. Does the necessary setup for all the other classes.
  */
@@ -43,9 +42,9 @@ abstract class BaseTest {
     static String footerSocialFacebookXPath;
     static String footerSocialFacebookLink;
     static String footerSocialFacebookText;
-    static String footerSocialTwitterXPath;
-    static String footerSocialTwitterLink;
-    static String footerSocialTwitterText;
+    static String footerSocialMastodonXPath;
+    static String footerSocialMastodonLink;
+    static String footerSocialMastodonText;
     static String footerSocialGithubXPath;
     static String footerSocialGithubLink;
     static String footerSocialGithubText;
@@ -163,12 +162,17 @@ abstract class BaseTest {
     protected final Logger wpLogger = LogManager.getLogger(this.getClass().getName());
 
     // Resource bundle we're using to pull all the property strings out of
-    private static ResourceBundle rb = ResourceBundle.getBundle("wp-test-demo-selenium");
+    private static final ResourceBundle rb = ResourceBundle.getBundle("wp-test-demo-selenium");
 
     @BeforeSuite
-    static void suiteSetup() {
+    void suiteSetup() {
         // Set our Selenium locale for Selenide to use.
-        Configuration.remote = rb.getString("seleniumHost");
+        remote = rb.getString("seleniumHost");
+
+        // Uncomment one of these to determine which of these nodes you want to use on the grid
+        // browser = "chrome";
+        // browser = "MicrosoftEdge";
+        browser = "firefox";
 
         // Get the needed properties out of the file to build some URIs to test
         wpBaseUri = String.format("%s://%s", rb.getString("protocol"), rb.getString("host"));
@@ -201,9 +205,9 @@ abstract class BaseTest {
         footerSocialFacebookXPath = rb.getString("footerSocialFacebookXPath");
         footerSocialFacebookLink = rb.getString("footerSocialFacebookLink");
         footerSocialFacebookText = rb.getString("footerSocialFacebookText");
-        footerSocialTwitterXPath = rb.getString("footerSocialTwitterXPath");
-        footerSocialTwitterLink = rb.getString("footerSocialTwitterLink");
-        footerSocialTwitterText = rb.getString("footerSocialTwitterText");
+        footerSocialMastodonXPath = rb.getString("footerSocialMastodonXPath");
+        footerSocialMastodonLink = rb.getString("footerSocialMastodonLink");
+        footerSocialMastodonText = rb.getString("footerSocialMastodonText");
         footerSocialGithubXPath = rb.getString("footerSocialGithubXPath");
         footerSocialGithubLink = rb.getString("footerSocialGithubLink");
         footerSocialGithubText = rb.getString("footerSocialGithubText");
