@@ -8,10 +8,8 @@ import static com.codeborne.selenide.Selenide.open;
 /**
  * TestPost
  * @author Angela Korra'ti
- *
  * Last updated 5/9/2019
  * This class conducts tests against the homepage of the test Wordpress site.
- *
  * IMPORTANT NOTES:
  * 1. Some of my test cases here aren't as concise as I'd like, as I discovered that the shouldHave(text()) calls
  * apparently aren't case-sensitive. So I'm adjusting the structure of impacted cases as necessary to account for this.

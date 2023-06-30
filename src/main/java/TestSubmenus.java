@@ -8,7 +8,6 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 /**
  * TestSubmenus
  * @author Angela Korra'ti
- *
  * Last updated 4/25/2019
  * This test class is the parent class for testing the submenus, and it tests against the menu on the homepage. Child
  * classes will do appropriate setup to test against other specific pages.

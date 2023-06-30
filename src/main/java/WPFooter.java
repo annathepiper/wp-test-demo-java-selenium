@@ -85,19 +85,19 @@ class WPFooter extends BaseTest {
     }
 
     /**
-     * socialTwitterElement
-     * @return Selenide element representing the Twitter link in the social section
+     * socialMastodonElement
+     * @return Selenide element representing the Mastodon link in the social section
      */
-    SelenideElement socialTwitterElement() {
-        return $(byXpath(footerSocialTwitterXPath));
+    SelenideElement socialMastodonElement() {
+        return $(byXpath(footerSocialMastodonXPath));
     }
 
     /**
      * socialTwitterText
-     * @return String containing the text from the Twitter link in the social section
+     * @return String containing the text from the Mastodon link in the social section
      */
-    String socialTwitterText() {
-        return socialTwitterElement().text();
+    String socialMastodonText() {
+        return socialMastodonElement().text();
     }
 
     /**

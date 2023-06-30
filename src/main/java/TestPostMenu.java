@@ -5,7 +5,6 @@ import static com.codeborne.selenide.Selenide.open;
 /**
  * TestPostMenu
  * @author Angela Korra'ti
- *
  * Last updated 4/25/2019
  * This test class extends the TestMenu class, and conducts menu tests against an example post.
  */
