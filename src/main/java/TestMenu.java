@@ -111,6 +111,7 @@ public class TestMenu extends BaseTest {
         Assert.assertEquals(wpMenu.storeMenuText(),menuStoreText,"Store menu does not have correct text.");
         Assert.assertEquals(wpMenu.storeMenuLink(),menuStoreLink,"Store menu does not have correct link.");
         wpMenu.storeMenuElement().click();
+        wpMenu.storeMenuElement().should(disappear);
         Assert.assertEquals(url(),menuStoreLink,"Clicking on Store does not go to correct destination.");
     }
 }

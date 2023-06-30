@@ -5,8 +5,7 @@ import org.testng.annotations.Test;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byClassName;
 import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 /**
@@ -43,14 +42,14 @@ public class TestSearch extends BaseTest {
         // Do the search
         $(byXpath(sidebarSearchInputXPath)).setValue(searchString).pressEnter();
 
-        // Make sure the URL we land on has the search arguments included
-        String targetUri = wpBaseUri + searchUri;
-        Assert.assertEquals(url(), targetUri);
-
         // Make sure the title for the page includes the search string
         SelenideElement pageTitle = $(byClassName(pageTitleClass));
         pageTitle.should(exist).shouldBe(visible);
         Assert.assertEquals(pageTitle.text(), searchResultsString + searchString);
+
+        // Make sure the URL we land on has the search arguments included
+        String targetUri = wpBaseUri + searchUri;
+        Assert.assertEquals(url(), targetUri);
     }
 
     /**
@@ -84,14 +83,14 @@ public class TestSearch extends BaseTest {
         // Do the search
         $(byXpath(sidebarSearchInputXPath)).setValue(searchNoResultsString).pressEnter();
 
-        // Make sure the URL we land on has the search arguments included
-        String targetUri = wpBaseUri + searchNoResultsUri;
-        Assert.assertEquals(url(), targetUri);
-
         // Make sure the title for the page includes the no results search message
         SelenideElement pageTitle = $(byClassName(pageTitleClass));
         pageTitle.should(exist).shouldBe(visible);
         Assert.assertEquals(pageTitle.text(), searchNoResultsMessage);
+
+        // Make sure the URL we land on has the search arguments included
+        String targetUri = wpBaseUri + searchNoResultsUri;
+        Assert.assertEquals(url(), targetUri);
     }
 
     /**
