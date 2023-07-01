@@ -29,4 +29,4 @@ As of July 2023, all project dependencies have been refreshed. All test cases ar
 * [misc-configs](https://github.com/annathepiper/misc-configs)
 
 ## If you want more information
-Please see the wiki on this repo for more in-depth information about the project.
+Please see the wiki on this repo for more in-depth information about this part of the project.
