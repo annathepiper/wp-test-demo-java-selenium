@@ -15,18 +15,18 @@ Please refer to the wiki over on my [misc-configs](https://github.com/annathepip
 ## About the tests done on this repo
 The test suite in this repository is written in Java, and conducts Selenium-based tests against the Wordpress site's front end.
 
-I am *not*, however, using standard Selenium Java syntax. I'm using a framework called (Selenide|https://selenide.org), which I like in no small part because it eliminates some of the heavy lifting you have to do when running Selenium, such as worrying about launching a driver and shutting it down again when you're done. See Selenide's site for more information about their framework.
+I am *not*, however, using standard Selenium Java syntax. I'm using a framework called [Selenide](https://selenide.org), which I like in no small part because it eliminates some of the heavy lifting you have to do when running Selenium, such as worrying about launching a driver and shutting it down again when you're done. See Selenide's site for more information about their framework.
 
 The suite is a Maven project, written in IntelliJ, and uses TestNG to power the tests and conduct all relevant asserts.
 
 As of July 2023, all project dependencies have been refreshed. All test cases are confirmed to pass in Windows 10, against Docker containers for the Chrome, Edge, and Firefox browsers. Confirmation of the tests running successfully on MacOS and Linux is pending.
 
-## If you want more information
-Please see the wiki on this repo for more in-depth information about the project.
-
-### Related repositories
+## Related repositories
 * [wp-test-demo-java](https://github.com/annathepiper/wp-test-demo-java)
 * [wp-test-demo-python](https://github.com/annathepiper/wp-test-demo-python)
 * [wp-test-demo-python-selenium](https://github.com/annathepiper/wp-test-demo-python-selenium)
 * [wp-test-demo-c-sharp](https://github.com/annathepiper/wp-test-demo-c-sharp)
 * [misc-configs](https://github.com/annathepiper/misc-configs)
+
+## If you want more information
+Please see the wiki on this repo for more in-depth information about the project.
