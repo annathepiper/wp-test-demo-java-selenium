@@ -10,7 +10,7 @@ All of the repositories involved in this project are along the same theme: condu
 ## About the test Wordpress site
 The test site used for all of these repositories is a subset of data copied off one of my live Wordpress sites, https://angelahighland.info, which provides me the information to fill out test properties in the various projects. I set up the test site using Docker containers, and Docker Compose to manage them.
 
-Please refer to the wiki over on my (misc-configs|https://github.com/annathepiper/misc-configs) repo, where I'll go into detail about how I set up the site.
+Please refer to the wiki over on my [misc-configs](https://github.com/annathepiper/misc-configs) repo, where I'll go into detail about how I set up the site.
 
 ## About the tests done on this repo
 The test suite in this repository is written in Java, and conducts Selenium-based tests against the Wordpress site's front end.
@@ -25,8 +25,8 @@ As of July 2023, all project dependencies have been refreshed. All test cases ar
 Please see the wiki on this repo for more in-depth information about the project.
 
 ### Related repositories
-* (wp-test-demo-java|https://github.com/annathepiper/wp-test-demo-java)
-* (wp-test-demo-python|https://github.com/annathepiper/wp-test-demo-python)
-* (wp-test-demo-python-selenium|https://github.com/annathepiper/wp-test-demo-python-selenium)
-* (wp-test-demo-c-sharp|https://github.com/annathepiper/wp-test-demo-c-sharp)
-* (misc-configs|https://github.com/annathepiper/misc-configs)
+* [wp-test-demo-java](https://github.com/annathepiper/wp-test-demo-java)
+* [wp-test-demo-python](https://github.com/annathepiper/wp-test-demo-python)
+* [wp-test-demo-python-selenium](https://github.com/annathepiper/wp-test-demo-python-selenium)
+* [wp-test-demo-c-sharp](https://github.com/annathepiper/wp-test-demo-c-sharp)
+* [misc-configs](https://github.com/annathepiper/misc-configs)
