@@ -1,16 +1,14 @@
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selectors.byId;
-import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 /**
  * WPSidebar
  * @author Angela Korra'ti
- *
- * Last updated 4/26/2019
+ * Last updated 7/3/2023
  * This is the WPSidebar helper class that defines the structure of a sidebar page object.
  */
 
@@ -247,4 +245,10 @@ public class WPSidebar extends BaseTest {
     ElementsCollection metaListElements() {
         return $$(byXpath(sidebarMetaListXPath + "/li/a"));
     }
+
+    /**
+     * metaLoginLink
+     * @return Selenide element representing the Log in link in the Meta widge on the sidebar
+     */
+    SelenideElement metaLoginLink() { return $(byLinkText(metaLoginText)); }
 }

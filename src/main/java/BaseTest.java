@@ -157,12 +157,13 @@ abstract class BaseTest {
 
     // Meta items
     static String metaLoginUri;
+    static String metaLoginText;
 
     // For logging purposes
     protected final Logger wpLogger = LogManager.getLogger(this.getClass().getName());
 
     // Resource bundle we're using to pull all the property strings out of
-    private static final ResourceBundle rb = ResourceBundle.getBundle("wp-test-demo-selenium");
+    public static final ResourceBundle rb = ResourceBundle.getBundle("wp-test-demo-selenium");
 
     @BeforeSuite
     void suiteSetup() {
@@ -322,5 +323,6 @@ abstract class BaseTest {
 
         // Items pertaining to Meta
         metaLoginUri = rb.getString("metaLoginUri");
+        metaLoginText = rb.getString("metaLoginText");
     }
 }
