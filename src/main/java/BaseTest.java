@@ -169,10 +169,13 @@ abstract class BaseTest {
         // Set our Selenium locale for Selenide to use.
         remote = rb.getString("seleniumHost");
 
-        // Uncomment one of these to determine which of these nodes you want to use on the grid
-        // browser = "chrome";
-        // browser = "MicrosoftEdge";
-        browser = "firefox";
+        // Setting a default timeout because Firefox tends to be a bit pokier in my test runs than Chrome or Edge.
+        timeout = 10000;
+
+        // I'm pulling in the browser property from the Maven command line. This lets me run parallel tests in
+        // different browsers, either inside IntelliJ via test configs OR in parallel Jenkins jobs. I'm also checking
+        // to see if the browser property has been set in general, and if not, setting a default value of Chrome.
+        browser = (System.getProperty("browser") != null) ? System.getProperty("browser") : "chrome";
 
         // Get the needed properties out of the file to build some URIs to test
         wpBaseUri = String.format("%s://%s", rb.getString("protocol"), rb.getString("host"));
