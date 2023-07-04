@@ -7,13 +7,15 @@ import static com.codeborne.selenide.Configuration.*;
 /**
  * BaseTest
  * @author Angela Korra'ti
- * Last updated 5/9/2019
+ * Last updated 7/4/2023
  * This is the master class for the wptestdemoselenium suite. Does the necessary setup for all the other classes.
  */
 abstract class BaseTest {
     // Uris for our testing
     static String wpBaseUri;
     static String wpPostUri;
+    static String wpLoginUri;
+    static String wpProfileUri;
 
     // General site descriptor strings
     static String siteTitleClass;
@@ -103,32 +105,6 @@ abstract class BaseTest {
     static String submenuStoreText;
     static String submenuStoreLink;
 
-    // Sidebar items
-    static String sidebarSearchId;
-    static String sidebarSearchInputXPath;
-    static String sidebarSearchInputText;
-    static String sidebarSearchButtonXPath;
-    static String sidebarRecentPostsId;
-    static String sidebarRecentPostsTitleXPath;
-    static String sidebarRecentPostsTitleText;
-    static String sidebarRecentPostsListXPath;
-    static String sidebarRecentCommentsId;
-    static String sidebarRecentCommentsTitleXPath;
-    static String sidebarRecentCommentsTitleText;
-    static String sidebarRecentCommentsListXPath;
-    static String sidebarArchivesId;
-    static String sidebarArchivesTitleXPath;
-    static String sidebarArchivesTitleText;
-    static String sidebarArchivesListXPath;
-    static String sidebarCategoriesId;
-    static String sidebarCategoriesTitleXPath;
-    static String sidebarCategoriesTitleText;
-    static String sidebarCategoriesListXPath;
-    static String sidebarMetaId;
-    static String sidebarMetaTitleXPath;
-    static String sidebarMetaTitleText;
-    static String sidebarMetaListXPath;
-
     // Search items
     static String searchString;
     static String searchUri;
@@ -136,28 +112,6 @@ abstract class BaseTest {
     static String searchNoResultsString;
     static String searchNoResultsUri;
     static String searchNoResultsMessage;
-
-    // Recent posts items
-    static String recentPostsUri;
-    static String recentPostsTitle;
-
-    // Recent comments items
-    static String recentCommentsUri;
-    static String recentCommentsTitle;
-
-    // Archives items
-    static String archivesUri;
-    static String archivesString;
-    static String archivesTitle;
-
-    // Categories items
-    static String categoriesUri;
-    static String categoriesString;
-    static String categoriesTitle;
-
-    // Meta items
-    static String metaLoginUri;
-    static String metaLoginText;
 
     // For logging purposes
     protected final Logger wpLogger = LogManager.getLogger(this.getClass().getName());
@@ -179,8 +133,10 @@ abstract class BaseTest {
         browser = (System.getProperty("browser") != null) ? System.getProperty("browser") : "chrome";
 
         // Get the needed properties out of the file to build some URIs to test
-        wpBaseUri = String.format("%s://%s", rb.getString("protocol"), rb.getString("host"));
+        wpBaseUri = String.format("%s://%s/", rb.getString("protocol"), rb.getString("host"));
         wpPostUri = wpBaseUri + rb.getString("wpPostUri");
+        wpLoginUri = wpBaseUri + rb.getString("metaLoginUri");
+        wpProfileUri = wpBaseUri + rb.getString("profileUri");
 
         // Assorted values we'll need for main site info
         siteTitleClass = rb.getString("siteTitleClass");
@@ -269,32 +225,6 @@ abstract class BaseTest {
         submenuStoreText = rb.getString("submenuStoreText");
         submenuStoreLink = rb.getString("submenuStoreLink");
 
-        // Items pertaining to the sidebar
-        sidebarSearchId = rb.getString("sidebarSearchId");
-        sidebarSearchInputXPath = rb.getString("sidebarSearchInputXPath");
-        sidebarSearchInputText = rb.getString("sidebarSearchInputText");
-        sidebarSearchButtonXPath = rb.getString("sidebarSearchButtonXPath");
-        sidebarRecentPostsId = rb.getString("sidebarRecentPostsId");
-        sidebarRecentPostsTitleXPath = rb.getString("sidebarRecentPostsTitleXPath");
-        sidebarRecentPostsTitleText = rb.getString("sidebarRecentPostsTitleText");
-        sidebarRecentPostsListXPath = rb.getString("sidebarRecentPostsListXPath");
-        sidebarRecentCommentsId = rb.getString("sidebarRecentCommentsId");
-        sidebarRecentCommentsTitleXPath = rb.getString("sidebarRecentCommentsTitleXPath");
-        sidebarRecentCommentsTitleText = rb.getString("sidebarRecentCommentsTitleText");
-        sidebarRecentCommentsListXPath = rb.getString("sidebarRecentCommentsListXPath");
-        sidebarArchivesId = rb.getString("sidebarArchivesId");
-        sidebarArchivesTitleXPath = rb.getString("sidebarArchivesTitleXPath");
-        sidebarArchivesTitleText = rb.getString("sidebarArchivesTitleText");
-        sidebarArchivesListXPath = rb.getString("sidebarArchivesListXPath");
-        sidebarCategoriesId = rb.getString("sidebarCategoriesId");
-        sidebarCategoriesTitleXPath = rb.getString("sidebarCategoriesTitleXPath");
-        sidebarCategoriesTitleText = rb.getString("sidebarCategoriesTitleText");
-        sidebarCategoriesListXPath = rb.getString("sidebarCategoriesListXPath");
-        sidebarMetaId = rb.getString("sidebarMetaId");
-        sidebarMetaTitleXPath = rb.getString("sidebarMetaTitleXPath");
-        sidebarMetaTitleText = rb.getString("sidebarMetaTitleText");
-        sidebarMetaListXPath = rb.getString("sidebarMetaListXPath");
-
         // Items pertaining to search
         searchString = rb.getString("searchString");
         searchUri = rb.getString("searchUri");
@@ -302,27 +232,5 @@ abstract class BaseTest {
         searchNoResultsString = rb.getString("searchNoResultsString");
         searchNoResultsUri = rb.getString("searchNoResultsUri");
         searchNoResultsMessage = rb.getString("searchNoResultsMessage");
-
-        // Items pertaining to Recent Posts
-        recentPostsUri = rb.getString("recentPostsUri");
-        recentPostsTitle = rb.getString("recentPostsTitle");
-
-        // Items pertaining to Recent Comments
-        recentCommentsUri = rb.getString("recentCommentsUri");
-        recentCommentsTitle = rb.getString("recentCommentsTitle");
-
-        // Items pertaining to Archives
-        archivesUri = rb.getString("archivesUri");
-        archivesString = rb.getString("archivesString");
-        archivesTitle = rb.getString("archivesTitle");
-
-        // Items pertaining to Categories
-        categoriesUri = rb.getString("categoriesUri");
-        categoriesString = rb.getString("categoriesString");
-        categoriesTitle = rb.getString("categoriesTitle");
-
-        // Items pertaining to Meta
-        metaLoginUri = rb.getString("metaLoginUri");
-        metaLoginText = rb.getString("metaLoginText");
     }
 }

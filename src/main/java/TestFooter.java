@@ -8,7 +8,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 /**
  * TestFooter
  * @author Angela Korra'ti
- * Last updated 4/25/2019
+ * Last updated 7/4/2023
  * This test class tests that the expected items appear in the footer, and that they link to the expected places.
  * This parent class hits the homepage for its testing. It also serves as the parent class for test classes that hit
  * other pages.

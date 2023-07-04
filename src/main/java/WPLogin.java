@@ -7,6 +7,7 @@ public class WPLogin extends BaseTest {
     static String loginUsernameXPath;
     static String loginPasswordXPath;
     static String loginButtonXPath;
+    static String loginBackToBlogXPath;
 
     /**
      * Constructor for the class
@@ -15,6 +16,7 @@ public class WPLogin extends BaseTest {
         loginUsernameXPath = rb.getString("loginUsernameXPath");
         loginPasswordXPath = rb.getString("loginPasswordXPath");
         loginButtonXPath = rb.getString("loginButtonXPath");
+        loginBackToBlogXPath = rb.getString("loginBackToBlog");
     }
 
     /**
@@ -33,7 +35,17 @@ public class WPLogin extends BaseTest {
         return $(byXpath(loginPasswordXPath));
     }
 
+    /**
+     * loginButton
+     * @return Selenide element for the Log In button on the login page
+     */
     SelenideElement loginButton() {
         return $(byXpath(loginButtonXPath));
     }
+
+    /**
+     * loginBackToBlog
+     * @return Selenide element for the link to return to the homepage on the login page
+     */
+    SelenideElement loginBackToBlog() { return $(byXpath(loginBackToBlogXPath)); }
 }
