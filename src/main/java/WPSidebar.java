@@ -1,20 +1,122 @@
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selectors.byId;
-import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 /**
  * WPSidebar
  * @author Angela Korra'ti
- *
- * Last updated 4/26/2019
+ * Last updated 7/4/2023
  * This is the WPSidebar helper class that defines the structure of a sidebar page object.
  */
 
 public class WPSidebar extends BaseTest {
+    // Main sidebar items
+    static String sidebarSearchId;
+    static String sidebarSearchInputXPath;
+    static String sidebarSearchInputText;
+    static String sidebarSearchButtonXPath;
+    static String sidebarRecentPostsId;
+    static String sidebarRecentPostsTitleXPath;
+    static String sidebarRecentPostsTitleText;
+    static String sidebarRecentPostsListXPath;
+    static String sidebarRecentCommentsId;
+    static String sidebarRecentCommentsTitleXPath;
+    static String sidebarRecentCommentsTitleText;
+    static String sidebarRecentCommentsListXPath;
+    static String sidebarArchivesId;
+    static String sidebarArchivesTitleXPath;
+    static String sidebarArchivesTitleText;
+    static String sidebarArchivesListXPath;
+    static String sidebarCategoriesId;
+    static String sidebarCategoriesTitleXPath;
+    static String sidebarCategoriesTitleText;
+    static String sidebarCategoriesListXPath;
+    static String sidebarMetaId;
+    static String sidebarMetaTitleXPath;
+    static String sidebarMetaTitleText;
+    static String sidebarMetaListXPath;
+
+    // Recent posts items
+    static String recentPostsUri;
+    static String recentPostsTitle;
+
+    // Recent comments items
+    static String recentCommentsUri;
+    static String recentCommentsTitle;
+
+    // Archives items
+    static String archivesUri;
+    static String archivesString;
+    static String archivesTitle;
+
+    // Categories items
+    static String categoriesUri;
+    static String categoriesString;
+    static String categoriesTitle;
+
+    // Meta items
+    static String metaLoginUri;
+    static String metaLoginText;
+    static String metaSiteAdminText;
+    static String metaLogoutText;
+
+    /**
+     * Constructor for the class.
+     */
+    WPSidebar() {
+        // Main sidebar items
+        sidebarSearchId = rb.getString("sidebarSearchId");
+        sidebarSearchInputXPath = rb.getString("sidebarSearchInputXPath");
+        sidebarSearchInputText = rb.getString("sidebarSearchInputText");
+        sidebarSearchButtonXPath = rb.getString("sidebarSearchButtonXPath");
+        sidebarRecentPostsId = rb.getString("sidebarRecentPostsId");
+        sidebarRecentPostsTitleXPath = rb.getString("sidebarRecentPostsTitleXPath");
+        sidebarRecentPostsTitleText = rb.getString("sidebarRecentPostsTitleText");
+        sidebarRecentPostsListXPath = rb.getString("sidebarRecentPostsListXPath");
+        sidebarRecentCommentsId = rb.getString("sidebarRecentCommentsId");
+        sidebarRecentCommentsTitleXPath = rb.getString("sidebarRecentCommentsTitleXPath");
+        sidebarRecentCommentsTitleText = rb.getString("sidebarRecentCommentsTitleText");
+        sidebarRecentCommentsListXPath = rb.getString("sidebarRecentCommentsListXPath");
+        sidebarArchivesId = rb.getString("sidebarArchivesId");
+        sidebarArchivesTitleXPath = rb.getString("sidebarArchivesTitleXPath");
+        sidebarArchivesTitleText = rb.getString("sidebarArchivesTitleText");
+        sidebarArchivesListXPath = rb.getString("sidebarArchivesListXPath");
+        sidebarCategoriesId = rb.getString("sidebarCategoriesId");
+        sidebarCategoriesTitleXPath = rb.getString("sidebarCategoriesTitleXPath");
+        sidebarCategoriesTitleText = rb.getString("sidebarCategoriesTitleText");
+        sidebarCategoriesListXPath = rb.getString("sidebarCategoriesListXPath");
+        sidebarMetaId = rb.getString("sidebarMetaId");
+        sidebarMetaTitleXPath = rb.getString("sidebarMetaTitleXPath");
+        sidebarMetaTitleText = rb.getString("sidebarMetaTitleText");
+        sidebarMetaListXPath = rb.getString("sidebarMetaListXPath");
+
+        // Items pertaining to Recent Posts
+        recentPostsUri = rb.getString("recentPostsUri");
+        recentPostsTitle = rb.getString("recentPostsTitle");
+
+        // Items pertaining to Recent Comments
+        recentCommentsUri = rb.getString("recentCommentsUri");
+        recentCommentsTitle = rb.getString("recentCommentsTitle");
+
+        // Items pertaining to Archives
+        archivesUri = rb.getString("archivesUri");
+        archivesString = rb.getString("archivesString");
+        archivesTitle = rb.getString("archivesTitle");
+
+        // Items pertaining to Categories
+        categoriesUri = rb.getString("categoriesUri");
+        categoriesString = rb.getString("categoriesString");
+        categoriesTitle = rb.getString("categoriesTitle");
+
+        // Items pertaining to Meta
+        metaLoginUri = rb.getString("metaLoginUri");
+        metaLoginText = rb.getString("metaLoginText");
+        metaSiteAdminText = rb.getString("metaSiteAdminText");
+        metaLogoutText = rb.getString("metaLogoutText");
+    }
 
     /**
      * ssearchElement
@@ -247,4 +349,22 @@ public class WPSidebar extends BaseTest {
     ElementsCollection metaListElements() {
         return $$(byXpath(sidebarMetaListXPath + "/li/a"));
     }
+
+    /**
+     * metaLoginLink
+     * @return Selenide element representing the Log in link in the Meta widget on the sidebar
+     */
+    SelenideElement metaLoginLink() { return $(byLinkText(metaLoginText)); }
+
+    /**
+     * metaSiteAdminLink
+     * @return Selenide element representing the Site admin link in the Meta widget on the sidebar
+     */
+    SelenideElement metaSiteAdminLink() { return $(byLinkText(metaSiteAdminText)); }
+
+    /**
+     * metaLogoutLink
+     * @return Selenide element representing the Log out link in the Meta widget on the sidebar
+     */
+    SelenideElement metaLogoutLink() { return $(byLinkText(metaLogoutText)); }
 }

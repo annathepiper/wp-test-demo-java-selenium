@@ -16,7 +16,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  * Child classes will do appropriate setup to test against other specific pages.
  *
  */
-public class TestSidebarLinks extends BaseTest {
+public class TestSidebarLinks extends WPSidebar {
     WPSidebar wpSidebar;
     String targetUri;
 
@@ -92,7 +92,7 @@ public class TestSidebarLinks extends BaseTest {
     @Test
     public void TestCategoriesLinkClick() {
         wpLogger.info(String.format("Testing clicking the first category link on %s",targetUri));
-        // Have to scroll to the last item in the Recent Posts lists for the archives to be visible
+        // Have to scroll to the last item in the Recent Posts lists for the categories to be visible
         wpSidebar.recentPostsListElements().get(4).scrollTo();
 
         // Now click on the actual category link
@@ -101,23 +101,5 @@ public class TestSidebarLinks extends BaseTest {
         SelenideElement pageTitle = $(byClassName(pageTitleClass));
         pageTitle.should(exist).shouldBe(visible);
         Assert.assertEquals(pageTitle.text(), categoriesString + categoriesTitle);
-    }
-
-    /**
-     * TestMetaLoginLinkClick
-     * Verify that clicking on the first link in the Meta links goes to the login page.
-     */
-    @Test
-    public void TestMetaLoginLinkClick() {
-        wpLogger.info(String.format("Testing clicking the first meta link on %s",targetUri));
-        // Have to scroll to the last item in the Recent Comments lists for the meta links to be visible
-        wpSidebar.recentCommentsListElements().get(0).scrollTo();
-
-        // Now click on the actual log in link
-        wpSidebar.metaListElements().get(0).click();
-        Assert.assertEquals(url(), wpBaseUri + metaLoginUri);
-
-        // Hit back to go back to the previous page for further testing
-        back();
     }
 }

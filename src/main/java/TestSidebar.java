@@ -7,12 +7,12 @@ import static com.codeborne.selenide.Selenide.*;
 /**
  * TestSidebar
  * @author Angela Korra'ti
- * Last updated 5/10/2019
+ * Last updated 7/4/2023
  * This test class is the parent class for testing the sidebar, and it tests against the sidebar on the homepage. Child
  * classes will do appropriate setup to test against other specific pages.
  *
  */
-public class TestSidebar extends BaseTest {
+public class TestSidebar extends WPSidebar {
     WPSidebar wpSidebar;
     String targetUri;
 
