@@ -13,7 +13,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  * This parent class hits the homepage for its testing. It also serves as the parent class for test classes that hit
  * other pages.
  */
-public class TestFooter extends BaseTest {
+public class TestFooter extends WPFooter {
     WPFooter wpFooter;
     String targetUri;
 

@@ -11,6 +11,57 @@ import static com.codeborne.selenide.Selenide.$;
  * This is the WPFooter helper class that defines the structure of a footer page object.
  */
 class WPFooter extends BaseTest {
+    // Footer
+    static String footerId;
+    static String footerSocialMenuId;
+    static String footerSiteInfoClass;
+    static String footerSiteTitleXPath;
+    static String footerWPLinkXPath;
+    static String footerWPLink;
+    static String footerWPLinkText;
+    static String footerSocialFacebookXPath;
+    static String footerSocialFacebookLink;
+    static String footerSocialFacebookText;
+    static String footerSocialMastodonXPath;
+    static String footerSocialMastodonLink;
+    static String footerSocialMastodonText;
+    static String footerSocialGithubXPath;
+    static String footerSocialGithubLink;
+    static String footerSocialGithubText;
+    static String footerSocialLinkedInXPath;
+    //NOTE: Commenting this string out because I can't actually use it in the footer test cases, due to hitting it
+    //triggering a LinkedIn auth wall. But keeping it here for reference in case that behavior changes and I can
+    //wake this string up again.
+    //static String footerSocialLinkedInLink;
+    static String footerSocialLinkedInText;
+
+    /**
+     * Constructor for the class
+     */
+    WPFooter() {
+        // Items pertaining to the footer
+        footerId = rb.getString("footerId");
+        footerSocialMenuId = rb.getString("footerSocialMenuId");
+        footerSiteInfoClass = rb.getString("footerSiteInfoClass");
+        footerSiteTitleXPath = rb.getString("footerSiteTitleXPath");
+        footerWPLinkXPath = rb.getString("footerWPLinkXPath");
+        footerWPLink = rb.getString("footerWPLink");
+        footerWPLinkText = rb.getString("footerWPLinkText");
+        footerSocialFacebookXPath = rb.getString("footerSocialFacebookXPath");
+        footerSocialFacebookLink = rb.getString("footerSocialFacebookLink");
+        footerSocialFacebookText = rb.getString("footerSocialFacebookText");
+        footerSocialMastodonXPath = rb.getString("footerSocialMastodonXPath");
+        footerSocialMastodonLink = rb.getString("footerSocialMastodonLink");
+        footerSocialMastodonText = rb.getString("footerSocialMastodonText");
+        footerSocialGithubXPath = rb.getString("footerSocialGithubXPath");
+        footerSocialGithubLink = rb.getString("footerSocialGithubLink");
+        footerSocialGithubText = rb.getString("footerSocialGithubText");
+        footerSocialLinkedInXPath = rb.getString("footerSocialLinkedInXPath");
+        // NOTE: Commenting this string out because for now I can't actually use it, due to hitting this link
+        // triggering a LinkedIn auth wall. Keeping it rather than deleting it in case the behavior changes.
+        // footerSocialLinkedInLink = rb.getString("footerSocialLinkedInLink");
+        footerSocialLinkedInText = rb.getString("footerSocialLinkedInText");
+    }
 
     /**
      * footerElement
