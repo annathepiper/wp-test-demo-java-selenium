@@ -1,16 +1,58 @@
 import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 
 /**
  * WPFooter
  * @author Angela Korra'ti
- *
- * Last updated 4/23/2019
+ * Last updated 7/4/2023
  * This is the WPFooter helper class that defines the structure of a footer page object.
  */
 class WPFooter extends BaseTest {
+    static String footerId;
+    static String footerSocialMenuId;
+    static String footerSiteInfoClass;
+    static String footerSiteTitleXPath;
+    static String footerWPLinkXPath;
+    static String footerWPLink;
+    static String footerWPLinkText;
+    static String footerSocialFacebookXPath;
+    static String footerSocialFacebookLink;
+    static String footerSocialFacebookText;
+    static String footerSocialMastodonXPath;
+    static String footerSocialMastodonLink;
+    static String footerSocialMastodonText;
+    static String footerSocialGithubXPath;
+    static String footerSocialGithubLink;
+    static String footerSocialGithubText;
+    static String footerSocialLinkedInXPath;
+    static String footerSocialLinkedInLink;
+    static String footerSocialLinkedInText;
+
+    /**
+     * Constructor for the class
+     */
+    WPFooter() {
+        footerId = rb.getString("footerId");
+        footerSocialMenuId = rb.getString("footerSocialMenuId");
+        footerSiteInfoClass = rb.getString("footerSiteInfoClass");
+        footerSiteTitleXPath = rb.getString("footerSiteTitleXPath");
+        footerWPLinkXPath = rb.getString("footerWPLinkXPath");
+        footerWPLink = rb.getString("footerWPLink");
+        footerWPLinkText = rb.getString("footerWPLinkText");
+        footerSocialFacebookXPath = rb.getString("footerSocialFacebookXPath");
+        footerSocialFacebookLink = rb.getString("footerSocialFacebookLink");
+        footerSocialFacebookText = rb.getString("footerSocialFacebookText");
+        footerSocialMastodonXPath = rb.getString("footerSocialMastodonXPath");
+        footerSocialMastodonLink = rb.getString("footerSocialMastodonLink");
+        footerSocialMastodonText = rb.getString("footerSocialMastodonText");
+        footerSocialGithubXPath = rb.getString("footerSocialGithubXPath");
+        footerSocialGithubLink = rb.getString("footerSocialGithubLink");
+        footerSocialGithubText = rb.getString("footerSocialGithubText");
+        footerSocialLinkedInXPath = rb.getString("footerSocialLinkedInXPath");
+        footerSocialLinkedInLink = rb.getString("footerSocialLinkedInLink");
+        footerSocialLinkedInText = rb.getString("footerSocialLinkedInText");
+    }
 
     /**
      * footerElement

@@ -1,5 +1,4 @@
 import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
@@ -7,11 +6,110 @@ import static com.codeborne.selenide.Selenide.$;
 /**
  * WPMenu
  * @author Angela Korra'ti
- *
- * Last updated 4/24/2019
+ * Last updated 7/4/2023
  * This is the WPMenu helper class that defines the structure of a menu page object.
  */
 public class WPMenu extends BaseTest {
+    // Primary menu items
+    static String menuId;
+    static String menuHomeXPath;
+    static String menuHomeText;
+    static String menuHomeLink;
+    static String menuAboutXPath;
+    static String menuAboutText;
+    static String menuAboutLink;
+    static String menuBooksXPath;
+    static String menuBooksText;
+    static String menuBooksLink;
+    static String menuBlogXPath;
+    static String menuBlogText;
+    static String menuBlogLink;
+    static String menuContactXPath;
+    static String menuContactText;
+    static String menuContactLink;
+    static String menuStoreXPath;
+    static String menuStoreText;
+    static String menuStoreLink;
+
+    // Secondary menu items
+    static String submenuBooksXPath;
+    static String submenuHomeXPath;
+    static String submenuHomeText;
+    static String submenuHomeLink;
+    static String submenuFaerieXPath;
+    static String submenuFaerieText;
+    static String submenuFaerieLink;
+    static String submenuBoneXPath;
+    static String submenuBoneText;
+    static String submenuBoneLink;
+    static String submenuValorXPath;
+    static String submenuValorText;
+    static String submenuValorLink;
+    static String submenuVengeanceXPath;
+    static String submenuVengeanceText;
+    static String submenuVengeanceLink;
+    static String submenuVictoryXPath;
+    static String submenuVictoryText;
+    static String submenuVictoryLink;
+    static String submenuShortXPath;
+    static String submenuShortText;
+    static String submenuShortLink;
+    static String submenuStoreXPath;
+    static String submenuStoreText;
+    static String submenuStoreLink;
+
+    /**
+     * Constructor for the class
+     */
+    WPMenu() {
+        // Items pertaining to the primary menu items
+        menuId = rb.getString("menuId");
+        menuHomeXPath = rb.getString("menuHomeXPath");
+        menuHomeText = rb.getString("menuHomeText");
+        menuHomeLink = rb.getString("menuHomeLink");
+        menuAboutXPath = rb.getString("menuAboutXPath");
+        menuAboutText = rb.getString("menuAboutText");
+        menuAboutLink = rb.getString("menuAboutLink");
+        menuBooksXPath = rb.getString("menuBooksXPath");
+        menuBooksText = rb.getString("menuBooksText");
+        menuBooksLink = rb.getString("menuBooksLink");
+        menuBlogXPath = rb.getString("menuBlogXPath");
+        menuBlogText = rb.getString("menuBlogText");
+        menuBlogLink = rb.getString("menuBlogLink");
+        menuContactXPath = rb.getString("menuContactXPath");
+        menuContactText = rb.getString("menuContactText");
+        menuContactLink = rb.getString("menuContactLink");
+        menuStoreXPath = rb.getString("menuStoreXPath");
+        menuStoreText = rb.getString("menuStoreText");
+        menuStoreLink = rb.getString("menuStoreLink");
+
+        // Items pertaining to the submenus
+        submenuBooksXPath = rb.getString("submenuBooksXPath");
+        submenuHomeXPath = rb.getString("submenuHomeXPath");
+        submenuHomeText = rb.getString("submenuHomeText");
+        submenuHomeLink = rb.getString("submenuHomeLink");
+        submenuFaerieXPath = rb.getString("submenuFaerieXPath");
+        submenuFaerieText = rb.getString("submenuFaerieText");
+        submenuFaerieLink = rb.getString("submenuFaerieLink");
+        submenuBoneXPath = rb.getString("submenuBoneXPath");
+        submenuBoneText = rb.getString("submenuBoneText");
+        submenuBoneLink = rb.getString("submenuBoneLink");
+        submenuValorXPath = rb.getString("submenuValorXPath");
+        submenuValorText = rb.getString("submenuValorText");
+        submenuValorLink = rb.getString("submenuValorLink");
+        submenuVengeanceXPath = rb.getString("submenuVengeanceXPath");
+        submenuVengeanceText = rb.getString("submenuVengeanceText");
+        submenuVengeanceLink = rb.getString("submenuVengeanceLink");
+        submenuVictoryXPath = rb.getString("submenuVictoryXPath");
+        submenuVictoryText = rb.getString("submenuVictoryText");
+        submenuVictoryLink = rb.getString("submenuVictoryLink");
+        submenuShortXPath = rb.getString("submenuShortXPath");
+        submenuShortText = rb.getString("submenuShortText");
+        submenuShortLink = rb.getString("submenuShortLink");
+        submenuStoreXPath = rb.getString("submenuStoreXPath");
+        submenuStoreText = rb.getString("submenuStoreText");
+        submenuStoreLink = rb.getString("submenuStoreLink");
+    }
 
     /**
      * menuElement

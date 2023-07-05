@@ -13,7 +13,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
  * This parent class hits the homepage for its testing. It also serves as the parent class for test classes that hit
  * other pages.
  */
-public class TestFooter extends BaseTest {
+public class TestFooter extends WPFooter {
     WPFooter wpFooter;
     String targetUri;
 
@@ -42,7 +42,7 @@ public class TestFooter extends BaseTest {
 
         // Scrolling to the link is required, otherwise Selenide complains it's not clickable
         wpFooter.siteTitleElement().scrollTo().click();
-        Assert.assertEquals(url(), menuHomeLink,"Site title link isn't correct.");
+        Assert.assertEquals(url(), WPMenu.menuHomeLink,"Site title link isn't correct.");
     }
 
     /**
@@ -74,8 +74,13 @@ public class TestFooter extends BaseTest {
 
         // Scrolling to the link is required, otherwise Selenide complains it's not clickable
         wpFooter.socialFacebookElement().scrollTo().click();
-        Assert.assertEquals(url(), footerSocialFacebookLink,
-                "Clicking on Facebook link doesn't go to expected destination.");
+
+        // 7/4/2023 Current behavior is that Facebook demands a login if I click off the
+        // footer, so since this is a test run and I assume I am not logged in, I'm checking for the
+        // "log in if you want to see this account" link
+        String facebookWantsLogin = "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fannathepiper";
+        Assert.assertEquals(url(), facebookWantsLogin,
+                "Clicking Facebook link doesn't go to expected destination.");
     }
 
     /**
@@ -84,7 +89,7 @@ public class TestFooter extends BaseTest {
      */
     @Test
     public void TestFooterSocialMastodonLink() {
-        wpLogger.info(String.format("Testing the footer Twitter link on: %s",targetUri));
+        wpLogger.info(String.format("Testing the footer Mastodon link on: %s",targetUri));
         wpFooter.socialMastodonElement().should(exist).shouldBe(visible);
         Assert.assertEquals(wpFooter.socialMastodonText(), footerSocialMastodonText,
                 "Mastodon link doesn't have correct text.");
@@ -125,7 +130,12 @@ public class TestFooter extends BaseTest {
 
         // Scrolling to the link is required, otherwise Selenide complains it's not clickable
         wpFooter.socialLinkedInElement().scrollTo().click();
-        // Can't doublecheck against my LinkedIn account because apparently Selenium triggers an auth wall?
-        Assert.assertTrue(url().startsWith("https://www.linkedin.com"));
+
+        // 7/4/2023 Current behavior of LinkedIn link is that sometimes the link has a referer
+        // parameter on the end and sometimes it doesn't, so let's check for both possibilities
+        String linkedInRefererSuffix = "?original_referer=http%3A%2F%2Fwordpress.local%2F";
+        Assert.assertTrue(url().equals(footerSocialLinkedInLink) ||
+                url().equals(footerSocialLinkedInLink + linkedInRefererSuffix),
+                "Clicking LinkedIn link doesn't go to expected destination.");
     }
 }
