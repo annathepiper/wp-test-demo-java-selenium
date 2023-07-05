@@ -39,6 +39,14 @@ public class WPSidebar extends BaseTest {
     static String sidebarMetaTitleText;
     static String sidebarMetaListXPath;
 
+    // Search items
+    static String searchString;
+    static String searchUri;
+    static String searchResultsString;
+    static String searchNoResultsString;
+    static String searchNoResultsUri;
+    static String searchNoResultsMessage;
+
     // Recent posts items
     static String recentPostsUri;
     static String recentPostsTitle;
@@ -92,6 +100,14 @@ public class WPSidebar extends BaseTest {
         sidebarMetaTitleXPath = rb.getString("sidebarMetaTitleXPath");
         sidebarMetaTitleText = rb.getString("sidebarMetaTitleText");
         sidebarMetaListXPath = rb.getString("sidebarMetaListXPath");
+
+        // Items pertaining to search
+        searchString = rb.getString("searchString");
+        searchUri = rb.getString("searchUri");
+        searchResultsString = rb.getString("searchResultsString");
+        searchNoResultsString = rb.getString("searchNoResultsString");
+        searchNoResultsUri = rb.getString("searchNoResultsUri");
+        searchNoResultsMessage = rb.getString("searchNoResultsMessage");
 
         // Items pertaining to Recent Posts
         recentPostsUri = rb.getString("recentPostsUri");

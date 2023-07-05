@@ -1,7 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -9,11 +8,11 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 /**
  * TestMenu
  * @author Angela Korra'ti
- * Last updated 4/25/2019
+ * Last updated 7/4/2023
  * This test class is the parent class for testing the menu, and it tests against the menu on the homepage. Child
  * classes will do appropriate setup to test against other specific pages.
  */
-public class TestMenu extends BaseTest {
+public class TestMenu extends WPMenu {
     WPMenu wpMenu;
     String targetUri;
 
